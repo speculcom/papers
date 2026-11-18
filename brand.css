@@ -1121,6 +1121,8 @@ html[data-lang="en"] .nav-links > a {
 @media (max-width: 360px) {
   .nav-tabbar-1row a { font-size: 10px; }
   .nav-tabbar-1row .ti { font-size: 15px; }
+  /* 320px 英文态：Models / Demos 用 10px 会几乎贴在一起，单独降一档。 */
+  html[data-lang="en"] .nav-tabbar-1row a { font-size: 9px; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
