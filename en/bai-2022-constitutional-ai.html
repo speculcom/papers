@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html data-lang="en" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Constitutional AI: Harmlessness from AI Feedback | AI Papers</title>
+<meta content="Problem: training a harmless assistant normally needs tens of thousands of human harmlessness labels; can a small set of natural language principles be…" name="description"/>
+<link href="https://papers.specul.com/en/bai-2022-constitutional-ai.html" rel="canonical"/>
+<meta content="website" property="og:type"/>
+<meta content="AI Papers" property="og:site_name"/>
+<meta content="https://papers.specul.com/en/bai-2022-constitutional-ai.html" property="og:url"/>
+<meta content="Constitutional AI: Harmlessness from AI Feedback | AI Papers" property="og:title"/>
+<meta content="Problem: training a harmless assistant normally needs tens of thousands of human harmlessness labels; can a small set of natural language principles be…" property="og:description"/>
+<meta content="en_US" property="og:locale"/>
+<meta content="zh_CN" property="og:locale:alternate"/>
+<meta content="#16121f" name="theme-color"/>
+<link href="/assets/brand/dandelion-favicon-site.png" rel="icon" type="image/png"/>
+<link href="/assets/brand/dandelion-apple-touch-site.png" rel="apple-touch-icon"/>
+<script src="/brand.js"></script>
+<link href="/brand.css" rel="stylesheet"/>
+<link href="/site.css" rel="stylesheet"/>
+<link href="/papers.css" rel="stylesheet"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","name":"Constitutional AI: Harmlessness from AI Feedback | AI Papers","description":"Problem: training a harmless assistant normally needs tens of thousands of human harmlessness labels; can a small set of natural language principles be…","url":"https://papers.specul.com/en/bai-2022-constitutional-ai.html","inLanguage":"en","isPartOf":{"@type":"WebSite","name":"Constitutional AI: Harmlessness from AI Feedback | AI Papers","url":"https://papers.specul.com/en/bai-2022-constitutional-ai.html"}}</script>
+<meta content="Constitutional AI: Harmlessness from AI Feedback | AI Papers" name="twitter:title"/><meta content="Problem: training a harmless assistant normally needs tens of thousands of human harmlessness labels; can a small set of natural language principles be…" name="twitter:description"/><link href="https://papers.specul.com/bai-2022-constitutional-ai.html" hreflang="zh-CN" rel="alternate"/><link href="https://papers.specul.com/en/bai-2022-constitutional-ai.html" hreflang="en" rel="alternate"/><link href="https://papers.specul.com/bai-2022-constitutional-ai.html" hreflang="x-default" rel="alternate"/></head>
+<!-- B6（2026-10-09）：--accent 原先在这里被**内联到 body 上**（style="--accent:X"），
+     同时头部又写了 :root{--accent:X} —— 两处同一份值，冗余。
+     而内联样式会**赢过任何选择器**，于是主题级覆盖（html[data-theme="light"]{--accent:…}）
+     完全无效：vg 的引擎名在亮色主题下一直是 1.62:1 的金色，就是因为这条内联。
+     现在只保留头部那一处 —— 单一真相源，且可被主题覆盖。
+     ⚠ 这段注释里**不能出现反引号**：它在模板字符串内部，反引号会提前结束模板
+     （写这段时踩了第 4 次；pitfalls 里早有记录）。 -->
+<body class="brand-ambient has-tabbar has-tabbar-1row">
+<a class="t-skip" href="#main">Skip to main content</a>
+<header class="site-header">
+<div class="container site-bar">
+<a class="brand" href="https://specul.com/en/" title="投机取巧">
+<span aria-hidden="true" class="brand-dot"></span>
+<span class="brand-text">
+<span class="brand-name" id="markName">Speculative Speculation</span>
+<span class="brand-sub" id="markSub"></span>
+</span>
+</a>
+<nav aria-label="站点导航" class="nav-links">
+<a href="https://specul.com/en/">Home</a>
+<a href="https://learn.specul.com/en/">Learn</a>
+<a href="https://tools.specul.com/en/">Tools</a>
+<a href="https://models.specul.com/en/">Models</a>
+<a href="https://demos.specul.com/en/">Playground</a>
+<a href="https://oss.specul.com/en/">OSS</a>
+<a href="https://hardware.specul.com/en/">Compute</a>
+<a aria-current="page" href="https://papers.specul.com/en/">AI Papers</a>
+<a href="https://chain.specul.com/en/">Chain</a>
+<a href="https://nav.specul.com/en/">AI Directory</a>
+</nav>
+<!-- 2026-10-10：.nav-tools 从 nav 元素**内部**移到外面，与 .nav-links 平级。
+           放里面时窄屏下它会跟着链接一起换行：链接占满整行 → 按钮被挤到第三条
+           （实测顶栏 134px、按钮组孤零零一行）。移出来后它与品牌同行，
+           链接独占第二行居中 —— 这才是下面注释里方案 B 想要的样子。 -->
+<span class="nav-tools">
+<a aria-label="Search" class="icon-btn" href="https://specul.com/en/search.html" title="Search all sites"><span aria-hidden="true">⌕</span></a>
+<button aria-label="切换明暗主题" class="icon-btn" id="themeBtn" title="切换明暗主题" type="button">☾</button>
+<a aria-label="切换到中文" class="icon-btn" href="/bai-2022-constitutional-ai.html" hreflang="zh-CN" id="langBtn" lang="zh-CN" title="切换到中文">中文</a>
+</span>
+<!-- B6（2026-10-09）：窄屏（≤900px）下 .nav-links 会隐藏，这个汉堡是替代入口。
+           行为在共享 brand.js 里（一处实现、十站共用），样式在共享 brand.css。
+           无脚本时 CSS 不会显示它，而是把 .nav-links 在窄屏放出来 —— 不会出现
+           「导航被藏进一个点了没反应的按钮」。 -->
+<button aria-controls="navDrawer" aria-expanded="false" aria-label="打开菜单" class="nav-burger" type="button">
+<i></i><i></i><i></i>
+</button>
+</div>
+</header>
+<div class="nav-scrim"></div>
+<aside aria-hidden="true" aria-label="站点导航" class="nav-drawer" id="navDrawer">
+<div class="nav-drawer-h">
+<span class="brand-name">Speculative Speculation</span>
+<span class="brand-sub"></span>
+<button aria-label="关闭" class="nav-dclose" type="button">×</button>
+</div>
+<nav class="nav-drawer-list">
+<a href="https://specul.com/en/"><span>Home</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://learn.specul.com/en/"><span>Learn</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://tools.specul.com/en/"><span>Tools</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://models.specul.com/en/"><span>Models</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://demos.specul.com/en/"><span>Playground</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://oss.specul.com/en/"><span>OSS</span><span aria-hidden="true" class="ar">→</span></a>
+<a class="nav-group-start" href="https://hardware.specul.com/en/"><span>Compute</span><span aria-hidden="true" class="ar">→</span></a>
+<a aria-current="page" href="https://papers.specul.com/en/"><span>AI Papers</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://chain.specul.com/en/"><span>Chain</span><span aria-hidden="true" class="ar">→</span></a>
+<a class="nav-group-start" data-nav-group="external" href="https://nav.specul.com/en/"><span>AI Directory</span><span aria-hidden="true" class="ar">↗</span></a>
+</nav>
+<div class="nav-drawer-foot">
+<p>Content sites cover learn, use, choose and run; AI Directory is a catalogue of off-site AI sites.</p>
+<nav><a href="https://specul.com/en/legal.html">Legal terms</a></nav>
+</div>
+</aside>
+<main id="main">
+<div class="container ms-page fx-entry">
+<p class="fx-crumb"><a href="index.html">← Back to AI Papers</a></p>
+<div class="fx-top"><span class="fx-badge">Alignment</span></div>
+<h1>Constitutional AI: Harmlessness from AI Feedback</h1>
+<p class="fx-entry-lead">Problem: training a harmless assistant normally needs tens of thousands of human harmlessness labels; can a small set of natural language principles be enough, with the model critiquing and revising its own responses and a preference model trained on AI-generated labels driving the RL stage.<br/>Where the evidence sits: the pipeline has two stages — the supervised stage (self-critique and revision, SL-CAI) in Section 3 and the RLAIF stage in Section 4; the main result is the harmlessness-versus-helpfulness Elo scatter in Figure 2 (all 52B RL runs, with the caption stating that only differences are meaningful), whose caption reads "The RL-CAI models trained with AI feedback learn to be less harmful at a given level of helpfulness."; Elo comparisons and the chain-of-thought tradeoff are in 4.3, evasiveness and the change of labeling instructions in 4.4, and absolute harmfulness scores in 4.5; discussion and future directions are in Section 6 and 6.1, and dual-use risk in 6.2. There is no separate Limitations section; Section 6 onward is the discussion of limits and future directions.<br/>What the authors say about limits: Section 6 states that although human feedback labels for harmlessness were removed, this work still relied on human supervision in the form of helpfulness labels, and achieving helpfulness and instruction-following without human feedback is left to future work; footnote 2 in 1.1 acknowledges the principles were chosen in a fairly ad hoc and iterative way for research purposes and should be redeveloped by a larger set of stakeholders and adapted to the intended usage and deployment location; 4.3 reports that RL-CAI models can be over-trained, producing Goodharting behaviour such as overly harsh responses to harmful prompts or boilerplate language after most red-team prompts; 4.5 cautions that absolute harmfulness scores may not be well calibrated because different workers have personal biases about the 0-4 scale; 6.1 lists robustness — whether models can be made essentially immune to red-team attacks — as a remaining issue; and 6.2 notes that reducing the need for human feedback also makes it easier to deploy systems that have not been thoroughly tested and observed by humans, and that the methods are dual use.<br/>What it does not claim: the paper does not claim alignment without any human supervision — helpfulness labels still come from humans, and the authors write that the goal is not to remove human supervision entirely but to make it more efficient, transparent and targeted; it does not claim CAI models are better than RLHF on every axis, and 4.3 says RL-CAI with CoT seems slightly less helpful but slightly more harmless than without CoT; Elo is a relative score whose caption says only differences are meaningful, and 4.4 explains that the labeling instructions were changed (prefer the less evasive response when both are equally harmless) and the vendor changed, so these Elo scores are not directly comparable with prior work; and immunity to red-team attacks is a future direction, not a result of this paper.</p>
+<section class="fx-entry-sec"><h2>Key specs</h2><dl class="fx-specs"><div><dt>证据位置 / evidence</dt><dd>§3（SL-CAI）、§4（RLAIF）；Figure 2 与 §4.3；§4.4、§4.5；§6、§6.1、§6.2；§1.1 脚注 2</dd></div><div><dt>模型规模 / scale</dt><dd>Figure 2 为 52B 的各次 RL run</dd></div><div><dt>Elo 口径 / Elo</dt><dd>图注：只有差值有意义（only differences are meaningful）</dd></div><div><dt>仍依赖人工 / human labels</dt><dd>有用性标签仍为人工监督（§6 原文）</dd></div><div><dt>复现状态 / reproduction</dt><dd>未复现</dd></div></dl></section>
+<section class="fx-entry-sec"><h2>What the source says</h2><figure class="fx-evidence">
+<blockquote>We experiment with methods for training a harmless AI assistant through self-improvement, without any human labels identifying harmful outputs.</blockquote>
+<figcaption><span class="fx-ev-n">1</span> <a href="https://ar5iv.labs.arxiv.org/html/2212.08073" rel="noopener">https://ar5iv.labs.arxiv.org/html/2212.08073</a></figcaption>
+</figure>
+<figure class="fx-evidence">
+<blockquote>We show harmlessness versus helpfulness Elo scores (higher is better, only differences are meaningful) computed from crowdworkers’ model comparisons for all 52B RL runs.</blockquote>
+<figcaption><span class="fx-ev-n">2</span> <a href="https://ar5iv.labs.arxiv.org/html/2212.08073" rel="noopener">https://ar5iv.labs.arxiv.org/html/2212.08073</a></figcaption>
+</figure>
+<figure class="fx-evidence">
+<blockquote>By removing human feedback labels for harmlessness, we have moved further away from reliance on human supervision, and closer to the possibility of a self-supervised approach to alignment. However, in this work we still relied on human supervision in the form of helpfulness labels.</blockquote>
+<figcaption><span class="fx-ev-n">3</span> <a href="https://ar5iv.labs.arxiv.org/html/2212.08073" rel="noopener">https://ar5iv.labs.arxiv.org/html/2212.08073</a></figcaption>
+</figure>
+<figure class="fx-evidence">
+<blockquote>These principles were chosen in a fairly ad hoc and iterative way for research purposes.</blockquote>
+<figcaption><span class="fx-ev-n">4</span> <a href="https://ar5iv.labs.arxiv.org/html/2212.08073" rel="noopener">https://ar5iv.labs.arxiv.org/html/2212.08073</a></figcaption>
+</figure></section>
+<section class="fx-entry-sec"><h2>Source and licence</h2>
+<dl class="fx-specs">
+<div><dt>Source checked</dt><dd>2026-11-07</dd></div>
+<div><dt>Licence / kind</dt><dd>arxiv-preprint</dd></div>
+<div><dt>Licence evidence</dt><dd><a href="https://arxiv.org/abs/2212.08073" rel="noopener">https://arxiv.org/abs/2212.08073</a></dd></div>
+<div><dt>Category</dt><dd>Alignment</dd></div>
+</dl>
+</section>
+<section class="fx-entry-sec"><h2>How to read the numbers</h2><p>Before citing a score, separate what it measures, how it is scored, what it compares against and whether contamination is controlled. If unsure, go back to the experiment setup in the paper. <a href="https://models.specul.com/en/evals/">See benchmark cards</a> · <a href="https://models.specul.com/en/data/">See dataset cards</a></p></section>
+<section class="fx-entry-sec"><h2>More in this category</h2><ul class="fx-list"><li><a href="/en/abstain-r1-2026.html">Abstain-R1: Calibrated Abstention and Post-Refusal Clarification via Verifiable RL</a></li><li><a href="/en/claude-5-2-2026.html">Introducing Claude Fable 5.2 and Claude Mythos 5.2</a></li><li><a href="/en/dapo-2025.html">DAPO: An Open-Source LLM Reinforcement Learning System at Scale</a></li></ul></section>
+<section class="fx-entry-sec"><h2>Next step</h2><ul class="fx-list"><li><a href="https://specul.com/en/topic-research.html">Research / reports: from finding papers to citations</a></li><li><a href="https://models.specul.com/en/evals/">See benchmark cards: how to reproduce a score</a></li></ul></section>
+<p><a class="fx-source" href="https://arxiv.org/abs/2212.08073" rel="noopener">Open the official page →</a></p>
+<p class="fx-crumb"><a href="index.html">← Back to AI Papers</a></p>
+</div>
+</main>
+<footer class="site-footer foot-single">
+<div class="container foot-line">
+<div class="foot-brand">
+<span class="foot-brand-main">
+<span aria-hidden="true" class="brand-dot"></span>
+<span class="foot-copy">Specul · specul.com</span>
+</span>
+<span class="foot-license"><a href="https://specul.com/LICENSE-CONTENT.txt">Content CC BY 4.0</a><span aria-hidden="true" class="sep">·</span><a href="https://specul.com/LICENSE.txt">Code MIT</a><span aria-hidden="true" class="sep">·</span><a class="foot-source" href="https://github.com/speculcom/ai-handbook" rel="noopener" target="_blank">Source</a></span>
+</div>
+<nav aria-label="Footer site links" class="foot-sites">
+<a class="site-link" href="https://specul.com/en/">Home</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://learn.specul.com/en/">Learn</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://tools.specul.com/en/">Tools</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://models.specul.com/en/">Models</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://demos.specul.com/en/">Demos</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://oss.specul.com/en/">OSS</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://hardware.specul.com/en/">Compute</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://papers.specul.com/en/">Papers</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://chain.specul.com/en/">Chain</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://nav.specul.com/en/">Directory</a>
+</nav>
+<nav aria-label="Legal and corrections" class="foot-legal">
+<a href="https://specul.com/en/legal.html">Legal</a><span aria-hidden="true" class="sep">·</span>
+<a href="https://specul.com/en/legal.html#s8">Privacy</a><span aria-hidden="true" class="sep">·</span>
+<a href="https://specul.com/en/correct.html">Corrections</a>
+</nav>
+</div>
+</footer>
+<nav aria-label="快捷导航" class="nav-tabbar nav-tabbar-1row">
+<a href="https://specul.com/en/"><span aria-hidden="true" class="ti">◎</span>Home</a>
+<a href="https://learn.specul.com/en/"><span aria-hidden="true" class="ti">▤</span>Learn</a>
+<a href="https://tools.specul.com/en/"><span aria-hidden="true" class="ti">◈</span>Tools</a>
+<a href="https://models.specul.com/en/"><span aria-hidden="true" class="ti">▦</span>Models</a>
+<a href="https://demos.specul.com/en/"><span aria-hidden="true" class="ti">▷</span>Demos</a>
+<a href="https://oss.specul.com/en/"><span aria-hidden="true" class="ti">▧</span>OSS</a>
+<a href="https://hardware.specul.com/en/"><span aria-hidden="true" class="ti">▣</span>Chips</a>
+<a aria-current="page" href="https://papers.specul.com/en/"><span aria-hidden="true" class="ti">▥</span>Papers</a>
+<a href="https://chain.specul.com/en/"><span aria-hidden="true" class="ti">◇</span>Chain</a>
+<a data-nav-group="external" href="https://nav.specul.com/en/"><span aria-hidden="true" class="ti">↗</span>Nav</a>
+</nav>
+</body>
+</html>

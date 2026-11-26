@@ -1,28 +1,25 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>2026 论文增补 | AI 论文</title>
-  <meta name="description" content="2026 论文增补：Edit-based training、高风险目标建模、Byteification、JEPA-PRH、识别—拒答错位、Abstain-R1，附证据位置与边界。" />
-  <link rel="canonical" href="https://papers.specul.com/2026.html" />
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="2026 论文增补 | AI 论文" />
-  <meta property="og:url" content="https://papers.specul.com/2026.html" />
-  <meta property="og:title" content="2026 论文增补 | AI 论文" />
-  <meta property="og:description" content="2026 论文增补：Edit-based training、高风险目标建模、Byteification、JEPA-PRH、识别—拒答错位、Abstain-R1，附证据位置与边界。" />
-  <meta property="og:locale" content="zh_CN" />
-  <meta property="og:locale:alternate" content="en_US" />
-  <link rel="alternate" hreflang="zh-CN" href="https://papers.specul.com/2026.html" />
-  <link rel="alternate" hreflang="en" href="https://papers.specul.com/2026.html?lang=en" />
-  <link rel="alternate" hreflang="x-default" href="https://papers.specul.com/2026.html" />
-  <meta name="theme-color" content="#16121f" />
-  <link rel="icon" type="image/png" href="assets/brand/dandelion-favicon-site.png" />
-  <link rel="apple-touch-icon" href="assets/brand/dandelion-apple-touch-site.png" />
-  <script src="brand.js?v=37d1072be69b"></script>
-  <link rel="stylesheet" href="brand.css?v=37d1072be69b" />
-  <link rel="stylesheet" href="site.css" />
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>2026 论文增补 | AI 论文</title>
+<meta content="2026 论文增补：Edit-based training、高风险目标建模、Byteification、JEPA-PRH、识别—拒答错位、Abstain-R1，附证据位置与边界。" name="description"/>
+<link href="https://papers.specul.com/2026.html" rel="canonical"/>
+<meta content="website" property="og:type"/>
+<meta content="2026 论文增补 | AI 论文" property="og:site_name"/>
+<meta content="https://papers.specul.com/2026.html" property="og:url"/>
+<meta content="2026 论文增补 | AI 论文" property="og:title"/>
+<meta content="2026 论文增补：Edit-based training、高风险目标建模、Byteification、JEPA-PRH、识别—拒答错位、Abstain-R1，附证据位置与边界。" property="og:description"/>
+<meta content="zh_CN" property="og:locale"/>
+<meta content="en_US" property="og:locale:alternate"/>
+<meta content="#16121f" name="theme-color"/>
+<link href="assets/brand/dandelion-favicon-site.png" rel="icon" type="image/png"/>
+<link href="assets/brand/dandelion-apple-touch-site.png" rel="apple-touch-icon"/>
+<script src="brand.js?v=37d1072be69b"></script>
+<link href="brand.css?v=37d1072be69b" rel="stylesheet"/>
+<link href="site.css" rel="stylesheet"/>
+<style>
 .u26-hero{padding:24px 0 14px}
 .u26-kicker{margin:0 0 8px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--cyan);font-weight:650}
 .u26-h1{margin:0;max-width:20ch;font-size:clamp(30px,4.3vw,52px);line-height:1.1;letter-spacing:-.03em;color:var(--ink)}
@@ -83,8 +80,8 @@
 .nf-art svg{display:block;width:100%;height:auto}
 @media(max-width:900px){.u26-card{grid-column:span 12}.u26-two{grid-template-columns:1fr}.u26-row{grid-template-columns:70px 1fr}.u26-row a{display:none}.u26-map{grid-template-columns:1fr}.u26-chain{grid-template-columns:1fr 1fr}.u26-chain div:nth-child(2)::after{content:none}.nf-grid{grid-template-columns:1fr}.nf-art{max-width:200px;margin:8px auto 0}}
 </style>
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"2026 论文增补 | AI 论文","description":"2026 论文增补：Edit-based training、高风险目标建模、Byteification、JEPA-PRH、识别—拒答错位、Abstain-R1，附证据位置与边界。","url":"https://papers.specul.com/2026.html","inLanguage":["zh-CN","en"],"isPartOf":{"@type":"WebSite","url":"https://specul.com/"}}</script>
-</head>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"2026 论文增补 | AI 论文","description":"2026 论文增补：Edit-based training、高风险目标建模、Byteification、JEPA-PRH、识别—拒答错位、Abstain-R1，附证据位置与边界。","url":"https://papers.specul.com/2026.html","inLanguage":["zh-CN","en"],"isPartOf":{"@type":"WebSite","url":"https://specul.com/"}}</script>
+<link href="https://papers.specul.com/2026.html" hreflang="zh-CN" rel="alternate"/><link href="https://papers.specul.com/en/2026.html" hreflang="en" rel="alternate"/><link href="https://papers.specul.com/2026.html" hreflang="x-default" rel="alternate"/></head>
 <!-- B6（2026-10-09）：--accent 原先在这里被**内联到 body 上**（style="--accent:X"），
      同时头部又写了 :root{--accent:X} —— 两处同一份值，冗余。
      而内联样式会**赢过任何选择器**，于是主题级覆盖（html[data-theme="light"]{--accent:…}）
@@ -93,209 +90,200 @@
      ⚠ 这段注释里**不能出现反引号**：它在模板字符串内部，反引号会提前结束模板
      （写这段时踩了第 4 次；pitfalls 里早有记录）。 -->
 <body class="brand-ambient has-tabbar has-tabbar-1row">
-  <a class="t-skip" href="#main"><span data-zh>跳到主要内容</span><span data-en>Skip to main content</span></a>
-  <header class="site-header">
-    <div class="container site-bar">
-      <a class="brand" href="https://specul.com/" title="投机取巧">
-        <span class="brand-dot" aria-hidden="true"></span>
-        <span class="brand-text">
-          <span class="brand-name" id="markName" data-zh-name="投机取巧" data-en-name="Speculative Speculation">投机取巧</span>
-          <span class="brand-sub" id="markSub" data-zh-sub="Speculative Speculation" data-en-sub="">Speculative Speculation</span>
-        </span>
-      </a>
-      <nav class="nav-links" aria-label="站点导航">
-        <a href="https://specul.com/"><span data-zh>首页</span><span data-en>Home</span></a>
-        <a href="https://learn.specul.com/"><span data-zh>学 AI</span><span data-en>Learn</span></a>
-        <a href="https://tools.specul.com/"><span data-zh>工具</span><span data-en>Tools</span></a>
-        <a href="https://models.specul.com/"><span data-zh>模型</span><span data-en>Models</span></a>
-        <a href="https://demos.specul.com/"><span data-zh>作品演示</span><span data-en>Playground</span></a>
-        <a href="https://oss.specul.com/"><span data-zh>开源库</span><span data-en>OSS</span></a>
-        <a href="https://hardware.specul.com/"><span data-zh>硬件算力</span><span data-en>Compute</span></a>
-        <a href="https://papers.specul.com/" aria-current="page"><span data-zh>AI 论文</span><span data-en>AI Papers</span></a>
-        <a href="https://chain.specul.com/"><span data-zh>链</span><span data-en>Chain</span></a>
-        <a href="https://nav.specul.com/"><span data-zh>AI 导航</span><span data-en>AI Directory</span></a>
-      </nav>
-      <!-- 2026-10-10：.nav-tools 从 nav 元素**内部**移到外面，与 .nav-links 平级。
+<a class="t-skip" href="#main"><span data-zh="">跳到主要内容</span><span data-en="">Skip to main content</span></a>
+<header class="site-header">
+<div class="container site-bar">
+<a class="brand" href="https://specul.com/" title="投机取巧">
+<span aria-hidden="true" class="brand-dot"></span>
+<span class="brand-text">
+<span class="brand-name" data-en-name="Speculative Speculation" data-zh-name="投机取巧" id="markName">投机取巧</span>
+<span class="brand-sub" data-en-sub="" data-zh-sub="Speculative Speculation" id="markSub">Speculative Speculation</span>
+</span>
+</a>
+<nav aria-label="站点导航" class="nav-links">
+<a href="https://specul.com/"><span data-zh="">首页</span><span data-en="">Home</span></a>
+<a href="https://learn.specul.com/"><span data-zh="">学 AI</span><span data-en="">Learn</span></a>
+<a href="https://tools.specul.com/"><span data-zh="">工具</span><span data-en="">Tools</span></a>
+<a href="https://models.specul.com/"><span data-zh="">模型</span><span data-en="">Models</span></a>
+<a href="https://demos.specul.com/"><span data-zh="">作品演示</span><span data-en="">Playground</span></a>
+<a href="https://oss.specul.com/"><span data-zh="">开源库</span><span data-en="">OSS</span></a>
+<a href="https://hardware.specul.com/"><span data-zh="">硬件算力</span><span data-en="">Compute</span></a>
+<a aria-current="page" href="https://papers.specul.com/"><span data-zh="">AI 论文</span><span data-en="">AI Papers</span></a>
+<a href="https://chain.specul.com/"><span data-zh="">链</span><span data-en="">Chain</span></a>
+<a href="https://nav.specul.com/"><span data-zh="">AI 导航</span><span data-en="">AI Directory</span></a>
+</nav>
+<!-- 2026-10-10：.nav-tools 从 nav 元素**内部**移到外面，与 .nav-links 平级。
            放里面时窄屏下它会跟着链接一起换行：链接占满整行 → 按钮被挤到第三条
            （实测顶栏 134px、按钮组孤零零一行）。移出来后它与品牌同行，
            链接独占第二行居中 —— 这才是下面注释里方案 B 想要的样子。 -->
-      <span class="nav-tools">
-        <a class="icon-btn" href="https://specul.com/search.html" aria-label="搜索" data-ui-aria-label-zh="搜索" data-ui-aria-label-en="Search" title="搜索全站" data-ui-title-zh="搜索全站" data-ui-title-en="Search all sites"><span aria-hidden="true">⌕</span></a>
-        <button class="icon-btn" id="themeBtn" type="button" aria-label="切换明暗主题" title="切换明暗主题">☾</button>
-        <button class="icon-btn" id="langBtn" type="button" aria-label="Switch language" title="Switch language">EN</button>
-      </span>
-      <!-- B6（2026-10-09）：窄屏（≤900px）下 .nav-links 会隐藏，这个汉堡是替代入口。
+<span class="nav-tools">
+<a aria-label="搜索" class="icon-btn" data-ui-aria-label-en="Search" data-ui-aria-label-zh="搜索" data-ui-title-en="Search all sites" data-ui-title-zh="搜索全站" href="https://specul.com/search.html" title="搜索全站"><span aria-hidden="true">⌕</span></a>
+<button aria-label="切换明暗主题" class="icon-btn" id="themeBtn" title="切换明暗主题" type="button">☾</button>
+<a aria-label="Switch to English" class="icon-btn" href="/en/2026.html" hreflang="en" id="langBtn" lang="en" title="Switch to English">EN</a>
+</span>
+<!-- B6（2026-10-09）：窄屏（≤900px）下 .nav-links 会隐藏，这个汉堡是替代入口。
            行为在共享 brand.js 里（一处实现、十站共用），样式在共享 brand.css。
            无脚本时 CSS 不会显示它，而是把 .nav-links 在窄屏放出来 —— 不会出现
            「导航被藏进一个点了没反应的按钮」。 -->
-      <button class="nav-burger" type="button" aria-label="打开菜单" aria-expanded="false" aria-controls="navDrawer">
-        <i></i><i></i><i></i>
-      </button>
-    </div>
-  </header>
-  <div class="nav-scrim"></div>
-  <aside class="nav-drawer" id="navDrawer" aria-hidden="true" aria-label="站点导航">
-    <div class="nav-drawer-h">
-      <span class="brand-name"><span data-zh>投机取巧</span><span data-en>Speculative Speculation</span></span>
-      <span class="brand-sub" data-zh-sub="Speculative Speculation" data-en-sub="">Speculative Speculation</span>
-      <button class="nav-dclose" type="button" aria-label="关闭">×</button>
-    </div>
-    <nav class="nav-drawer-list">
-      <a href="https://specul.com/"><span><span data-zh>首页</span><span data-en>Home</span></span><span class="ar" aria-hidden="true">→</span></a>
-      <a href="https://learn.specul.com/"><span><span data-zh>学 AI</span><span data-en>Learn</span></span><span class="ar" aria-hidden="true">→</span></a>
-      <a href="https://tools.specul.com/"><span><span data-zh>工具</span><span data-en>Tools</span></span><span class="ar" aria-hidden="true">→</span></a>
-      <a href="https://models.specul.com/"><span><span data-zh>模型</span><span data-en>Models</span></span><span class="ar" aria-hidden="true">→</span></a>
-      <a href="https://demos.specul.com/"><span><span data-zh>作品演示</span><span data-en>Playground</span></span><span class="ar" aria-hidden="true">→</span></a>
-      <a href="https://oss.specul.com/"><span><span data-zh>开源库</span><span data-en>OSS</span></span><span class="ar" aria-hidden="true">→</span></a>
-      <a href="https://hardware.specul.com/" class="nav-group-start"><span><span data-zh>硬件算力</span><span data-en>Compute</span></span><span class="ar" aria-hidden="true">→</span></a>
-      <a href="https://papers.specul.com/" aria-current="page"><span><span data-zh>AI 论文</span><span data-en>AI Papers</span></span><span class="ar" aria-hidden="true">→</span></a>
-      <a href="https://chain.specul.com/"><span><span data-zh>链</span><span data-en>Chain</span></span><span class="ar" aria-hidden="true">→</span></a>
-      <a href="https://nav.specul.com/" class="nav-group-start" data-nav-group="external"><span><span data-zh>AI 导航</span><span data-en>AI Directory</span></span><span class="ar" aria-hidden="true">↗</span></a>
-    </nav>
-    <div class="nav-drawer-foot">
-      <p><span data-zh>内容站覆盖学、用、选、跑；AI 导航是站外的 AI 网站目录，点出去看。</span><span data-en>Content sites cover learn, use, choose and run; AI Directory is a catalogue of off-site AI sites.</span></p>
-      <nav><a href="https://specul.com/legal.html"><span data-zh>法律条款</span><span data-en>Legal terms</span></a></nav>
-    </div>
-  </aside>
-  <main id="main">
-
-      <section class="u26-hero"><div class="container">
-    <p class="u26-kicker"><span data-zh>AI 论文 · 2026 增补 · 2026-11-24</span><span data-en>Papers · 2026 additions · 2026-11-24</span></p>
-    <h1 class="u26-h1"><span data-zh>六篇论文，六句「它没主张什么」</span><span data-en>Six papers, six “what it does not claim” notes</span></h1>
-    <p class="u26-lede"><span data-zh>Edit-based training 只监督首个失败点；高风险目标建模检查决策依赖；Byteification 用 49.1B token 把子词模型改字节级；JEPA-PRH 用 109M 模型检验跨模态对齐；识别—拒答错位把「知道不可答却答了」解释为路由失败；Abstain-R1 用 3B 模型做可校准弃答。</span><span data-en>Edit-based training supervises only the first failure; high-stakes target formulation checks decision dependency; Byteification converts subword models to bytes with 49.1B tokens; JEPA-PRH tests cross-modal alignment at 109M; recognition–refusal explains “knowing it is unanswerable yet answering” as routing failure; Abstain-R1 does calibrated abstention at 3B.</span></p>
-    <p class="u26-note"><span data-zh>论文站只收能落到原文的条目；每篇都写问题、证据位置、作者自陈局限、它没主张的。预印本与同行评审分开标。</span><span data-en>Only entries with text-level evidence; each states the problem, evidence location, author-stated limits and what it does not claim. Preprints and peer review are labelled separately.</span></p>
-    
-  </div></section>
-      <section class="u26-section"><div class="container">
-        <figure class="u26-figure"><svg class="vz-svg" viewBox="0 0 760 306" role="img" aria-label="时间线" data-ui-aria-label-zh="时间线" data-ui-aria-label-en="Timeline" xmlns="http://www.w3.org/2000/svg">
-      <text x="104" y="27" class="vz-t-dim" text-anchor="end">2026-11-19</text>
-      <line x1="120" y1="10" x2="120" y2="54" class="vz-axis"/>
-      <circle cx="120" cy="22" r="6" style="fill:var(--cat-amber)"/>
-      <text x="140" y="27" class="vz-t-strong">Edit-based training</text>
-      <text x="140" y="47" class="vz-t-dim">arXiv / 训练</text>
-      <text x="104" y="75" class="vz-t-dim" text-anchor="end">2026-11-18</text>
-      <line x1="120" y1="58" x2="120" y2="102" class="vz-axis"/>
-      <circle cx="120" cy="70" r="6" style="fill:var(--cat-amber)"/>
-      <text x="140" y="75" class="vz-t-strong">LLM 会把预测目标建对吗？</text>
-      <text x="140" y="95" class="vz-t-dim">arXiv / 高风险决策</text>
-      <text x="104" y="123" class="vz-t-dim" text-anchor="end">2026-10-29</text>
-      <line x1="120" y1="106" x2="120" y2="150" class="vz-axis"/>
-      <circle cx="120" cy="118" r="6" style="fill:var(--cat-amber)"/>
-      <text x="140" y="123" class="vz-t-strong">JEPA-PRH</text>
-      <text x="140" y="143" class="vz-t-dim">arXiv / 表征</text>
-      <text x="104" y="171" class="vz-t-dim" text-anchor="end">2026-10-07</text>
-      <line x1="120" y1="154" x2="120" y2="198" class="vz-axis"/>
-      <circle cx="120" cy="166" r="6" style="fill:var(--cat-amber)"/>
-      <text x="140" y="171" class="vz-t-strong">Byteification</text>
-      <text x="140" y="191" class="vz-t-dim">Nature / 架构</text>
-      <text x="104" y="219" class="vz-t-dim" text-anchor="end">2026</text>
-      <line x1="120" y1="202" x2="120" y2="246" class="vz-axis"/>
-      <circle cx="120" cy="214" r="6" style="fill:var(--cat-amber)"/>
-      <text x="140" y="219" class="vz-t-strong">识别—拒答错位</text>
-      <text x="140" y="239" class="vz-t-dim">EMNLP / 推理</text>
-      <text x="104" y="267" class="vz-t-dim" text-anchor="end">2026</text>
-      <line x1="120" y1="250" x2="120" y2="294" class="vz-axis"/>
-      <circle cx="120" cy="262" r="6" style="fill:var(--cat-amber)"/>
-      <text x="140" y="267" class="vz-t-strong">Abstain-R1</text>
-      <text x="140" y="287" class="vz-t-dim">ACL / 对齐</text></svg><figcaption><span data-zh>按发布日期，最新在上；四篇有明确日期，两篇按 2026 年会议记，不虚构具体日。</span><span data-en>By publication date, newest first; four have exact dates, two are dated by 2026 venue, with no invented day.</span></figcaption></figure>
-        <div class="u26-grid"><article class="u26-card" id="edit-based-training">
-    <div class="u26-meta"><span class="u26-badge">2026-11-19</span><span class="u26-tag"><span data-zh>arXiv / 训练</span><span data-en>arXiv / training</span></span></div>
-    <h2><span data-zh>Edit-based training：只教第一个失败点</span><span data-en>Edit-based training: supervise only the first failure</span></h2>
-    <p class="u26-p"><span data-zh>不再让模型模仿整条推理轨迹，也不只给整条轨迹一个奖励：编辑器先找出「第一个不符合要求的点」，只对最小替换片段做监督。方法可离线也可在线，在线时监督会跟着模型当前失败模式移动。作者在 Qwen3-32B 上用 ReasonIF 验证。</span><span data-en>Instead of imitating a full reasoning trajectory or rewarding the whole completion, an editor locates the first point of failure and supervises only a minimal replacement span. The method works offline or online, with supervision moving to the model’s current failure modes. The authors test it on Qwen3-32B with ReasonIF.</span></p>
-    <dl class="u26-dl"><dt><span data-zh>arXiv</span><span data-en>arXiv</span></dt><dd>2611.26342</dd><dt><span data-zh>模型</span><span data-en>model</span></dt><dd>Qwen3-32B</dd><dt><span data-zh>基准</span><span data-en>benchmark</span></dt><dd>ReasonIF</dd><dt><span data-zh>会议</span><span data-en>venue</span></dt><dd>NeurIPS 2026 workshop</dd><dt><span data-zh>复现</span><span data-en>reproduction</span></dt><dd>未复现</dd></dl>
-    
-    <div class="u26-block"><b><span data-zh>证据位置</span><span data-en>Where the evidence sits</span></b><p><span data-zh>摘要报告：相对全轨迹模仿与轨迹级 RL，edit-based training 明显提升对推理指令的遵循，同时大体保留未目标任务的能力；训练信号集中在失败点后的最小替换片段。</span><span data-en>The abstract reports that, versus full-trajectory imitation and trajectory-level RL, edit-based training substantially improves compliance with reasoning instructions while largely preserving untargeted task skills; supervision concentrates on the minimal replacement span after the failure point.</span></p></div>
-    <div class="u26-block u26-boundary"><b><span data-zh>边界 / 它没主张什么</span><span data-en>Boundary / what it does not claim</span></b><p><span data-zh>只验证 Qwen3-32B 与 ReasonIF 一个基准，不能外推到所有模型与任务；「第一个失败点」依赖编辑器与判定标准，编辑质量决定上限；论文没有给生产规模或跨语言结果。它没主张「替代 RLHF」或「所有推理任务都适用」。</span><span data-en>Only Qwen3-32B and one benchmark, ReasonIF, are tested; this does not generalise to all models or tasks. The “first failure” depends on the editor and criterion, and edit quality caps the gain; the paper gives no production-scale or cross-lingual results. It does not claim to replace RLHF or to work for every reasoning task.</span></p></div>
-    <p class="u26-src"><span data-zh>来源</span><span data-en>Sources</span>：<a href="https://arxiv.org/abs/2611.26342" target="_blank" rel="noopener"><span data-zh>arXiv</span><span data-en>arXiv</span></a></p>
-  </article><article class="u26-card" id="llm-target-formulation">
-    <div class="u26-meta"><span class="u26-badge">2026-11-18</span><span class="u26-tag"><span data-zh>arXiv / 高风险决策</span><span data-en>arXiv / high-stakes decisions</span></span></div>
-    <h2><span data-zh>LLM 会把预测目标建对吗？</span><span data-en>Do LLMs formulate the right prediction target?</span></h2>
-    <p class="u26-p"><span data-zh>论文考察 LLM 在儿童福利、医疗、就业等高风险评估里能否正确构造预测问题，重点是「决策依赖」：历史决策会影响被观察到的结果。作者测试 11 个 OpenAI / Anthropic 模型、7 种提示条件，检查生成代码与解释是否处理这一偏差。</span><span data-en>The paper asks whether LLMs correctly formulate prediction problems in child welfare, healthcare and employment, focusing on decision dependency: past decisions shape observed outcomes. It tests 11 OpenAI / Anthropic models under seven prompt conditions, checking whether generated code and explanations handle that bias.</span></p>
-    <dl class="u26-dl"><dt><span data-zh>arXiv</span><span data-en>arXiv</span></dt><dd>2611.23638</dd><dt><span data-zh>模型</span><span data-en>models</span></dt><dd>11 个 OpenAI / Anthropic 模型</dd><dt><span data-zh>条件</span><span data-en>prompts</span></dt><dd>7 种提示</dd><dt><span data-zh>领域</span><span data-en>domains</span></dt><dd>儿童福利 / 医疗 / 就业</dd><dt><span data-zh>复现</span><span data-en>reproduction</span></dt><dd>未复现</dd></dl>
-    
-    <div class="u26-block"><b><span data-zh>证据位置</span><span data-en>Where the evidence sits</span></b><p><span data-zh>摘要：没有提示引导时，LLM 不能可靠处理决策依赖；当提示明确写出目标、所需假设与估计步骤时，目标对齐实现达到 99–100%。前沿模型下，简单描述「决策如何影响结果」似乎足以触发正确实现。</span><span data-en>Abstract: without guidance, LLMs do not reliably address decision dependency; when the prompt specifies the target, the required assumption and the estimation procedure, target-aligned implementation reaches 99–100%. Among frontier models, a simple description of how decisions affect outcomes appears sufficient.</span></p></div>
-    <div class="u26-block u26-boundary"><b><span data-zh>边界 / 它没主张什么</span><span data-en>Boundary / what it does not claim</span></b><p><span data-zh>测试集中在三个高风险领域与特定提示，不等于所有数据分析；99–100% 是「目标对齐实现」的比例，不是预测准确性或部署效果；部分回答口头承认决策依赖、代码却没处理。它没主张「LLM 可自动做高风险建模」或「提示工程可替代方法学审查」。</span><span data-en>The tests cover three high-stakes domains and specific prompts, not all data analysis; 99–100% is the share of target-aligned implementations, not predictive accuracy or deployment outcomes; some answers acknowledge decision dependency in prose while failing to handle it in code. It does not claim LLMs can automate high-stakes modelling, or that prompting replaces methodological review.</span></p></div>
-    <p class="u26-src"><span data-zh>来源</span><span data-en>Sources</span>：<a href="https://arxiv.org/abs/2611.23638" target="_blank" rel="noopener"><span data-zh>arXiv</span><span data-en>arXiv</span></a></p>
-  </article><article class="u26-card" id="jepa-prh">
-    <div class="u26-meta"><span class="u26-badge">2026-10-29</span><span class="u26-tag"><span data-zh>arXiv / 表征</span><span data-en>arXiv / representation</span></span></div>
-    <h2><span data-zh>JEPA-PRH：109M 文本 JEPA 的跨模态对齐</span><span data-en>JEPA-PRH: cross-modal alignment from a 109M text JEPA</span></h2>
-    <p class="u26-p"><span data-zh>一个 109M 参数的文本 JEPA，在跨模态对齐上优于作者评测过的所有语言模型（最大到 72B）；「好视角」比 next-token 少 42 倍训练样本。</span><span data-en>A 109M-parameter text JEPA aligns with image encoders better than every language model the authors evaluated, up to 72B; “good views” need 42 times fewer training samples than next-token prediction.</span></p>
-    <dl class="u26-dl"><dt><span data-zh>arXiv</span><span data-en>arXiv</span></dt><dd>2610.39302</dd><dt><span data-zh>作者</span><span data-en>authors</span></dt><dd>Balestriero & LeCun</dd><dt><span data-zh>模型</span><span data-en>model</span></dt><dd>109M text JEPA</dd><dt><span data-zh>复现</span><span data-en>reproduction</span></dt><dd>未复现</dd></dl>
-    
-    <div class="u26-block"><b><span data-zh>证据位置</span><span data-en>Where the evidence sits</span></b><p><span data-zh>摘要报告 109M JEPA 与 DINOv2 / CLIP 的对齐结果，以及 42× 样本效率；正文用 JEPA 作为可证明/可改进的实例。</span><span data-en>The abstract reports alignment with DINOv2 / CLIP and the 42× sample efficiency; the body uses JEPA as a provable/improveable instance.</span></p></div>
-    <div class="u26-block u26-boundary"><b><span data-zh>边界 / 它没主张什么</span><span data-en>Boundary / what it does not claim</span></b><p><span data-zh>预印本；109M 远小于被比较的 LLM；对齐指标不是生成质量；42× 是特定视角与数据条件，不是通用常数。它没主张「小模型全面超过大模型」或「PRH 已被最终证明」。</span><span data-en>A preprint; 109M is far smaller than the compared LLMs; alignment is not generation quality; 42× is specific to views and data, not a universal constant. It does not claim small models beat large models across the board, or that PRH is finally proved.</span></p></div>
-    <p class="u26-src"><span data-zh>来源</span><span data-en>Sources</span>：<a href="https://arxiv.org/abs/2610.39302" target="_blank" rel="noopener"><span data-zh>arXiv</span><span data-en>arXiv</span></a></p>
-  </article><article class="u26-card" id="byteification">
-    <div class="u26-meta"><span class="u26-badge">2026-10-07</span><span class="u26-tag"><span data-zh>Nature / 架构</span><span data-en>Nature / architecture</span></span></div>
-    <h2><span data-zh>Byteification：把子词模型改成字节级</span><span data-en>Byteification: retrofitting subword models to bytes</span></h2>
-    <p class="u26-p"><span data-zh>用不到典型预训练预算 1% 的 49.1B token，把一个已有子词 LLM 转成字节级；报告 Bolmo 7B/1B、Bwen 8B、Blama 8B 在字符级推理上超过早期字节级方法。</span><span data-en>Converts an existing subword LLM to byte level with 49.1B tokens, less than 1% of a typical pretraining budget; reports Bolmo 7B/1B, Bwen 8B and Blama 8B beating earlier byte-level approaches on character-level reasoning.</span></p>
-    <dl class="u26-dl"><dt><span data-zh>DOI</span><span data-en>DOI</span></dt><dd>10.1038/s41586-026-11111-4</dd><dt><span data-zh>预算</span><span data-en>budget</span></dt><dd>49.1B tokens（<1%）</dd><dt><span data-zh>模型</span><span data-en>models</span></dt><dd>Bolmo 7B/1B、Bwen 8B、Blama 8B</dd><dt><span data-zh>复现</span><span data-en>reproduction</span></dt><dd>未复现</dd></dl>
-    
-    <div class="u26-block"><b><span data-zh>证据位置</span><span data-en>Where the evidence sits</span></b><p><span data-zh>摘要给出方法与 49.1B token 的转换成本；正文「Tokenizer transfer and retrofitting」说明两阶段流程；结果段报告字符级任务与实际推理速度。</span><span data-en>The abstract gives the method and the 49.1B-token conversion cost; the “Tokenizer transfer and retrofitting” section describes the two-stage procedure; the results report character-level tasks and practical inference speed.</span></p></div>
-    <div class="u26-block u26-boundary"><b><span data-zh>边界 / 它没主张什么</span><span data-en>Boundary / what it does not claim</span></b><p><span data-zh>49.1B 虽不到 1%，绝对量仍大；方法依赖已有子词模型当教师；字节级推理需要专门内核；论文不覆盖所有任务。它没主张「字节级全面超过子词」或「tokenizer 无用」。</span><span data-en>49.1B is under 1% but still large in absolute terms; the method needs an existing subword teacher; byte-level inference needs dedicated kernels; the paper does not cover every task. It does not claim byte-level beats subword everywhere, or that tokenisers are obsolete.</span></p></div>
-    <p class="u26-src"><span data-zh>来源</span><span data-en>Sources</span>：<a href="https://doi.org/10.1038/s41586-026-11111-4" target="_blank" rel="noopener"><span data-zh>Nature / DOI</span><span data-en>Nature / DOI</span></a></p>
-  </article><article class="u26-card" id="recognition-refusal">
-    <div class="u26-meta"><span class="u26-badge">2026</span><span class="u26-tag"><span data-zh>EMNLP / 推理</span><span data-en>EMNLP / reasoning</span></span></div>
-    <h2><span data-zh>识别—拒答错位：知道不可答，却还是答了</span><span data-en>Recognition–refusal misalignment: knowing it is unanswerable, yet answering</span></h2>
-    <p class="u26-p"><span data-zh>论文在隐藏状态里找到一条线性方向，能把可答与「结构上不可能」的数学/代码题分开；识别方向与安全拒答方向接近正交，因此把失败解释为路由问题，而不是编码问题。</span><span data-en>The paper finds a linear direction in hidden states separating answerable from structurally impossible math/code prompts; recognition is nearly orthogonal to safety refusal, so the failure is a routing problem, not an encoding problem.</span></p>
-    <dl class="u26-dl"><dt><span data-zh>会议</span><span data-en>venue</span></dt><dd>EMNLP 2026 Main</dd><dt><span data-zh>ACL 编号</span><span data-en>anthology ID</span></dt><dd>2026.emnlp-main.1078</dd><dt><span data-zh>任务</span><span data-en>tasks</span></dt><dd>数学 / 代码的结构性不可答</dd><dt><span data-zh>复现</span><span data-en>reproduction</span></dt><dd>未复现</dd></dl>
-    
-    <div class="u26-block"><b><span data-zh>证据位置</span><span data-en>Where the evidence sits</span></b><p><span data-zh>线性探针能分开两类题；识别方向与拒答方向近正交。</span><span data-en>A linear probe separates the two classes; the recognition and refusal directions are nearly orthogonal.</span></p></div>
-    <div class="u26-block u26-boundary"><b><span data-zh>边界 / 它没主张什么</span><span data-en>Boundary / what it does not claim</span></b><p><span data-zh>只覆盖数学/代码的结构性不可答，不是所有「不知道」；线性可分不等于生成时一定使用该方向；未给通用修复方案。它没主张「所有幻觉都是路由问题」或「加一个拒答头就能解决」。</span><span data-en>It covers structurally unanswerable math/code, not every “don’t know”; linear separability does not prove the model uses that direction when generating; no general fix is offered. It does not claim every hallucination is routing, or that a refusal head solves it.</span></p></div>
-    <p class="u26-src"><span data-zh>来源</span><span data-en>Sources</span>：<a href="https://aclanthology.org/2026.emnlp-main.1078/" target="_blank" rel="noopener"><span data-zh>ACL Anthology</span><span data-en>ACL Anthology</span></a></p>
-  </article><article class="u26-card" id="abstain-r1">
-    <div class="u26-meta"><span class="u26-badge">2026</span><span class="u26-tag"><span data-zh>ACL / 对齐</span><span data-en>ACL / alignment</span></span></div>
-    <h2><span data-zh>Abstain-R1：3B 模型的可校准弃答</span><span data-en>Abstain-R1: calibrated abstention at 3B</span></h2>
-    <p class="u26-p"><span data-zh>用 clarification-aware RLVR 奖励训练 3B 模型，在不可答查询上同时改善弃答与澄清，并保持可答查询上的表现。</span><span data-en>Trains a 3B model with a clarification-aware RLVR reward, improving abstention and clarification on unanswerable queries while preserving answerable-query performance.</span></p>
-    <dl class="u26-dl"><dt><span data-zh>arXiv</span><span data-en>arXiv</span></dt><dd>2604.17073</dd><dt><span data-zh>会议</span><span data-en>venue</span></dt><dd>ACL 2026</dd><dt><span data-zh>规模</span><span data-en>scale</span></dt><dd>3B</dd><dt><span data-zh>复现</span><span data-en>reproduction</span></dt><dd>未复现</dd></dl>
-    
-    <div class="u26-block"><b><span data-zh>证据位置</span><span data-en>Where the evidence sits</span></b><p><span data-zh>摘要报告 3B 模型在不可答查询上的弃答/澄清提升，以及可答查询的性能保持；方法为可验证奖励 RL。</span><span data-en>The abstract reports gains in abstention/clarification on unanswerable queries and preserved performance on answerable ones; the method is verifiable-reward RL.</span></p></div>
-    <div class="u26-block u26-boundary"><b><span data-zh>边界 / 它没主张什么</span><span data-en>Boundary / what it does not claim</span></b><p><span data-zh>3B 规模，不能外推到 70B+；任务以不可答查询为主，开放域多轮澄清覆盖有限；奖励依赖可验证标签，标签有噪声；无生产验证。它没主张「弃答越多越好」或「解决所有幻觉」。</span><span data-en>3B scale, not extrapolable to 70B+; tasks centre on unanswerable queries, with limited open-domain multi-turn coverage; rewards depend on verifiable labels that carry noise; no production validation. It does not claim more abstention is always better, or that all hallucinations are solved.</span></p></div>
-    <p class="u26-src"><span data-zh>来源</span><span data-en>Sources</span>：<a href="https://arxiv.org/abs/2604.17073" target="_blank" rel="noopener"><span data-zh>arXiv</span><span data-en>arXiv</span></a></p>
-  </article></div>
-        <p class="u26-note"><b><span data-zh>下一步</span><span data-en>Next</span>：</b><a href="https://papers.specul.com/"><span data-zh>回到论文站看全部条目</span><span data-en>Back to all paper entries</span> →</a></p>
-      </div></section>
-    
-  </main>
-  <footer class="site-footer foot-single">
-    <div class="container foot-line">
-      <div class="foot-brand">
-        <span class="foot-brand-main">
-          <span class="brand-dot" aria-hidden="true"></span>
-          <span class="foot-copy"><span data-zh>投机取巧 · specul.com</span><span data-en>Specul · specul.com</span></span>
-        </span>
-        <span class="foot-license"><a href="https://specul.com/LICENSE-CONTENT.txt"><span data-zh>内容 CC BY 4.0</span><span data-en>Content CC BY 4.0</span></a><span class="sep" aria-hidden="true">·</span><a href="https://specul.com/LICENSE.txt"><span data-zh>代码 MIT</span><span data-en>Code MIT</span></a><span class="sep" aria-hidden="true">·</span><a class="foot-source" href="https://github.com/speculcom/ai-handbook" target="_blank" rel="noopener"><span data-zh>源码</span><span data-en>Source</span></a></span>
-      </div>
-      <nav class="foot-sites" aria-label="Footer site links">
-        <a class="site-link" href="https://specul.com/"><span data-zh>首页</span><span data-en>Home</span></a><span class="sep site-sep" aria-hidden="true">·</span>
-        <a class="site-link" href="https://learn.specul.com/"><span data-zh>学 AI</span><span data-en>Learn</span></a><span class="sep site-sep" aria-hidden="true">·</span>
-        <a class="site-link" href="https://tools.specul.com/"><span data-zh>工具</span><span data-en>Tools</span></a><span class="sep site-sep" aria-hidden="true">·</span>
-        <a class="site-link" href="https://models.specul.com/"><span data-zh>模型</span><span data-en>Models</span></a><span class="sep site-sep" aria-hidden="true">·</span>
-        <a class="site-link" href="https://demos.specul.com/"><span data-zh>演示</span><span data-en>Demos</span></a><span class="sep site-sep" aria-hidden="true">·</span>
-        <a class="site-link" href="https://oss.specul.com/"><span data-zh>开源</span><span data-en>OSS</span></a><span class="sep site-sep" aria-hidden="true">·</span>
-        <a class="site-link" href="https://hardware.specul.com/"><span data-zh>算力</span><span data-en>Compute</span></a><span class="sep site-sep" aria-hidden="true">·</span>
-        <a class="site-link" href="https://papers.specul.com/"><span data-zh>论文</span><span data-en>Papers</span></a><span class="sep site-sep" aria-hidden="true">·</span>
-        <a class="site-link" href="https://chain.specul.com/"><span data-zh>链</span><span data-en>Chain</span></a><span class="sep site-sep" aria-hidden="true">·</span>
-        <a class="site-link" href="https://nav.specul.com/"><span data-zh>导航</span><span data-en>Directory</span></a>
-      </nav>
-      <nav class="foot-legal" aria-label="Legal and corrections">
-        <a href="https://specul.com/legal.html"><span data-zh>法律</span><span data-en>Legal</span></a><span class="sep" aria-hidden="true">·</span>
-        <a href="https://specul.com/legal.html#s8"><span data-zh>隐私</span><span data-en>Privacy</span></a><span class="sep" aria-hidden="true">·</span>
-        <a href="https://specul.com/correct.html"><span data-zh>纠错</span><span data-en>Corrections</span></a>
-      </nav>
-    </div>
-  </footer>
-<nav class="nav-tabbar nav-tabbar-1row" aria-label="快捷导航">
-    <a href="https://specul.com/"><span class="ti" aria-hidden="true">◎</span><span data-zh>首页</span><span data-en>Home</span></a>
-    <a href="https://learn.specul.com/"><span class="ti" aria-hidden="true">▤</span><span data-zh>学AI</span><span data-en>Learn</span></a>
-    <a href="https://tools.specul.com/"><span class="ti" aria-hidden="true">◈</span><span data-zh>工具</span><span data-en>Tools</span></a>
-    <a href="https://models.specul.com/"><span class="ti" aria-hidden="true">▦</span><span data-zh>模型</span><span data-en>Models</span></a>
-    <a href="https://demos.specul.com/"><span class="ti" aria-hidden="true">▷</span><span data-zh>演示</span><span data-en>Demos</span></a>
-    <a href="https://oss.specul.com/"><span class="ti" aria-hidden="true">▧</span><span data-zh>开源</span><span data-en>OSS</span></a>
-    <a href="https://hardware.specul.com/"><span class="ti" aria-hidden="true">▣</span><span data-zh>算力</span><span data-en>Chips</span></a>
-    <a href="https://papers.specul.com/" aria-current="page"><span class="ti" aria-hidden="true">▥</span><span data-zh>论文</span><span data-en>Papers</span></a>
-    <a href="https://chain.specul.com/"><span class="ti" aria-hidden="true">◇</span><span data-zh>链</span><span data-en>Chain</span></a>
-    <a href="https://nav.specul.com/" data-nav-group="external"><span class="ti" aria-hidden="true">↗</span><span data-zh>导航</span><span data-en>Nav</span></a>
+<button aria-controls="navDrawer" aria-expanded="false" aria-label="打开菜单" class="nav-burger" type="button">
+<i></i><i></i><i></i>
+</button>
+</div>
+</header>
+<div class="nav-scrim"></div>
+<aside aria-hidden="true" aria-label="站点导航" class="nav-drawer" id="navDrawer">
+<div class="nav-drawer-h">
+<span class="brand-name"><span data-zh="">投机取巧</span><span data-en="">Speculative Speculation</span></span>
+<span class="brand-sub" data-en-sub="" data-zh-sub="Speculative Speculation">Speculative Speculation</span>
+<button aria-label="关闭" class="nav-dclose" type="button">×</button>
+</div>
+<nav class="nav-drawer-list">
+<a href="https://specul.com/"><span><span data-zh="">首页</span><span data-en="">Home</span></span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://learn.specul.com/"><span><span data-zh="">学 AI</span><span data-en="">Learn</span></span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://tools.specul.com/"><span><span data-zh="">工具</span><span data-en="">Tools</span></span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://models.specul.com/"><span><span data-zh="">模型</span><span data-en="">Models</span></span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://demos.specul.com/"><span><span data-zh="">作品演示</span><span data-en="">Playground</span></span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://oss.specul.com/"><span><span data-zh="">开源库</span><span data-en="">OSS</span></span><span aria-hidden="true" class="ar">→</span></a>
+<a class="nav-group-start" href="https://hardware.specul.com/"><span><span data-zh="">硬件算力</span><span data-en="">Compute</span></span><span aria-hidden="true" class="ar">→</span></a>
+<a aria-current="page" href="https://papers.specul.com/"><span><span data-zh="">AI 论文</span><span data-en="">AI Papers</span></span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://chain.specul.com/"><span><span data-zh="">链</span><span data-en="">Chain</span></span><span aria-hidden="true" class="ar">→</span></a>
+<a class="nav-group-start" data-nav-group="external" href="https://nav.specul.com/"><span><span data-zh="">AI 导航</span><span data-en="">AI Directory</span></span><span aria-hidden="true" class="ar">↗</span></a>
+</nav>
+<div class="nav-drawer-foot">
+<p><span data-zh="">内容站覆盖学、用、选、跑；AI 导航是站外的 AI 网站目录，点出去看。</span><span data-en="">Content sites cover learn, use, choose and run; AI Directory is a catalogue of off-site AI sites.</span></p>
+<nav><a href="https://specul.com/legal.html"><span data-zh="">法律条款</span><span data-en="">Legal terms</span></a></nav>
+</div>
+</aside>
+<main id="main">
+<section class="u26-hero"><div class="container">
+<p class="u26-kicker"><span data-zh="">AI 论文 · 2026 增补 · 2026-11-24</span><span data-en="">Papers · 2026 additions · 2026-11-24</span></p>
+<h1 class="u26-h1"><span data-zh="">六篇论文，六句「它没主张什么」</span><span data-en="">Six papers, six “what it does not claim” notes</span></h1>
+<p class="u26-lede"><span data-zh="">Edit-based training 只监督首个失败点；高风险目标建模检查决策依赖；Byteification 用 49.1B token 把子词模型改字节级；JEPA-PRH 用 109M 模型检验跨模态对齐；识别—拒答错位把「知道不可答却答了」解释为路由失败；Abstain-R1 用 3B 模型做可校准弃答。</span><span data-en="">Edit-based training supervises only the first failure; high-stakes target formulation checks decision dependency; Byteification converts subword models to bytes with 49.1B tokens; JEPA-PRH tests cross-modal alignment at 109M; recognition–refusal explains “knowing it is unanswerable yet answering” as routing failure; Abstain-R1 does calibrated abstention at 3B.</span></p>
+<p class="u26-note"><span data-zh="">论文站只收能落到原文的条目；每篇都写问题、证据位置、作者自陈局限、它没主张的。预印本与同行评审分开标。</span><span data-en="">Only entries with text-level evidence; each states the problem, evidence location, author-stated limits and what it does not claim. Preprints and peer review are labelled separately.</span></p>
+</div></section>
+<section class="u26-section"><div class="container">
+<figure class="u26-figure"><svg aria-label="时间线" class="vz-svg" data-ui-aria-label-en="Timeline" data-ui-aria-label-zh="时间线" role="img" viewbox="0 0 760 306" xmlns="http://www.w3.org/2000/svg">
+<text class="vz-t-dim" text-anchor="end" x="104" y="27">2026-11-19</text>
+<line class="vz-axis" x1="120" x2="120" y1="10" y2="54"></line>
+<circle cx="120" cy="22" r="6" style="fill:var(--cat-amber)"></circle>
+<text class="vz-t-strong" x="140" y="27">Edit-based training</text>
+<text class="vz-t-dim" x="140" y="47">arXiv / 训练</text>
+<text class="vz-t-dim" text-anchor="end" x="104" y="75">2026-11-18</text>
+<line class="vz-axis" x1="120" x2="120" y1="58" y2="102"></line>
+<circle cx="120" cy="70" r="6" style="fill:var(--cat-amber)"></circle>
+<text class="vz-t-strong" x="140" y="75">LLM 会把预测目标建对吗？</text>
+<text class="vz-t-dim" x="140" y="95">arXiv / 高风险决策</text>
+<text class="vz-t-dim" text-anchor="end" x="104" y="123">2026-10-29</text>
+<line class="vz-axis" x1="120" x2="120" y1="106" y2="150"></line>
+<circle cx="120" cy="118" r="6" style="fill:var(--cat-amber)"></circle>
+<text class="vz-t-strong" x="140" y="123">JEPA-PRH</text>
+<text class="vz-t-dim" x="140" y="143">arXiv / 表征</text>
+<text class="vz-t-dim" text-anchor="end" x="104" y="171">2026-10-07</text>
+<line class="vz-axis" x1="120" x2="120" y1="154" y2="198"></line>
+<circle cx="120" cy="166" r="6" style="fill:var(--cat-amber)"></circle>
+<text class="vz-t-strong" x="140" y="171">Byteification</text>
+<text class="vz-t-dim" x="140" y="191">Nature / 架构</text>
+<text class="vz-t-dim" text-anchor="end" x="104" y="219">2026</text>
+<line class="vz-axis" x1="120" x2="120" y1="202" y2="246"></line>
+<circle cx="120" cy="214" r="6" style="fill:var(--cat-amber)"></circle>
+<text class="vz-t-strong" x="140" y="219">识别—拒答错位</text>
+<text class="vz-t-dim" x="140" y="239">EMNLP / 推理</text>
+<text class="vz-t-dim" text-anchor="end" x="104" y="267">2026</text>
+<line class="vz-axis" x1="120" x2="120" y1="250" y2="294"></line>
+<circle cx="120" cy="262" r="6" style="fill:var(--cat-amber)"></circle>
+<text class="vz-t-strong" x="140" y="267">Abstain-R1</text>
+<text class="vz-t-dim" x="140" y="287">ACL / 对齐</text></svg><figcaption><span data-zh="">按发布日期，最新在上；四篇有明确日期，两篇按 2026 年会议记，不虚构具体日。</span><span data-en="">By publication date, newest first; four have exact dates, two are dated by 2026 venue, with no invented day.</span></figcaption></figure>
+<div class="u26-grid"><article class="u26-card" id="edit-based-training">
+<div class="u26-meta"><span class="u26-badge">2026-11-19</span><span class="u26-tag"><span data-zh="">arXiv / 训练</span><span data-en="">arXiv / training</span></span></div>
+<h2><span data-zh="">Edit-based training：只教第一个失败点</span><span data-en="">Edit-based training: supervise only the first failure</span></h2>
+<p class="u26-p"><span data-zh="">不再让模型模仿整条推理轨迹，也不只给整条轨迹一个奖励：编辑器先找出「第一个不符合要求的点」，只对最小替换片段做监督。方法可离线也可在线，在线时监督会跟着模型当前失败模式移动。作者在 Qwen3-32B 上用 ReasonIF 验证。</span><span data-en="">Instead of imitating a full reasoning trajectory or rewarding the whole completion, an editor locates the first point of failure and supervises only a minimal replacement span. The method works offline or online, with supervision moving to the model’s current failure modes. The authors test it on Qwen3-32B with ReasonIF.</span></p>
+<dl class="u26-dl"><dt><span data-zh="">arXiv</span><span data-en="">arXiv</span></dt><dd>2611.26342</dd><dt><span data-zh="">模型</span><span data-en="">model</span></dt><dd>Qwen3-32B</dd><dt><span data-zh="">基准</span><span data-en="">benchmark</span></dt><dd>ReasonIF</dd><dt><span data-zh="">会议</span><span data-en="">venue</span></dt><dd>NeurIPS 2026 workshop</dd><dt><span data-zh="">复现</span><span data-en="">reproduction</span></dt><dd>未复现</dd></dl>
+<div class="u26-block"><b><span data-zh="">证据位置</span><span data-en="">Where the evidence sits</span></b><p><span data-zh="">摘要报告：相对全轨迹模仿与轨迹级 RL，edit-based training 明显提升对推理指令的遵循，同时大体保留未目标任务的能力；训练信号集中在失败点后的最小替换片段。</span><span data-en="">The abstract reports that, versus full-trajectory imitation and trajectory-level RL, edit-based training substantially improves compliance with reasoning instructions while largely preserving untargeted task skills; supervision concentrates on the minimal replacement span after the failure point.</span></p></div>
+<div class="u26-block u26-boundary"><b><span data-zh="">边界 / 它没主张什么</span><span data-en="">Boundary / what it does not claim</span></b><p><span data-zh="">只验证 Qwen3-32B 与 ReasonIF 一个基准，不能外推到所有模型与任务；「第一个失败点」依赖编辑器与判定标准，编辑质量决定上限；论文没有给生产规模或跨语言结果。它没主张「替代 RLHF」或「所有推理任务都适用」。</span><span data-en="">Only Qwen3-32B and one benchmark, ReasonIF, are tested; this does not generalise to all models or tasks. The “first failure” depends on the editor and criterion, and edit quality caps the gain; the paper gives no production-scale or cross-lingual results. It does not claim to replace RLHF or to work for every reasoning task.</span></p></div>
+<p class="u26-src"><span data-zh="">来源</span><span data-en="">Sources</span>：<a href="https://arxiv.org/abs/2611.26342" rel="noopener" target="_blank"><span data-zh="">arXiv</span><span data-en="">arXiv</span></a></p>
+</article><article class="u26-card" id="llm-target-formulation">
+<div class="u26-meta"><span class="u26-badge">2026-11-18</span><span class="u26-tag"><span data-zh="">arXiv / 高风险决策</span><span data-en="">arXiv / high-stakes decisions</span></span></div>
+<h2><span data-zh="">LLM 会把预测目标建对吗？</span><span data-en="">Do LLMs formulate the right prediction target?</span></h2>
+<p class="u26-p"><span data-zh="">论文考察 LLM 在儿童福利、医疗、就业等高风险评估里能否正确构造预测问题，重点是「决策依赖」：历史决策会影响被观察到的结果。作者测试 11 个 OpenAI / Anthropic 模型、7 种提示条件，检查生成代码与解释是否处理这一偏差。</span><span data-en="">The paper asks whether LLMs correctly formulate prediction problems in child welfare, healthcare and employment, focusing on decision dependency: past decisions shape observed outcomes. It tests 11 OpenAI / Anthropic models under seven prompt conditions, checking whether generated code and explanations handle that bias.</span></p>
+<dl class="u26-dl"><dt><span data-zh="">arXiv</span><span data-en="">arXiv</span></dt><dd>2611.23638</dd><dt><span data-zh="">模型</span><span data-en="">models</span></dt><dd>11 个 OpenAI / Anthropic 模型</dd><dt><span data-zh="">条件</span><span data-en="">prompts</span></dt><dd>7 种提示</dd><dt><span data-zh="">领域</span><span data-en="">domains</span></dt><dd>儿童福利 / 医疗 / 就业</dd><dt><span data-zh="">复现</span><span data-en="">reproduction</span></dt><dd>未复现</dd></dl>
+<div class="u26-block"><b><span data-zh="">证据位置</span><span data-en="">Where the evidence sits</span></b><p><span data-zh="">摘要：没有提示引导时，LLM 不能可靠处理决策依赖；当提示明确写出目标、所需假设与估计步骤时，目标对齐实现达到 99–100%。前沿模型下，简单描述「决策如何影响结果」似乎足以触发正确实现。</span><span data-en="">Abstract: without guidance, LLMs do not reliably address decision dependency; when the prompt specifies the target, the required assumption and the estimation procedure, target-aligned implementation reaches 99–100%. Among frontier models, a simple description of how decisions affect outcomes appears sufficient.</span></p></div>
+<div class="u26-block u26-boundary"><b><span data-zh="">边界 / 它没主张什么</span><span data-en="">Boundary / what it does not claim</span></b><p><span data-zh="">测试集中在三个高风险领域与特定提示，不等于所有数据分析；99–100% 是「目标对齐实现」的比例，不是预测准确性或部署效果；部分回答口头承认决策依赖、代码却没处理。它没主张「LLM 可自动做高风险建模」或「提示工程可替代方法学审查」。</span><span data-en="">The tests cover three high-stakes domains and specific prompts, not all data analysis; 99–100% is the share of target-aligned implementations, not predictive accuracy or deployment outcomes; some answers acknowledge decision dependency in prose while failing to handle it in code. It does not claim LLMs can automate high-stakes modelling, or that prompting replaces methodological review.</span></p></div>
+<p class="u26-src"><span data-zh="">来源</span><span data-en="">Sources</span>：<a href="https://arxiv.org/abs/2611.23638" rel="noopener" target="_blank"><span data-zh="">arXiv</span><span data-en="">arXiv</span></a></p>
+</article><article class="u26-card" id="jepa-prh">
+<div class="u26-meta"><span class="u26-badge">2026-10-29</span><span class="u26-tag"><span data-zh="">arXiv / 表征</span><span data-en="">arXiv / representation</span></span></div>
+<h2><span data-zh="">JEPA-PRH：109M 文本 JEPA 的跨模态对齐</span><span data-en="">JEPA-PRH: cross-modal alignment from a 109M text JEPA</span></h2>
+<p class="u26-p"><span data-zh="">一个 109M 参数的文本 JEPA，在跨模态对齐上优于作者评测过的所有语言模型（最大到 72B）；「好视角」比 next-token 少 42 倍训练样本。</span><span data-en="">A 109M-parameter text JEPA aligns with image encoders better than every language model the authors evaluated, up to 72B; “good views” need 42 times fewer training samples than next-token prediction.</span></p>
+<dl class="u26-dl"><dt><span data-zh="">arXiv</span><span data-en="">arXiv</span></dt><dd>2610.39302</dd><dt><span data-zh="">作者</span><span data-en="">authors</span></dt><dd>Balestriero &amp; LeCun</dd><dt><span data-zh="">模型</span><span data-en="">model</span></dt><dd>109M text JEPA</dd><dt><span data-zh="">复现</span><span data-en="">reproduction</span></dt><dd>未复现</dd></dl>
+<div class="u26-block"><b><span data-zh="">证据位置</span><span data-en="">Where the evidence sits</span></b><p><span data-zh="">摘要报告 109M JEPA 与 DINOv2 / CLIP 的对齐结果，以及 42× 样本效率；正文用 JEPA 作为可证明/可改进的实例。</span><span data-en="">The abstract reports alignment with DINOv2 / CLIP and the 42× sample efficiency; the body uses JEPA as a provable/improveable instance.</span></p></div>
+<div class="u26-block u26-boundary"><b><span data-zh="">边界 / 它没主张什么</span><span data-en="">Boundary / what it does not claim</span></b><p><span data-zh="">预印本；109M 远小于被比较的 LLM；对齐指标不是生成质量；42× 是特定视角与数据条件，不是通用常数。它没主张「小模型全面超过大模型」或「PRH 已被最终证明」。</span><span data-en="">A preprint; 109M is far smaller than the compared LLMs; alignment is not generation quality; 42× is specific to views and data, not a universal constant. It does not claim small models beat large models across the board, or that PRH is finally proved.</span></p></div>
+<p class="u26-src"><span data-zh="">来源</span><span data-en="">Sources</span>：<a href="https://arxiv.org/abs/2610.39302" rel="noopener" target="_blank"><span data-zh="">arXiv</span><span data-en="">arXiv</span></a></p>
+</article><article class="u26-card" id="byteification">
+<div class="u26-meta"><span class="u26-badge">2026-10-07</span><span class="u26-tag"><span data-zh="">Nature / 架构</span><span data-en="">Nature / architecture</span></span></div>
+<h2><span data-zh="">Byteification：把子词模型改成字节级</span><span data-en="">Byteification: retrofitting subword models to bytes</span></h2>
+<p class="u26-p"><span data-zh="">用不到典型预训练预算 1% 的 49.1B token，把一个已有子词 LLM 转成字节级；报告 Bolmo 7B/1B、Bwen 8B、Blama 8B 在字符级推理上超过早期字节级方法。</span><span data-en="">Converts an existing subword LLM to byte level with 49.1B tokens, less than 1% of a typical pretraining budget; reports Bolmo 7B/1B, Bwen 8B and Blama 8B beating earlier byte-level approaches on character-level reasoning.</span></p>
+<dl class="u26-dl"><dt><span data-zh="">DOI</span><span data-en="">DOI</span></dt><dd>10.1038/s41586-026-11111-4</dd><dt><span data-zh="">预算</span><span data-en="">budget</span></dt><dd>49.1B tokens（&lt;1%）</dd><dt><span data-zh="">模型</span><span data-en="">models</span></dt><dd>Bolmo 7B/1B、Bwen 8B、Blama 8B</dd><dt><span data-zh="">复现</span><span data-en="">reproduction</span></dt><dd>未复现</dd></dl>
+<div class="u26-block"><b><span data-zh="">证据位置</span><span data-en="">Where the evidence sits</span></b><p><span data-zh="">摘要给出方法与 49.1B token 的转换成本；正文「Tokenizer transfer and retrofitting」说明两阶段流程；结果段报告字符级任务与实际推理速度。</span><span data-en="">The abstract gives the method and the 49.1B-token conversion cost; the “Tokenizer transfer and retrofitting” section describes the two-stage procedure; the results report character-level tasks and practical inference speed.</span></p></div>
+<div class="u26-block u26-boundary"><b><span data-zh="">边界 / 它没主张什么</span><span data-en="">Boundary / what it does not claim</span></b><p><span data-zh="">49.1B 虽不到 1%，绝对量仍大；方法依赖已有子词模型当教师；字节级推理需要专门内核；论文不覆盖所有任务。它没主张「字节级全面超过子词」或「tokenizer 无用」。</span><span data-en="">49.1B is under 1% but still large in absolute terms; the method needs an existing subword teacher; byte-level inference needs dedicated kernels; the paper does not cover every task. It does not claim byte-level beats subword everywhere, or that tokenisers are obsolete.</span></p></div>
+<p class="u26-src"><span data-zh="">来源</span><span data-en="">Sources</span>：<a href="https://doi.org/10.1038/s41586-026-11111-4" rel="noopener" target="_blank"><span data-zh="">Nature / DOI</span><span data-en="">Nature / DOI</span></a></p>
+</article><article class="u26-card" id="recognition-refusal">
+<div class="u26-meta"><span class="u26-badge">2026</span><span class="u26-tag"><span data-zh="">EMNLP / 推理</span><span data-en="">EMNLP / reasoning</span></span></div>
+<h2><span data-zh="">识别—拒答错位：知道不可答，却还是答了</span><span data-en="">Recognition–refusal misalignment: knowing it is unanswerable, yet answering</span></h2>
+<p class="u26-p"><span data-zh="">论文在隐藏状态里找到一条线性方向，能把可答与「结构上不可能」的数学/代码题分开；识别方向与安全拒答方向接近正交，因此把失败解释为路由问题，而不是编码问题。</span><span data-en="">The paper finds a linear direction in hidden states separating answerable from structurally impossible math/code prompts; recognition is nearly orthogonal to safety refusal, so the failure is a routing problem, not an encoding problem.</span></p>
+<dl class="u26-dl"><dt><span data-zh="">会议</span><span data-en="">venue</span></dt><dd>EMNLP 2026 Main</dd><dt><span data-zh="">ACL 编号</span><span data-en="">anthology ID</span></dt><dd>2026.emnlp-main.1078</dd><dt><span data-zh="">任务</span><span data-en="">tasks</span></dt><dd>数学 / 代码的结构性不可答</dd><dt><span data-zh="">复现</span><span data-en="">reproduction</span></dt><dd>未复现</dd></dl>
+<div class="u26-block"><b><span data-zh="">证据位置</span><span data-en="">Where the evidence sits</span></b><p><span data-zh="">线性探针能分开两类题；识别方向与拒答方向近正交。</span><span data-en="">A linear probe separates the two classes; the recognition and refusal directions are nearly orthogonal.</span></p></div>
+<div class="u26-block u26-boundary"><b><span data-zh="">边界 / 它没主张什么</span><span data-en="">Boundary / what it does not claim</span></b><p><span data-zh="">只覆盖数学/代码的结构性不可答，不是所有「不知道」；线性可分不等于生成时一定使用该方向；未给通用修复方案。它没主张「所有幻觉都是路由问题」或「加一个拒答头就能解决」。</span><span data-en="">It covers structurally unanswerable math/code, not every “don’t know”; linear separability does not prove the model uses that direction when generating; no general fix is offered. It does not claim every hallucination is routing, or that a refusal head solves it.</span></p></div>
+<p class="u26-src"><span data-zh="">来源</span><span data-en="">Sources</span>：<a href="https://aclanthology.org/2026.emnlp-main.1078/" rel="noopener" target="_blank"><span data-zh="">ACL Anthology</span><span data-en="">ACL Anthology</span></a></p>
+</article><article class="u26-card" id="abstain-r1">
+<div class="u26-meta"><span class="u26-badge">2026</span><span class="u26-tag"><span data-zh="">ACL / 对齐</span><span data-en="">ACL / alignment</span></span></div>
+<h2><span data-zh="">Abstain-R1：3B 模型的可校准弃答</span><span data-en="">Abstain-R1: calibrated abstention at 3B</span></h2>
+<p class="u26-p"><span data-zh="">用 clarification-aware RLVR 奖励训练 3B 模型，在不可答查询上同时改善弃答与澄清，并保持可答查询上的表现。</span><span data-en="">Trains a 3B model with a clarification-aware RLVR reward, improving abstention and clarification on unanswerable queries while preserving answerable-query performance.</span></p>
+<dl class="u26-dl"><dt><span data-zh="">arXiv</span><span data-en="">arXiv</span></dt><dd>2604.17073</dd><dt><span data-zh="">会议</span><span data-en="">venue</span></dt><dd>ACL 2026</dd><dt><span data-zh="">规模</span><span data-en="">scale</span></dt><dd>3B</dd><dt><span data-zh="">复现</span><span data-en="">reproduction</span></dt><dd>未复现</dd></dl>
+<div class="u26-block"><b><span data-zh="">证据位置</span><span data-en="">Where the evidence sits</span></b><p><span data-zh="">摘要报告 3B 模型在不可答查询上的弃答/澄清提升，以及可答查询的性能保持；方法为可验证奖励 RL。</span><span data-en="">The abstract reports gains in abstention/clarification on unanswerable queries and preserved performance on answerable ones; the method is verifiable-reward RL.</span></p></div>
+<div class="u26-block u26-boundary"><b><span data-zh="">边界 / 它没主张什么</span><span data-en="">Boundary / what it does not claim</span></b><p><span data-zh="">3B 规模，不能外推到 70B+；任务以不可答查询为主，开放域多轮澄清覆盖有限；奖励依赖可验证标签，标签有噪声；无生产验证。它没主张「弃答越多越好」或「解决所有幻觉」。</span><span data-en="">3B scale, not extrapolable to 70B+; tasks centre on unanswerable queries, with limited open-domain multi-turn coverage; rewards depend on verifiable labels that carry noise; no production validation. It does not claim more abstention is always better, or that all hallucinations are solved.</span></p></div>
+<p class="u26-src"><span data-zh="">来源</span><span data-en="">Sources</span>：<a href="https://arxiv.org/abs/2604.17073" rel="noopener" target="_blank"><span data-zh="">arXiv</span><span data-en="">arXiv</span></a></p>
+</article></div>
+<p class="u26-note"><b><span data-zh="">下一步</span><span data-en="">Next</span>：</b><a href="https://papers.specul.com/"><span data-zh="">回到论文站看全部条目</span><span data-en="">Back to all paper entries</span> →</a></p>
+</div></section>
+</main>
+<footer class="site-footer foot-single">
+<div class="container foot-line">
+<div class="foot-brand">
+<span class="foot-brand-main">
+<span aria-hidden="true" class="brand-dot"></span>
+<span class="foot-copy"><span data-zh="">投机取巧 · specul.com</span><span data-en="">Specul · specul.com</span></span>
+</span>
+<span class="foot-license"><a href="https://specul.com/LICENSE-CONTENT.txt"><span data-zh="">内容 CC BY 4.0</span><span data-en="">Content CC BY 4.0</span></a><span aria-hidden="true" class="sep">·</span><a href="https://specul.com/LICENSE.txt"><span data-zh="">代码 MIT</span><span data-en="">Code MIT</span></a><span aria-hidden="true" class="sep">·</span><a class="foot-source" href="https://github.com/speculcom/ai-handbook" rel="noopener" target="_blank"><span data-zh="">源码</span><span data-en="">Source</span></a></span>
+</div>
+<nav aria-label="Footer site links" class="foot-sites">
+<a class="site-link" href="https://specul.com/"><span data-zh="">首页</span><span data-en="">Home</span></a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://learn.specul.com/"><span data-zh="">学 AI</span><span data-en="">Learn</span></a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://tools.specul.com/"><span data-zh="">工具</span><span data-en="">Tools</span></a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://models.specul.com/"><span data-zh="">模型</span><span data-en="">Models</span></a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://demos.specul.com/"><span data-zh="">演示</span><span data-en="">Demos</span></a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://oss.specul.com/"><span data-zh="">开源</span><span data-en="">OSS</span></a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://hardware.specul.com/"><span data-zh="">算力</span><span data-en="">Compute</span></a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://papers.specul.com/"><span data-zh="">论文</span><span data-en="">Papers</span></a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://chain.specul.com/"><span data-zh="">链</span><span data-en="">Chain</span></a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://nav.specul.com/"><span data-zh="">导航</span><span data-en="">Directory</span></a>
+</nav>
+<nav aria-label="Legal and corrections" class="foot-legal">
+<a href="https://specul.com/legal.html"><span data-zh="">法律</span><span data-en="">Legal</span></a><span aria-hidden="true" class="sep">·</span>
+<a href="https://specul.com/legal.html#s8"><span data-zh="">隐私</span><span data-en="">Privacy</span></a><span aria-hidden="true" class="sep">·</span>
+<a href="https://specul.com/correct.html"><span data-zh="">纠错</span><span data-en="">Corrections</span></a>
+</nav>
+</div>
+</footer>
+<nav aria-label="快捷导航" class="nav-tabbar nav-tabbar-1row">
+<a href="https://specul.com/"><span aria-hidden="true" class="ti">◎</span><span data-zh="">首页</span><span data-en="">Home</span></a>
+<a href="https://learn.specul.com/"><span aria-hidden="true" class="ti">▤</span><span data-zh="">学AI</span><span data-en="">Learn</span></a>
+<a href="https://tools.specul.com/"><span aria-hidden="true" class="ti">◈</span><span data-zh="">工具</span><span data-en="">Tools</span></a>
+<a href="https://models.specul.com/"><span aria-hidden="true" class="ti">▦</span><span data-zh="">模型</span><span data-en="">Models</span></a>
+<a href="https://demos.specul.com/"><span aria-hidden="true" class="ti">▷</span><span data-zh="">演示</span><span data-en="">Demos</span></a>
+<a href="https://oss.specul.com/"><span aria-hidden="true" class="ti">▧</span><span data-zh="">开源</span><span data-en="">OSS</span></a>
+<a href="https://hardware.specul.com/"><span aria-hidden="true" class="ti">▣</span><span data-zh="">算力</span><span data-en="">Chips</span></a>
+<a aria-current="page" href="https://papers.specul.com/"><span aria-hidden="true" class="ti">▥</span><span data-zh="">论文</span><span data-en="">Papers</span></a>
+<a href="https://chain.specul.com/"><span aria-hidden="true" class="ti">◇</span><span data-zh="">链</span><span data-en="">Chain</span></a>
+<a data-nav-group="external" href="https://nav.specul.com/"><span aria-hidden="true" class="ti">↗</span><span data-zh="">导航</span><span data-en="">Nav</span></a>
 </nav>
 </body>
 </html>

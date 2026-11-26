@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html data-lang="en" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>NariQ: Sub-3-Bit Quantization for Long-Horizon Agentic…</title>
+<meta content="Problem: long-horizon agents call tools over many steps at 100K+ token contexts, yet many low-bit quantisation methods are calibrated on short web text…" name="description"/>
+<link href="https://papers.specul.com/en/nariq-2026.html" rel="canonical"/>
+<meta content="website" property="og:type"/>
+<meta content="AI Papers" property="og:site_name"/>
+<meta content="https://papers.specul.com/en/nariq-2026.html" property="og:url"/>
+<meta content="NariQ: Sub-3-Bit Quantization for Long-Horizon Agentic…" property="og:title"/>
+<meta content="Problem: long-horizon agents call tools over many steps at 100K+ token contexts, yet many low-bit quantisation methods are calibrated on short web text…" property="og:description"/>
+<meta content="en_US" property="og:locale"/>
+<meta content="zh_CN" property="og:locale:alternate"/>
+<meta content="#16121f" name="theme-color"/>
+<link href="/assets/brand/dandelion-favicon-site.png" rel="icon" type="image/png"/>
+<link href="/assets/brand/dandelion-apple-touch-site.png" rel="apple-touch-icon"/>
+<script src="/brand.js"></script>
+<link href="/brand.css" rel="stylesheet"/>
+<link href="/site.css" rel="stylesheet"/>
+<link href="/papers.css" rel="stylesheet"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","name":"NariQ: Sub-3-Bit Quantization for Long-Horizon Agentic…","description":"Problem: long-horizon agents call tools over many steps at 100K+ token contexts, yet many low-bit quantisation methods are calibrated on short web text…","url":"https://papers.specul.com/en/nariq-2026.html","inLanguage":"en","isPartOf":{"@type":"WebSite","name":"NariQ: Sub-3-Bit Quantization for Long-Horizon Agentic…","url":"https://papers.specul.com/en/nariq-2026.html"}}</script>
+<meta content="NariQ: Sub-3-Bit Quantization for Long-Horizon Agentic…" name="twitter:title"/><meta content="Problem: long-horizon agents call tools over many steps at 100K+ token contexts, yet many low-bit quantisation methods are calibrated on short web text…" name="twitter:description"/><link href="https://papers.specul.com/nariq-2026.html" hreflang="zh-CN" rel="alternate"/><link href="https://papers.specul.com/en/nariq-2026.html" hreflang="en" rel="alternate"/><link href="https://papers.specul.com/nariq-2026.html" hreflang="x-default" rel="alternate"/></head>
+<!-- B6（2026-10-09）：--accent 原先在这里被**内联到 body 上**（style="--accent:X"），
+     同时头部又写了 :root{--accent:X} —— 两处同一份值，冗余。
+     而内联样式会**赢过任何选择器**，于是主题级覆盖（html[data-theme="light"]{--accent:…}）
+     完全无效：vg 的引擎名在亮色主题下一直是 1.62:1 的金色，就是因为这条内联。
+     现在只保留头部那一处 —— 单一真相源，且可被主题覆盖。
+     ⚠ 这段注释里**不能出现反引号**：它在模板字符串内部，反引号会提前结束模板
+     （写这段时踩了第 4 次；pitfalls 里早有记录）。 -->
+<body class="brand-ambient has-tabbar has-tabbar-1row">
+<a class="t-skip" href="#main">Skip to main content</a>
+<header class="site-header">
+<div class="container site-bar">
+<a class="brand" href="https://specul.com/en/" title="投机取巧">
+<span aria-hidden="true" class="brand-dot"></span>
+<span class="brand-text">
+<span class="brand-name" id="markName">Speculative Speculation</span>
+<span class="brand-sub" id="markSub"></span>
+</span>
+</a>
+<nav aria-label="站点导航" class="nav-links">
+<a href="https://specul.com/en/">Home</a>
+<a href="https://learn.specul.com/en/">Learn</a>
+<a href="https://tools.specul.com/en/">Tools</a>
+<a href="https://models.specul.com/en/">Models</a>
+<a href="https://demos.specul.com/en/">Playground</a>
+<a href="https://oss.specul.com/en/">OSS</a>
+<a href="https://hardware.specul.com/en/">Compute</a>
+<a aria-current="page" href="https://papers.specul.com/en/">AI Papers</a>
+<a href="https://chain.specul.com/en/">Chain</a>
+<a href="https://nav.specul.com/en/">AI Directory</a>
+</nav>
+<!-- 2026-10-10：.nav-tools 从 nav 元素**内部**移到外面，与 .nav-links 平级。
+           放里面时窄屏下它会跟着链接一起换行：链接占满整行 → 按钮被挤到第三条
+           （实测顶栏 134px、按钮组孤零零一行）。移出来后它与品牌同行，
+           链接独占第二行居中 —— 这才是下面注释里方案 B 想要的样子。 -->
+<span class="nav-tools">
+<a aria-label="Search" class="icon-btn" href="https://specul.com/en/search.html" title="Search all sites"><span aria-hidden="true">⌕</span></a>
+<button aria-label="切换明暗主题" class="icon-btn" id="themeBtn" title="切换明暗主题" type="button">☾</button>
+<a aria-label="切换到中文" class="icon-btn" href="/nariq-2026.html" hreflang="zh-CN" id="langBtn" lang="zh-CN" title="切换到中文">中文</a>
+</span>
+<!-- B6（2026-10-09）：窄屏（≤900px）下 .nav-links 会隐藏，这个汉堡是替代入口。
+           行为在共享 brand.js 里（一处实现、十站共用），样式在共享 brand.css。
+           无脚本时 CSS 不会显示它，而是把 .nav-links 在窄屏放出来 —— 不会出现
+           「导航被藏进一个点了没反应的按钮」。 -->
+<button aria-controls="navDrawer" aria-expanded="false" aria-label="打开菜单" class="nav-burger" type="button">
+<i></i><i></i><i></i>
+</button>
+</div>
+</header>
+<div class="nav-scrim"></div>
+<aside aria-hidden="true" aria-label="站点导航" class="nav-drawer" id="navDrawer">
+<div class="nav-drawer-h">
+<span class="brand-name">Speculative Speculation</span>
+<span class="brand-sub"></span>
+<button aria-label="关闭" class="nav-dclose" type="button">×</button>
+</div>
+<nav class="nav-drawer-list">
+<a href="https://specul.com/en/"><span>Home</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://learn.specul.com/en/"><span>Learn</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://tools.specul.com/en/"><span>Tools</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://models.specul.com/en/"><span>Models</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://demos.specul.com/en/"><span>Playground</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://oss.specul.com/en/"><span>OSS</span><span aria-hidden="true" class="ar">→</span></a>
+<a class="nav-group-start" href="https://hardware.specul.com/en/"><span>Compute</span><span aria-hidden="true" class="ar">→</span></a>
+<a aria-current="page" href="https://papers.specul.com/en/"><span>AI Papers</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://chain.specul.com/en/"><span>Chain</span><span aria-hidden="true" class="ar">→</span></a>
+<a class="nav-group-start" data-nav-group="external" href="https://nav.specul.com/en/"><span>AI Directory</span><span aria-hidden="true" class="ar">↗</span></a>
+</nav>
+<div class="nav-drawer-foot">
+<p>Content sites cover learn, use, choose and run; AI Directory is a catalogue of off-site AI sites.</p>
+<nav><a href="https://specul.com/en/legal.html">Legal terms</a></nav>
+</div>
+</aside>
+<main id="main">
+<div class="container ms-page fx-entry">
+<p class="fx-crumb"><a href="index.html">← Back to AI Papers</a></p>
+<div class="fx-top"><span class="fx-badge">Efficiency</span></div>
+<h1>NariQ: Sub-3-Bit Quantization for Long-Horizon Agentic Tasks</h1>
+<p class="fx-entry-lead">Problem: long-horizon agents call tools over many steps at 100K+ token contexts, yet many low-bit quantisation methods are calibrated on short web text and judged by perplexity. Existing ≤3-bit quantisations of Qwen3.8-27B match BF16 on short tasks such as AIME but solve at most 72% as many DeepSWE tasks as BF16.<br/>Where the evidence sits: the abstract proposes a trellis-coded post-training quantisation calibrated on tokens generated by the BF16 model in agent sessions; the Hugging Face card reports BF16 53.8GB / 3.0bpw 10.1GB / 2.5bpw 8.4GB / 2.0bpw 6.8GB, with DeepSWE v1.1 at 39.8 / 41.0 / 41.9 / 28.6, Terminal-Bench 2.1 at 62.6 / 63.8 / 60.2 / 52.4 and AIME 25+26 at 97.7 / 98.3 / 96.5 / 86.0.<br/>What the authors say about limits: 2.0bpw trails by 7.3 points on DeepSWE and 11.7 on AIME; only Qwen3.8-27B is tested; the multi-token prediction module is not quantised; the llama.cpp fork is tuned for SM120, runs slower on other GPUs and falls back to CPU before Ampere; KV cache and activations are not yet quantised; more models, harnesses and benchmarks remain future work.<br/>What it does not claim: not every model can be losslessly compressed below 3 bits; not that 2.0bpw is usable; not a plug-in for vLLM or every inference stack; not an independent third-party reproduction; and not a Nous model.</p>
+<section class="fx-entry-sec"><h2>Key specs</h2><dl class="fx-specs"><div><dt>基座 / base</dt><dd>Qwen3.8-27B（BF16 53.8GB）</dd></div><div><dt>方法 / method</dt><dd>trellis-coded post-training quantisation；用 BF16 在 Agent 会话中生成的 token 校准</dd></div><div><dt>量化档 / tiers</dt><dd>3.0bpw 10.1GB；2.5bpw 8.4GB；2.0bpw 6.8GB</dd></div><div><dt>DeepSWE v1.1</dt><dd>BF16 39.8；3.0bpw 41.0；2.5bpw 41.9；2.0bpw 28.6</dd></div><div><dt>Terminal-Bench 2.1</dt><dd>BF16 62.6；3.0bpw 63.8；2.5bpw 60.2；2.0bpw 52.4</dd></div><div><dt>AIME 25+26</dt><dd>BF16 97.7；3.0bpw 98.3；2.5bpw 96.5；2.0bpw 86.0</dd></div><div><dt>证据位置 / evidence</dt><dd>摘要；Hugging Face 模型卡逐项基准；论文第 6 节局限</dd></div><div><dt>复现状态 / reproduction</dt><dd>未复现（只读 arXiv 摘要 / PDF 与官方 HF 卡）</dd></div></dl></section>
+<section class="fx-entry-sec"><h2>What the source says</h2><figure class="fx-evidence">
+<blockquote>NariQ at 3.0 and 2.5 bits per weight stays level with BF16 on two long-horizon agentic benchmarks, DeepSWE and Terminal Bench, as well as on AIME and RealWorldQA.</blockquote>
+<figcaption><span class="fx-ev-n">1</span> <a href="https://arxiv.org/abs/2611.26157" rel="noopener">https://arxiv.org/abs/2611.26157</a></figcaption>
+</figure>
+<figure class="fx-evidence">
+<blockquote>Our checkpoint at 2.0 bits per weight trails this performance.</blockquote>
+<figcaption><span class="fx-ev-n">2</span> <a href="https://arxiv.org/abs/2611.26157" rel="noopener">https://arxiv.org/abs/2611.26157</a></figcaption>
+</figure>
+<figure class="fx-evidence">
+<blockquote>At 2.0 bpw, our file trails BF16 by 7.3 points on DeepSWE and 11.7 on AIME</blockquote>
+<figcaption><span class="fx-ev-n">3</span> <a href="https://arxiv.org/pdf/2611.26157" rel="noopener">https://arxiv.org/pdf/2611.26157</a></figcaption>
+</figure></section>
+<section class="fx-entry-sec"><h2>Source and licence</h2>
+<dl class="fx-specs">
+<div><dt>Source checked</dt><dd>2026-11-23</dd></div>
+<div><dt>Licence / kind</dt><dd>arxiv-preprint</dd></div>
+<div><dt>Licence evidence</dt><dd><a href="https://arxiv.org/abs/2611.26157" rel="noopener">https://arxiv.org/abs/2611.26157</a></dd></div>
+<div><dt>Category</dt><dd>Efficiency</dd></div>
+</dl>
+</section>
+<section class="fx-entry-sec"><h2>How to read the numbers</h2><p>Before citing a score, separate what it measures, how it is scored, what it compares against and whether contamination is controlled. If unsure, go back to the experiment setup in the paper. <a href="https://models.specul.com/en/evals/">See benchmark cards</a> · <a href="https://models.specul.com/en/data/">See dataset cards</a></p></section>
+<section class="fx-entry-sec"><h2>More in this category</h2><ul class="fx-list"><li><a href="/en/awq-2023.html">AWQ: Activation-aware Weight Quantization for LLM Compression and Acceleration</a></li><li><a href="/en/bitnet158-2024.html">The Era of 1-bit LLMs: All Large Language Models are in 1.58 Bits</a></li><li><a href="/en/dao-2022-flashattention.html">FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness</a></li></ul></section>
+<section class="fx-entry-sec"><h2>Next step</h2><ul class="fx-list"><li><a href="https://specul.com/en/topic-research.html">Research / reports: from finding papers to citations</a></li><li><a href="https://models.specul.com/en/evals/">See benchmark cards: how to reproduce a score</a></li></ul></section>
+<p><a class="fx-source" href="https://arxiv.org/abs/2611.26157" rel="noopener">Open the official page →</a></p>
+<p class="fx-crumb"><a href="index.html">← Back to AI Papers</a></p>
+</div>
+</main>
+<footer class="site-footer foot-single">
+<div class="container foot-line">
+<div class="foot-brand">
+<span class="foot-brand-main">
+<span aria-hidden="true" class="brand-dot"></span>
+<span class="foot-copy">Specul · specul.com</span>
+</span>
+<span class="foot-license"><a href="https://specul.com/LICENSE-CONTENT.txt">Content CC BY 4.0</a><span aria-hidden="true" class="sep">·</span><a href="https://specul.com/LICENSE.txt">Code MIT</a><span aria-hidden="true" class="sep">·</span><a class="foot-source" href="https://github.com/speculcom/ai-handbook" rel="noopener" target="_blank">Source</a></span>
+</div>
+<nav aria-label="Footer site links" class="foot-sites">
+<a class="site-link" href="https://specul.com/en/">Home</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://learn.specul.com/en/">Learn</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://tools.specul.com/en/">Tools</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://models.specul.com/en/">Models</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://demos.specul.com/en/">Demos</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://oss.specul.com/en/">OSS</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://hardware.specul.com/en/">Compute</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://papers.specul.com/en/">Papers</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://chain.specul.com/en/">Chain</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://nav.specul.com/en/">Directory</a>
+</nav>
+<nav aria-label="Legal and corrections" class="foot-legal">
+<a href="https://specul.com/en/legal.html">Legal</a><span aria-hidden="true" class="sep">·</span>
+<a href="https://specul.com/en/legal.html#s8">Privacy</a><span aria-hidden="true" class="sep">·</span>
+<a href="https://specul.com/en/correct.html">Corrections</a>
+</nav>
+</div>
+</footer>
+<nav aria-label="快捷导航" class="nav-tabbar nav-tabbar-1row">
+<a href="https://specul.com/en/"><span aria-hidden="true" class="ti">◎</span>Home</a>
+<a href="https://learn.specul.com/en/"><span aria-hidden="true" class="ti">▤</span>Learn</a>
+<a href="https://tools.specul.com/en/"><span aria-hidden="true" class="ti">◈</span>Tools</a>
+<a href="https://models.specul.com/en/"><span aria-hidden="true" class="ti">▦</span>Models</a>
+<a href="https://demos.specul.com/en/"><span aria-hidden="true" class="ti">▷</span>Demos</a>
+<a href="https://oss.specul.com/en/"><span aria-hidden="true" class="ti">▧</span>OSS</a>
+<a href="https://hardware.specul.com/en/"><span aria-hidden="true" class="ti">▣</span>Chips</a>
+<a aria-current="page" href="https://papers.specul.com/en/"><span aria-hidden="true" class="ti">▥</span>Papers</a>
+<a href="https://chain.specul.com/en/"><span aria-hidden="true" class="ti">◇</span>Chain</a>
+<a data-nav-group="external" href="https://nav.specul.com/en/"><span aria-hidden="true" class="ti">↗</span>Nav</a>
+</nav>
+</body>
+</html>

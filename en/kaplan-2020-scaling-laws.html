@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html data-lang="en" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Scaling Laws for Neural Language Models | AI Papers</title>
+<meta content="Problem: how does language model cross-entropy loss change with parameter count, dataset size and training compute, how should a fixed compute budget be…" name="description"/>
+<link href="https://papers.specul.com/en/kaplan-2020-scaling-laws.html" rel="canonical"/>
+<meta content="website" property="og:type"/>
+<meta content="AI Papers" property="og:site_name"/>
+<meta content="https://papers.specul.com/en/kaplan-2020-scaling-laws.html" property="og:url"/>
+<meta content="Scaling Laws for Neural Language Models | AI Papers" property="og:title"/>
+<meta content="Problem: how does language model cross-entropy loss change with parameter count, dataset size and training compute, how should a fixed compute budget be…" property="og:description"/>
+<meta content="en_US" property="og:locale"/>
+<meta content="zh_CN" property="og:locale:alternate"/>
+<meta content="#16121f" name="theme-color"/>
+<link href="/assets/brand/dandelion-favicon-site.png" rel="icon" type="image/png"/>
+<link href="/assets/brand/dandelion-apple-touch-site.png" rel="apple-touch-icon"/>
+<script src="/brand.js"></script>
+<link href="/brand.css" rel="stylesheet"/>
+<link href="/site.css" rel="stylesheet"/>
+<link href="/papers.css" rel="stylesheet"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","name":"Scaling Laws for Neural Language Models | AI Papers","description":"Problem: how does language model cross-entropy loss change with parameter count, dataset size and training compute, how should a fixed compute budget be…","url":"https://papers.specul.com/en/kaplan-2020-scaling-laws.html","inLanguage":"en","isPartOf":{"@type":"WebSite","name":"Scaling Laws for Neural Language Models | AI Papers","url":"https://papers.specul.com/en/kaplan-2020-scaling-laws.html"}}</script>
+<meta content="Scaling Laws for Neural Language Models | AI Papers" name="twitter:title"/><meta content="Problem: how does language model cross-entropy loss change with parameter count, dataset size and training compute, how should a fixed compute budget be…" name="twitter:description"/><link href="https://papers.specul.com/kaplan-2020-scaling-laws.html" hreflang="zh-CN" rel="alternate"/><link href="https://papers.specul.com/en/kaplan-2020-scaling-laws.html" hreflang="en" rel="alternate"/><link href="https://papers.specul.com/kaplan-2020-scaling-laws.html" hreflang="x-default" rel="alternate"/></head>
+<!-- B6（2026-10-09）：--accent 原先在这里被**内联到 body 上**（style="--accent:X"），
+     同时头部又写了 :root{--accent:X} —— 两处同一份值，冗余。
+     而内联样式会**赢过任何选择器**，于是主题级覆盖（html[data-theme="light"]{--accent:…}）
+     完全无效：vg 的引擎名在亮色主题下一直是 1.62:1 的金色，就是因为这条内联。
+     现在只保留头部那一处 —— 单一真相源，且可被主题覆盖。
+     ⚠ 这段注释里**不能出现反引号**：它在模板字符串内部，反引号会提前结束模板
+     （写这段时踩了第 4 次；pitfalls 里早有记录）。 -->
+<body class="brand-ambient has-tabbar has-tabbar-1row">
+<a class="t-skip" href="#main">Skip to main content</a>
+<header class="site-header">
+<div class="container site-bar">
+<a class="brand" href="https://specul.com/en/" title="投机取巧">
+<span aria-hidden="true" class="brand-dot"></span>
+<span class="brand-text">
+<span class="brand-name" id="markName">Speculative Speculation</span>
+<span class="brand-sub" id="markSub"></span>
+</span>
+</a>
+<nav aria-label="站点导航" class="nav-links">
+<a href="https://specul.com/en/">Home</a>
+<a href="https://learn.specul.com/en/">Learn</a>
+<a href="https://tools.specul.com/en/">Tools</a>
+<a href="https://models.specul.com/en/">Models</a>
+<a href="https://demos.specul.com/en/">Playground</a>
+<a href="https://oss.specul.com/en/">OSS</a>
+<a href="https://hardware.specul.com/en/">Compute</a>
+<a aria-current="page" href="https://papers.specul.com/en/">AI Papers</a>
+<a href="https://chain.specul.com/en/">Chain</a>
+<a href="https://nav.specul.com/en/">AI Directory</a>
+</nav>
+<!-- 2026-10-10：.nav-tools 从 nav 元素**内部**移到外面，与 .nav-links 平级。
+           放里面时窄屏下它会跟着链接一起换行：链接占满整行 → 按钮被挤到第三条
+           （实测顶栏 134px、按钮组孤零零一行）。移出来后它与品牌同行，
+           链接独占第二行居中 —— 这才是下面注释里方案 B 想要的样子。 -->
+<span class="nav-tools">
+<a aria-label="Search" class="icon-btn" href="https://specul.com/en/search.html" title="Search all sites"><span aria-hidden="true">⌕</span></a>
+<button aria-label="切换明暗主题" class="icon-btn" id="themeBtn" title="切换明暗主题" type="button">☾</button>
+<a aria-label="切换到中文" class="icon-btn" href="/kaplan-2020-scaling-laws.html" hreflang="zh-CN" id="langBtn" lang="zh-CN" title="切换到中文">中文</a>
+</span>
+<!-- B6（2026-10-09）：窄屏（≤900px）下 .nav-links 会隐藏，这个汉堡是替代入口。
+           行为在共享 brand.js 里（一处实现、十站共用），样式在共享 brand.css。
+           无脚本时 CSS 不会显示它，而是把 .nav-links 在窄屏放出来 —— 不会出现
+           「导航被藏进一个点了没反应的按钮」。 -->
+<button aria-controls="navDrawer" aria-expanded="false" aria-label="打开菜单" class="nav-burger" type="button">
+<i></i><i></i><i></i>
+</button>
+</div>
+</header>
+<div class="nav-scrim"></div>
+<aside aria-hidden="true" aria-label="站点导航" class="nav-drawer" id="navDrawer">
+<div class="nav-drawer-h">
+<span class="brand-name">Speculative Speculation</span>
+<span class="brand-sub"></span>
+<button aria-label="关闭" class="nav-dclose" type="button">×</button>
+</div>
+<nav class="nav-drawer-list">
+<a href="https://specul.com/en/"><span>Home</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://learn.specul.com/en/"><span>Learn</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://tools.specul.com/en/"><span>Tools</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://models.specul.com/en/"><span>Models</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://demos.specul.com/en/"><span>Playground</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://oss.specul.com/en/"><span>OSS</span><span aria-hidden="true" class="ar">→</span></a>
+<a class="nav-group-start" href="https://hardware.specul.com/en/"><span>Compute</span><span aria-hidden="true" class="ar">→</span></a>
+<a aria-current="page" href="https://papers.specul.com/en/"><span>AI Papers</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://chain.specul.com/en/"><span>Chain</span><span aria-hidden="true" class="ar">→</span></a>
+<a class="nav-group-start" data-nav-group="external" href="https://nav.specul.com/en/"><span>AI Directory</span><span aria-hidden="true" class="ar">↗</span></a>
+</nav>
+<div class="nav-drawer-foot">
+<p>Content sites cover learn, use, choose and run; AI Directory is a catalogue of off-site AI sites.</p>
+<nav><a href="https://specul.com/en/legal.html">Legal terms</a></nav>
+</div>
+</aside>
+<main id="main">
+<div class="container ms-page fx-entry">
+<p class="fx-crumb"><a href="index.html">← Back to AI Papers</a></p>
+<div class="fx-top"><span class="fx-badge">Scaling laws</span></div>
+<h1>Scaling Laws for Neural Language Models</h1>
+<p class="fx-entry-lead">Problem: how does language model cross-entropy loss change with parameter count, dataset size and training compute, how should a fixed compute budget be allocated, and can this be written as extrapolatable equations.<br/>Where the evidence sits: the three basic power laws are in 1.2 and Figure 1 (alpha_N about 0.076, alpha_D about 0.095, alpha_Cmin about 0.050), overfitting and the data-to-parameter ratio in Section 4, and optimal compute allocation in 6.1 and Figure 14 (N(C_min) proportional to C_min^0.73, with data requirements growing roughly as C^0.27); the limits have a dedicated Appendix C Caveats, plus 6.3 Contradictions and a Conjecture and Section 8 Discussion.<br/>What the authors say about limits: Appendix C lists six — there is at present no solid theoretical understanding of any of the proposed scaling laws, and without a theory or a systematic understanding of the corrections it is difficult to determine when they can be trusted; they are not especially confident in the B_crit(L) prediction far outside the explored loss range; the small data regime was not thoroughly investigated, fits for L(N,D) were poor at the smallest D, and regularisation and data augmentation were not tried; compute was estimated as C about 6NBS without the term proportional to context length, so compute scalings may be confounded at very large n_ctx; some hyperparameter affecting scaling (such as initialisation scale or momentum) may have been left untuned; and the optimal learning rate depends on the target loss, with higher rates not tried for runs that did not reach convergence. Section 6.3 also notes that extrapolating far beyond the studied scale makes L(C_min) and L(D) intersect, an apparent contradiction implying the laws must break down before that point, and whether the intersection marks maximal performance is offered only as a conjecture.<br/>What it does not claim: the paper measures cross-entropy loss, not downstream task scores — Section 8 explicitly leaves open whether continued loss improvement translates into improvement on relevant language tasks; it does not claim the relations hold outside language, and Section 8 says the authors do not know which results depend on the structure of natural language data and which are universal; and very large models on relatively modest data with early stopping is an allocation result under a fixed compute budget, not a general claim that data does not matter — the authors also write that the trends must eventually level off because natural language has non-zero entropy.</p>
+<section class="fx-entry-sec"><h2>Key specs</h2><dl class="fx-specs"><div><dt>证据位置 / evidence</dt><dd>§1.2 与 Figure 1（三条幂律）；§4（过拟合）；§6.1 与 Figure 14（算力分配）；Appendix C Caveats；§6.3；§8</dd></div><div><dt>趋势跨度 / span</dt><dd>摘要称部分趋势跨越七个以上数量级</dd></div><div><dt>测量对象 / metric</dt><dd>交叉熵损失，不是下游任务分数</dd></div><div><dt>算力分配结论 / allocation</dt><dd>很大的模型 + 相对少量数据 + 显著早停（摘要口径）</dd></div><div><dt>复现状态 / reproduction</dt><dd>未复现</dd></div></dl></section>
+<section class="fx-entry-sec"><h2>What the source says</h2><figure class="fx-evidence">
+<blockquote>The loss scales as a power-law with model size, dataset size, and the amount of compute used for training, with some trends spanning more than seven orders of magnitude.</blockquote>
+<figcaption><span class="fx-ev-n">1</span> <a href="https://ar5iv.labs.arxiv.org/html/2001.08361" rel="noopener">https://ar5iv.labs.arxiv.org/html/2001.08361</a></figcaption>
+</figure>
+<figure class="fx-evidence">
+<blockquote>Larger models are significantly more sample-efficient, such that optimally compute-efficient training involves training very large models on a relatively modest amount of data and stopping significantly before convergence.</blockquote>
+<figcaption><span class="fx-ev-n">2</span> <a href="https://ar5iv.labs.arxiv.org/html/2001.08361" rel="noopener">https://ar5iv.labs.arxiv.org/html/2001.08361</a></figcaption>
+</figure>
+<figure class="fx-evidence">
+<blockquote>Without a theory or a systematic understanding of the corrections to our scaling laws, it’s difficult to determine in what circumstances they can be trusted.</blockquote>
+<figcaption><span class="fx-ev-n">3</span> <a href="https://ar5iv.labs.arxiv.org/html/2001.08361" rel="noopener">https://ar5iv.labs.arxiv.org/html/2001.08361</a></figcaption>
+</figure>
+<figure class="fx-evidence">
+<blockquote>In the domain of natural language, it will be important to investigate whether continued improvement on the loss translates into improvement on relevant language tasks.</blockquote>
+<figcaption><span class="fx-ev-n">4</span> <a href="https://ar5iv.labs.arxiv.org/html/2001.08361" rel="noopener">https://ar5iv.labs.arxiv.org/html/2001.08361</a></figcaption>
+</figure></section>
+<section class="fx-entry-sec"><h2>Source and licence</h2>
+<dl class="fx-specs">
+<div><dt>Source checked</dt><dd>2026-11-07</dd></div>
+<div><dt>Licence / kind</dt><dd>arxiv-preprint</dd></div>
+<div><dt>Licence evidence</dt><dd><a href="https://arxiv.org/abs/2001.08361" rel="noopener">https://arxiv.org/abs/2001.08361</a></dd></div>
+<div><dt>Category</dt><dd>Scaling laws</dd></div>
+</dl>
+</section>
+<section class="fx-entry-sec"><h2>How to read the numbers</h2><p>Before citing a score, separate what it measures, how it is scored, what it compares against and whether contamination is controlled. If unsure, go back to the experiment setup in the paper. <a href="https://models.specul.com/en/evals/">See benchmark cards</a> · <a href="https://models.specul.com/en/data/">See dataset cards</a></p></section>
+<section class="fx-entry-sec"><h2>More in this category</h2><ul class="fx-list"><li><a href="/en/brown-2020-gpt3.html">Language Models are Few-Shot Learners</a></li><li><a href="/en/deepseek-v3-2024.html">DeepSeek-V3 Technical Report</a></li><li><a href="/en/fedus-2022-switch.html">Switch Transformers: Scaling to Trillion Parameter Models with Simple and Efficient Sparsity</a></li></ul></section>
+<section class="fx-entry-sec"><h2>Next step</h2><ul class="fx-list"><li><a href="https://specul.com/en/topic-research.html">Research / reports: from finding papers to citations</a></li><li><a href="https://models.specul.com/en/evals/">See benchmark cards: how to reproduce a score</a></li></ul></section>
+<p><a class="fx-source" href="https://arxiv.org/abs/2001.08361" rel="noopener">Open the official page →</a></p>
+<p class="fx-crumb"><a href="index.html">← Back to AI Papers</a></p>
+</div>
+</main>
+<footer class="site-footer foot-single">
+<div class="container foot-line">
+<div class="foot-brand">
+<span class="foot-brand-main">
+<span aria-hidden="true" class="brand-dot"></span>
+<span class="foot-copy">Specul · specul.com</span>
+</span>
+<span class="foot-license"><a href="https://specul.com/LICENSE-CONTENT.txt">Content CC BY 4.0</a><span aria-hidden="true" class="sep">·</span><a href="https://specul.com/LICENSE.txt">Code MIT</a><span aria-hidden="true" class="sep">·</span><a class="foot-source" href="https://github.com/speculcom/ai-handbook" rel="noopener" target="_blank">Source</a></span>
+</div>
+<nav aria-label="Footer site links" class="foot-sites">
+<a class="site-link" href="https://specul.com/en/">Home</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://learn.specul.com/en/">Learn</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://tools.specul.com/en/">Tools</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://models.specul.com/en/">Models</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://demos.specul.com/en/">Demos</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://oss.specul.com/en/">OSS</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://hardware.specul.com/en/">Compute</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://papers.specul.com/en/">Papers</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://chain.specul.com/en/">Chain</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://nav.specul.com/en/">Directory</a>
+</nav>
+<nav aria-label="Legal and corrections" class="foot-legal">
+<a href="https://specul.com/en/legal.html">Legal</a><span aria-hidden="true" class="sep">·</span>
+<a href="https://specul.com/en/legal.html#s8">Privacy</a><span aria-hidden="true" class="sep">·</span>
+<a href="https://specul.com/en/correct.html">Corrections</a>
+</nav>
+</div>
+</footer>
+<nav aria-label="快捷导航" class="nav-tabbar nav-tabbar-1row">
+<a href="https://specul.com/en/"><span aria-hidden="true" class="ti">◎</span>Home</a>
+<a href="https://learn.specul.com/en/"><span aria-hidden="true" class="ti">▤</span>Learn</a>
+<a href="https://tools.specul.com/en/"><span aria-hidden="true" class="ti">◈</span>Tools</a>
+<a href="https://models.specul.com/en/"><span aria-hidden="true" class="ti">▦</span>Models</a>
+<a href="https://demos.specul.com/en/"><span aria-hidden="true" class="ti">▷</span>Demos</a>
+<a href="https://oss.specul.com/en/"><span aria-hidden="true" class="ti">▧</span>OSS</a>
+<a href="https://hardware.specul.com/en/"><span aria-hidden="true" class="ti">▣</span>Chips</a>
+<a aria-current="page" href="https://papers.specul.com/en/"><span aria-hidden="true" class="ti">▥</span>Papers</a>
+<a href="https://chain.specul.com/en/"><span aria-hidden="true" class="ti">◇</span>Chain</a>
+<a data-nav-group="external" href="https://nav.specul.com/en/"><span aria-hidden="true" class="ti">↗</span>Nav</a>
+</nav>
+</body>
+</html>

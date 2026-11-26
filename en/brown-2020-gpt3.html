@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html data-lang="en" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Language Models are Few-Shot Learners | AI Papers</title>
+<meta content="Problem: after scaling a model up, can tasks be performed close to the level of task-specific fine-tuning with no gradient updates and only a few…" name="description"/>
+<link href="https://papers.specul.com/en/brown-2020-gpt3.html" rel="canonical"/>
+<meta content="website" property="og:type"/>
+<meta content="AI Papers" property="og:site_name"/>
+<meta content="https://papers.specul.com/en/brown-2020-gpt3.html" property="og:url"/>
+<meta content="Language Models are Few-Shot Learners | AI Papers" property="og:title"/>
+<meta content="Problem: after scaling a model up, can tasks be performed close to the level of task-specific fine-tuning with no gradient updates and only a few…" property="og:description"/>
+<meta content="en_US" property="og:locale"/>
+<meta content="zh_CN" property="og:locale:alternate"/>
+<meta content="#16121f" name="theme-color"/>
+<link href="/assets/brand/dandelion-favicon-site.png" rel="icon" type="image/png"/>
+<link href="/assets/brand/dandelion-apple-touch-site.png" rel="apple-touch-icon"/>
+<script src="/brand.js"></script>
+<link href="/brand.css" rel="stylesheet"/>
+<link href="/site.css" rel="stylesheet"/>
+<link href="/papers.css" rel="stylesheet"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","name":"Language Models are Few-Shot Learners | AI Papers","description":"Problem: after scaling a model up, can tasks be performed close to the level of task-specific fine-tuning with no gradient updates and only a few…","url":"https://papers.specul.com/en/brown-2020-gpt3.html","inLanguage":"en","isPartOf":{"@type":"WebSite","name":"Language Models are Few-Shot Learners | AI Papers","url":"https://papers.specul.com/en/brown-2020-gpt3.html"}}</script>
+<meta content="Language Models are Few-Shot Learners | AI Papers" name="twitter:title"/><meta content="Problem: after scaling a model up, can tasks be performed close to the level of task-specific fine-tuning with no gradient updates and only a few…" name="twitter:description"/><link href="https://papers.specul.com/brown-2020-gpt3.html" hreflang="zh-CN" rel="alternate"/><link href="https://papers.specul.com/en/brown-2020-gpt3.html" hreflang="en" rel="alternate"/><link href="https://papers.specul.com/brown-2020-gpt3.html" hreflang="x-default" rel="alternate"/></head>
+<!-- B6（2026-10-09）：--accent 原先在这里被**内联到 body 上**（style="--accent:X"），
+     同时头部又写了 :root{--accent:X} —— 两处同一份值，冗余。
+     而内联样式会**赢过任何选择器**，于是主题级覆盖（html[data-theme="light"]{--accent:…}）
+     完全无效：vg 的引擎名在亮色主题下一直是 1.62:1 的金色，就是因为这条内联。
+     现在只保留头部那一处 —— 单一真相源，且可被主题覆盖。
+     ⚠ 这段注释里**不能出现反引号**：它在模板字符串内部，反引号会提前结束模板
+     （写这段时踩了第 4 次；pitfalls 里早有记录）。 -->
+<body class="brand-ambient has-tabbar has-tabbar-1row">
+<a class="t-skip" href="#main">Skip to main content</a>
+<header class="site-header">
+<div class="container site-bar">
+<a class="brand" href="https://specul.com/en/" title="投机取巧">
+<span aria-hidden="true" class="brand-dot"></span>
+<span class="brand-text">
+<span class="brand-name" id="markName">Speculative Speculation</span>
+<span class="brand-sub" id="markSub"></span>
+</span>
+</a>
+<nav aria-label="站点导航" class="nav-links">
+<a href="https://specul.com/en/">Home</a>
+<a href="https://learn.specul.com/en/">Learn</a>
+<a href="https://tools.specul.com/en/">Tools</a>
+<a href="https://models.specul.com/en/">Models</a>
+<a href="https://demos.specul.com/en/">Playground</a>
+<a href="https://oss.specul.com/en/">OSS</a>
+<a href="https://hardware.specul.com/en/">Compute</a>
+<a aria-current="page" href="https://papers.specul.com/en/">AI Papers</a>
+<a href="https://chain.specul.com/en/">Chain</a>
+<a href="https://nav.specul.com/en/">AI Directory</a>
+</nav>
+<!-- 2026-10-10：.nav-tools 从 nav 元素**内部**移到外面，与 .nav-links 平级。
+           放里面时窄屏下它会跟着链接一起换行：链接占满整行 → 按钮被挤到第三条
+           （实测顶栏 134px、按钮组孤零零一行）。移出来后它与品牌同行，
+           链接独占第二行居中 —— 这才是下面注释里方案 B 想要的样子。 -->
+<span class="nav-tools">
+<a aria-label="Search" class="icon-btn" href="https://specul.com/en/search.html" title="Search all sites"><span aria-hidden="true">⌕</span></a>
+<button aria-label="切换明暗主题" class="icon-btn" id="themeBtn" title="切换明暗主题" type="button">☾</button>
+<a aria-label="切换到中文" class="icon-btn" href="/brown-2020-gpt3.html" hreflang="zh-CN" id="langBtn" lang="zh-CN" title="切换到中文">中文</a>
+</span>
+<!-- B6（2026-10-09）：窄屏（≤900px）下 .nav-links 会隐藏，这个汉堡是替代入口。
+           行为在共享 brand.js 里（一处实现、十站共用），样式在共享 brand.css。
+           无脚本时 CSS 不会显示它，而是把 .nav-links 在窄屏放出来 —— 不会出现
+           「导航被藏进一个点了没反应的按钮」。 -->
+<button aria-controls="navDrawer" aria-expanded="false" aria-label="打开菜单" class="nav-burger" type="button">
+<i></i><i></i><i></i>
+</button>
+</div>
+</header>
+<div class="nav-scrim"></div>
+<aside aria-hidden="true" aria-label="站点导航" class="nav-drawer" id="navDrawer">
+<div class="nav-drawer-h">
+<span class="brand-name">Speculative Speculation</span>
+<span class="brand-sub"></span>
+<button aria-label="关闭" class="nav-dclose" type="button">×</button>
+</div>
+<nav class="nav-drawer-list">
+<a href="https://specul.com/en/"><span>Home</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://learn.specul.com/en/"><span>Learn</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://tools.specul.com/en/"><span>Tools</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://models.specul.com/en/"><span>Models</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://demos.specul.com/en/"><span>Playground</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://oss.specul.com/en/"><span>OSS</span><span aria-hidden="true" class="ar">→</span></a>
+<a class="nav-group-start" href="https://hardware.specul.com/en/"><span>Compute</span><span aria-hidden="true" class="ar">→</span></a>
+<a aria-current="page" href="https://papers.specul.com/en/"><span>AI Papers</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://chain.specul.com/en/"><span>Chain</span><span aria-hidden="true" class="ar">→</span></a>
+<a class="nav-group-start" data-nav-group="external" href="https://nav.specul.com/en/"><span>AI Directory</span><span aria-hidden="true" class="ar">↗</span></a>
+</nav>
+<div class="nav-drawer-foot">
+<p>Content sites cover learn, use, choose and run; AI Directory is a catalogue of off-site AI sites.</p>
+<nav><a href="https://specul.com/en/legal.html">Legal terms</a></nav>
+</div>
+</aside>
+<main id="main">
+<div class="container ms-page fx-entry">
+<p class="fx-crumb"><a href="index.html">← Back to AI Papers</a></p>
+<div class="fx-top"><span class="fx-badge">Scaling laws</span></div>
+<h1>Language Models are Few-Shot Learners</h1>
+<p class="fx-entry-lead">Problem: after scaling a model up, can tasks be performed close to the level of task-specific fine-tuning with no gradient updates and only a few examples placed in the input.<br/>Where the evidence sits: the abstract gives the 175B scale and the no-gradient-update, no-fine-tuning setting; results across nine task categories are in Section 3 (LAMBADA in Figure 3.2 and Table 3.2, open-domain QA in Table 3.3, SuperGLUE in Table 3.8, reading comprehension in Table 3.7, arithmetic in 3.9.1 and Table 3.9); train-test overlap analysis is in Section 4 and Figure 4.2; the limits have a dedicated Section 5 Limitations, and societal impact is in Section 6.<br/>What the authors say about limits: Section 5 lists several layers — long-form synthesis still repeats itself semantically, loses coherence over sufficiently long passages and contradicts itself; on comparison tasks such as WIC and ANLI and on a subset of reading comprehension tasks, one-shot and even few-shot performance does little better than chance; only autoregressive models were studied, so the experiments include no bidirectional architectures or denoising objectives, which the authors acknowledge may cost performance on tasks that benefit from bidirectionality, and they conjecture a large bidirectional model would fine-tune better; the pretraining objective weights every token equally and may hit the limits of the objective itself, and the model is not grounded in video or physical interaction; pretraining sample efficiency remains far below a human's; models at this scale are expensive and inconvenient to run inference on; and decisions are not easily interpretable, not necessarily well calibrated on novel inputs, and retain the biases of the training data. Section 5 also states an explicit uncertainty: whether few-shot learning actually learns new tasks from scratch at inference time or simply recognises tasks learned during training is unclear and may vary by task. Section 4 explains that decontamination was only partial — a bug meant only part of the detected overlap was removed, retraining was not feasible given the cost, so clean subsets were built afterwards using 13-gram overlap and re-evaluated, with PIQA and Winograd flagged as possibly contaminated and asterisked in Section 3.<br/>What it does not claim: the abstract says sometimes even reaching competitiveness with prior fine-tuning approaches, not beating fine-tuning on every task; the paper does not show that few-shot prompting equals learning a new task at inference time, and Section 5 leaves that as an unresolved ambiguity; it does not claim training and test data were fully separated; the experiments cover autoregressive language models only and cannot be extended to bidirectional architectures or other training objectives; and Section 3 also reports tasks where few-shot learning still struggles, including ANLI, RACE and QuAC.</p>
+<section class="fx-entry-sec"><h2>Key specs</h2><dl class="fx-specs"><div><dt>证据位置 / evidence</dt><dd>摘要；§3 各任务表（表 3.2、3.3、3.7、3.8、3.9）；§4 与 Figure 4.2（污染）；§5 Limitations；§6</dd></div><div><dt>模型规模 / scale</dt><dd>175B 参数，摘要称是此前非稀疏语言模型的 10 倍</dd></div><div><dt>评测设定 / setting</dt><dd>不做梯度更新或微调，任务与示例只通过文本给出（摘要原文）</dd></div><div><dt>摘要口径 / headline</dt><dd>少样本表现大幅提升，有时可与先前微调方法竞争</dd></div><div><dt>复现状态 / reproduction</dt><dd>未复现</dd></div></dl></section>
+<section class="fx-entry-sec"><h2>What the source says</h2><figure class="fx-evidence">
+<blockquote>Here we show that scaling up language models greatly improves task-agnostic, few-shot performance, sometimes even reaching competitiveness with prior state-of-the-art fine-tuning approaches.</blockquote>
+<figcaption><span class="fx-ev-n">1</span> <a href="https://ar5iv.labs.arxiv.org/html/2005.14165" rel="noopener">https://ar5iv.labs.arxiv.org/html/2005.14165</a></figcaption>
+</figure>
+<figure class="fx-evidence">
+<blockquote>Specifically, we train GPT-3, an autoregressive language model with 175 billion parameters, 10x more than any previous non-sparse language model, and test its performance in the few-shot setting. For all tasks, GPT-3 is applied without any gradient updates or fine-tuning, with tasks and few-shot demonstrations specified purely via text interaction with the model.</blockquote>
+<figcaption><span class="fx-ev-n">2</span> <a href="https://ar5iv.labs.arxiv.org/html/2005.14165" rel="noopener">https://ar5iv.labs.arxiv.org/html/2005.14165</a></figcaption>
+</figure>
+<figure class="fx-evidence">
+<blockquote>A limitation, or at least uncertainty, associated with few-shot learning in GPT-3 is ambiguity about whether few-shot learning actually learns new tasks “from scratch” at inference time, or if it simply recognizes and identifies tasks that it has learned during training.</blockquote>
+<figcaption><span class="fx-ev-n">3</span> <a href="https://ar5iv.labs.arxiv.org/html/2005.14165" rel="noopener">https://ar5iv.labs.arxiv.org/html/2005.14165</a></figcaption>
+</figure>
+<figure class="fx-evidence">
+<blockquote>Unfortunately, a bug resulted in only partial removal of all detected overlaps from the training data. Due to the cost of training, it wasn’t feasible to retrain the model.</blockquote>
+<figcaption><span class="fx-ev-n">4</span> <a href="https://ar5iv.labs.arxiv.org/html/2005.14165" rel="noopener">https://ar5iv.labs.arxiv.org/html/2005.14165</a></figcaption>
+</figure></section>
+<section class="fx-entry-sec"><h2>Source and licence</h2>
+<dl class="fx-specs">
+<div><dt>Source checked</dt><dd>2026-11-07</dd></div>
+<div><dt>Licence / kind</dt><dd>arxiv-preprint</dd></div>
+<div><dt>Licence evidence</dt><dd><a href="https://arxiv.org/abs/2005.14165" rel="noopener">https://arxiv.org/abs/2005.14165</a></dd></div>
+<div><dt>Category</dt><dd>Scaling laws</dd></div>
+</dl>
+</section>
+<section class="fx-entry-sec"><h2>How to read the numbers</h2><p>Before citing a score, separate what it measures, how it is scored, what it compares against and whether contamination is controlled. If unsure, go back to the experiment setup in the paper. <a href="https://models.specul.com/en/evals/">See benchmark cards</a> · <a href="https://models.specul.com/en/data/">See dataset cards</a></p></section>
+<section class="fx-entry-sec"><h2>More in this category</h2><ul class="fx-list"><li><a href="/en/deepseek-v3-2024.html">DeepSeek-V3 Technical Report</a></li><li><a href="/en/fedus-2022-switch.html">Switch Transformers: Scaling to Trillion Parameter Models with Simple and Efficient Sparsity</a></li><li><a href="/en/gpt-6-2-2026.html">GPT-6.2 Astra and GPT-6.2 Sol</a></li></ul></section>
+<section class="fx-entry-sec"><h2>Next step</h2><ul class="fx-list"><li><a href="https://specul.com/en/topic-research.html">Research / reports: from finding papers to citations</a></li><li><a href="https://models.specul.com/en/evals/">See benchmark cards: how to reproduce a score</a></li></ul></section>
+<p><a class="fx-source" href="https://arxiv.org/abs/2005.14165" rel="noopener">Open the official page →</a></p>
+<p class="fx-crumb"><a href="index.html">← Back to AI Papers</a></p>
+</div>
+</main>
+<footer class="site-footer foot-single">
+<div class="container foot-line">
+<div class="foot-brand">
+<span class="foot-brand-main">
+<span aria-hidden="true" class="brand-dot"></span>
+<span class="foot-copy">Specul · specul.com</span>
+</span>
+<span class="foot-license"><a href="https://specul.com/LICENSE-CONTENT.txt">Content CC BY 4.0</a><span aria-hidden="true" class="sep">·</span><a href="https://specul.com/LICENSE.txt">Code MIT</a><span aria-hidden="true" class="sep">·</span><a class="foot-source" href="https://github.com/speculcom/ai-handbook" rel="noopener" target="_blank">Source</a></span>
+</div>
+<nav aria-label="Footer site links" class="foot-sites">
+<a class="site-link" href="https://specul.com/en/">Home</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://learn.specul.com/en/">Learn</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://tools.specul.com/en/">Tools</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://models.specul.com/en/">Models</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://demos.specul.com/en/">Demos</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://oss.specul.com/en/">OSS</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://hardware.specul.com/en/">Compute</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://papers.specul.com/en/">Papers</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://chain.specul.com/en/">Chain</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://nav.specul.com/en/">Directory</a>
+</nav>
+<nav aria-label="Legal and corrections" class="foot-legal">
+<a href="https://specul.com/en/legal.html">Legal</a><span aria-hidden="true" class="sep">·</span>
+<a href="https://specul.com/en/legal.html#s8">Privacy</a><span aria-hidden="true" class="sep">·</span>
+<a href="https://specul.com/en/correct.html">Corrections</a>
+</nav>
+</div>
+</footer>
+<nav aria-label="快捷导航" class="nav-tabbar nav-tabbar-1row">
+<a href="https://specul.com/en/"><span aria-hidden="true" class="ti">◎</span>Home</a>
+<a href="https://learn.specul.com/en/"><span aria-hidden="true" class="ti">▤</span>Learn</a>
+<a href="https://tools.specul.com/en/"><span aria-hidden="true" class="ti">◈</span>Tools</a>
+<a href="https://models.specul.com/en/"><span aria-hidden="true" class="ti">▦</span>Models</a>
+<a href="https://demos.specul.com/en/"><span aria-hidden="true" class="ti">▷</span>Demos</a>
+<a href="https://oss.specul.com/en/"><span aria-hidden="true" class="ti">▧</span>OSS</a>
+<a href="https://hardware.specul.com/en/"><span aria-hidden="true" class="ti">▣</span>Chips</a>
+<a aria-current="page" href="https://papers.specul.com/en/"><span aria-hidden="true" class="ti">▥</span>Papers</a>
+<a href="https://chain.specul.com/en/"><span aria-hidden="true" class="ti">◇</span>Chain</a>
+<a data-nav-group="external" href="https://nav.specul.com/en/"><span aria-hidden="true" class="ti">↗</span>Nav</a>
+</nav>
+</body>
+</html>

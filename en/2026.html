@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html data-lang="en" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Six papers, six “what it does not claim” notes | AI Papers</title>
+<meta content="Edit-based training supervises only the first failure; high-stakes target formulation checks decision dependency; Byteification converts subword models…" name="description"/>
+<link href="https://papers.specul.com/en/2026.html" rel="canonical"/>
+<meta content="website" property="og:type"/>
+<meta content="AI Papers" property="og:site_name"/>
+<meta content="https://papers.specul.com/en/2026.html" property="og:url"/>
+<meta content="Six papers, six “what it does not claim” notes | AI Papers" property="og:title"/>
+<meta content="Edit-based training supervises only the first failure; high-stakes target formulation checks decision dependency; Byteification converts subword models…" property="og:description"/>
+<meta content="en_US" property="og:locale"/>
+<meta content="zh_CN" property="og:locale:alternate"/>
+<meta content="#16121f" name="theme-color"/>
+<link href="/assets/brand/dandelion-favicon-site.png" rel="icon" type="image/png"/>
+<link href="/assets/brand/dandelion-apple-touch-site.png" rel="apple-touch-icon"/>
+<script src="/brand.js"></script>
+<link href="/brand.css" rel="stylesheet"/>
+<link href="/site.css" rel="stylesheet"/>
+<style>
+.u26-hero{padding:24px 0 14px}
+.u26-kicker{margin:0 0 8px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--cyan);font-weight:650}
+.u26-h1{margin:0;max-width:20ch;font-size:clamp(30px,4.3vw,52px);line-height:1.1;letter-spacing:-.03em;color:var(--ink)}
+.u26-lede{margin:12px 0 0;max-width:70ch;font-size:15px;line-height:1.62;color:var(--ink-mid)}
+.u26-note{margin:12px 0 0;max-width:72ch;padding:10px 12px;border-left:2px solid var(--cyan);background:var(--brand-soft);font-size:13px;line-height:1.6;color:var(--ink-mid)}
+.u26-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.u26-chip{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border:1px solid var(--line);border-radius:999px;font-size:12px;color:var(--ink-mid);background:var(--bg-panel)}
+.u26-chip b{color:var(--cyan);font-variant-numeric:tabular-nums}
+.u26-section{padding:24px 0;border-top:1px solid var(--line)}
+.u26-h2{margin:0 0 6px;font-size:clamp(22px,2.8vw,32px);line-height:1.2;color:var(--ink)}
+.u26-sub{margin:0 0 12px;font-size:13px;line-height:1.6;color:var(--ink-faint);max-width:68ch}
+.u26-figure{margin:0 0 14px;padding:12px 12px 8px;border:1px solid var(--line);border-radius:14px;background:var(--bg-panel)}
+.u26-figure figcaption{margin-top:6px;font-size:11px;line-height:1.5;color:var(--ink-faint)}
+.u26-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:10px}
+.u26-card{grid-column:span 6;min-width:0;padding:14px 14px 12px;border:1px solid var(--line);border-radius:16px;background:linear-gradient(180deg,var(--bg-panel),var(--bg-inset))}
+.u26-card.wide{grid-column:span 12}
+.u26-meta{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-bottom:6px}
+.u26-badge{display:inline-flex;align-items:center;padding:3px 8px;border-radius:6px;border:1px solid var(--brand-line);background:var(--brand-soft);color:var(--cyan);font-size:11px;font-variant-numeric:tabular-nums}
+.u26-tag{font-size:11px;color:var(--ink-faint)}
+.u26-card h2{margin:0 0 6px;font-size:17px;line-height:1.3;color:var(--ink)}
+.u26-card .u26-p{margin:0;font-size:13px;line-height:1.62;color:var(--ink-mid)}
+.u26-dl{display:grid;grid-template-columns:auto 1fr;gap:5px 10px;margin:10px 0 0;padding:8px 0 2px;border-top:1px dashed var(--line);font-size:12px;line-height:1.5}
+.u26-dl dt{color:var(--ink-faint)}
+.u26-dl dd{margin:0;color:var(--ink)}
+.u26-block{margin-top:9px;padding-top:7px;border-top:1px dashed var(--line)}
+.u26-block b{display:block;margin-bottom:3px;font-size:11px;letter-spacing:.04em;color:var(--cyan)}
+.u26-block p{margin:0;font-size:12px;line-height:1.6;color:var(--ink-mid)}
+.u26-boundary{border-left:2px solid var(--warn);padding-left:9px}
+.u26-src{margin:10px 0 0;font-size:11px;line-height:1.6;color:var(--ink-faint);overflow-wrap:anywhere}
+.u26-src a{color:var(--ink-mid);text-decoration:none;border-bottom:1px solid var(--line)}
+.u26-brief{display:grid;gap:0;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--bg-panel)}
+.u26-row{display:grid;grid-template-columns:82px 1fr auto;gap:10px;align-items:start;padding:10px 12px;border-bottom:1px solid var(--line)}
+.u26-row:last-child{border-bottom:0}
+.u26-row time{font-size:11px;color:var(--cyan);font-variant-numeric:tabular-nums;padding-top:2px}
+.u26-row b{display:block;font-size:14px;line-height:1.4;color:var(--ink)}
+.u26-row p{margin:3px 0 0;font-size:12px;line-height:1.55;color:var(--ink-mid)}
+.u26-row a{font-size:11px;color:var(--ink-faint);text-decoration:none;white-space:nowrap}
+.u26-two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.u26-two .u26-card{grid-column:auto}
+.u26-quote{margin:10px 0 0;padding:9px 10px;border-left:2px solid var(--brand-line);background:var(--bg-inset);font-size:12px;line-height:1.6;color:var(--ink-mid);overflow-wrap:anywhere}
+.u26-list{display:grid;gap:6px;margin:10px 0 0}
+.u26-list div{display:grid;grid-template-columns:26px 1fr;gap:8px;font-size:12px;line-height:1.55;color:var(--ink-mid)}
+.u26-list b{color:var(--cyan);font-variant-numeric:tabular-nums}
+.u26-map{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:2px 0 14px}
+.u26-lane{padding:12px;border:1px solid var(--line);border-radius:14px;background:linear-gradient(180deg,var(--bg-panel),var(--bg-inset))}
+.u26-lane>b{display:block;font-size:12px;letter-spacing:.06em;color:var(--cyan)}
+.u26-lane>span{display:block;margin:3px 0 9px;font-size:11px;line-height:1.5;color:var(--ink-faint)}
+.u26-lane a{display:grid;grid-template-columns:48px 1fr;gap:8px;padding:6px 0;border-top:1px dashed var(--line);font-size:11px;line-height:1.5;color:var(--ink-mid)}
+.u26-lane a time{color:var(--ink-faint);font-variant-numeric:tabular-nums}
+.u26-lane a:hover{color:var(--ink)}
+.u26-chain{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:0 0 14px;counter-reset:step}
+.u26-chain div{position:relative;padding:11px 10px 10px;border:1px solid var(--line);border-radius:12px;background:var(--bg-panel)}
+.u26-chain div:not(:last-child)::after{content:"→";position:absolute;right:-11px;top:50%;transform:translateY(-50%);font-size:12px;color:var(--ink-faint)}
+.u26-chain b{display:block;font-size:11px;letter-spacing:.05em;color:var(--cyan)}
+.u26-chain span{display:block;margin-top:4px;font-size:13px;line-height:1.4;color:var(--ink)}
+.nf-grid{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:clamp(24px,5vw,56px);align-items:center}
+.nf-art{opacity:.95}
+.nf-art svg{display:block;width:100%;height:auto}
+@media(max-width:900px){.u26-card{grid-column:span 12}.u26-two{grid-template-columns:1fr}.u26-row{grid-template-columns:70px 1fr}.u26-row a{display:none}.u26-map{grid-template-columns:1fr}.u26-chain{grid-template-columns:1fr 1fr}.u26-chain div:nth-child(2)::after{content:none}.nf-grid{grid-template-columns:1fr}.nf-art{max-width:200px;margin:8px auto 0}}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Six papers, six “what it does not claim” notes | AI Papers","description":"Edit-based training supervises only the first failure; high-stakes target formulation checks decision dependency; Byteification converts subword models…","url":"https://papers.specul.com/en/2026.html","inLanguage":"en","isPartOf":{"@type":"WebSite","url":"https://papers.specul.com/en/2026.html"}}</script>
+<meta content="Six papers, six “what it does not claim” notes | AI Papers" name="twitter:title"/><meta content="Edit-based training supervises only the first failure; high-stakes target formulation checks decision dependency; Byteification converts subword models…" name="twitter:description"/><link href="https://papers.specul.com/2026.html" hreflang="zh-CN" rel="alternate"/><link href="https://papers.specul.com/en/2026.html" hreflang="en" rel="alternate"/><link href="https://papers.specul.com/2026.html" hreflang="x-default" rel="alternate"/></head>
+<!-- B6（2026-10-09）：--accent 原先在这里被**内联到 body 上**（style="--accent:X"），
+     同时头部又写了 :root{--accent:X} —— 两处同一份值，冗余。
+     而内联样式会**赢过任何选择器**，于是主题级覆盖（html[data-theme="light"]{--accent:…}）
+     完全无效：vg 的引擎名在亮色主题下一直是 1.62:1 的金色，就是因为这条内联。
+     现在只保留头部那一处 —— 单一真相源，且可被主题覆盖。
+     ⚠ 这段注释里**不能出现反引号**：它在模板字符串内部，反引号会提前结束模板
+     （写这段时踩了第 4 次；pitfalls 里早有记录）。 -->
+<body class="brand-ambient has-tabbar has-tabbar-1row">
+<a class="t-skip" href="#main">Skip to main content</a>
+<header class="site-header">
+<div class="container site-bar">
+<a class="brand" href="https://specul.com/en/" title="投机取巧">
+<span aria-hidden="true" class="brand-dot"></span>
+<span class="brand-text">
+<span class="brand-name" id="markName">Speculative Speculation</span>
+<span class="brand-sub" id="markSub"></span>
+</span>
+</a>
+<nav aria-label="站点导航" class="nav-links">
+<a href="https://specul.com/en/">Home</a>
+<a href="https://learn.specul.com/en/">Learn</a>
+<a href="https://tools.specul.com/en/">Tools</a>
+<a href="https://models.specul.com/en/">Models</a>
+<a href="https://demos.specul.com/en/">Playground</a>
+<a href="https://oss.specul.com/en/">OSS</a>
+<a href="https://hardware.specul.com/en/">Compute</a>
+<a aria-current="page" href="https://papers.specul.com/en/">AI Papers</a>
+<a href="https://chain.specul.com/en/">Chain</a>
+<a href="https://nav.specul.com/en/">AI Directory</a>
+</nav>
+<!-- 2026-10-10：.nav-tools 从 nav 元素**内部**移到外面，与 .nav-links 平级。
+           放里面时窄屏下它会跟着链接一起换行：链接占满整行 → 按钮被挤到第三条
+           （实测顶栏 134px、按钮组孤零零一行）。移出来后它与品牌同行，
+           链接独占第二行居中 —— 这才是下面注释里方案 B 想要的样子。 -->
+<span class="nav-tools">
+<a aria-label="Search" class="icon-btn" href="https://specul.com/en/search.html" title="Search all sites"><span aria-hidden="true">⌕</span></a>
+<button aria-label="切换明暗主题" class="icon-btn" id="themeBtn" title="切换明暗主题" type="button">☾</button>
+<a aria-label="切换到中文" class="icon-btn" href="/2026.html" hreflang="zh-CN" id="langBtn" lang="zh-CN" title="切换到中文">中文</a>
+</span>
+<!-- B6（2026-10-09）：窄屏（≤900px）下 .nav-links 会隐藏，这个汉堡是替代入口。
+           行为在共享 brand.js 里（一处实现、十站共用），样式在共享 brand.css。
+           无脚本时 CSS 不会显示它，而是把 .nav-links 在窄屏放出来 —— 不会出现
+           「导航被藏进一个点了没反应的按钮」。 -->
+<button aria-controls="navDrawer" aria-expanded="false" aria-label="打开菜单" class="nav-burger" type="button">
+<i></i><i></i><i></i>
+</button>
+</div>
+</header>
+<div class="nav-scrim"></div>
+<aside aria-hidden="true" aria-label="站点导航" class="nav-drawer" id="navDrawer">
+<div class="nav-drawer-h">
+<span class="brand-name">Speculative Speculation</span>
+<span class="brand-sub"></span>
+<button aria-label="关闭" class="nav-dclose" type="button">×</button>
+</div>
+<nav class="nav-drawer-list">
+<a href="https://specul.com/en/"><span>Home</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://learn.specul.com/en/"><span>Learn</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://tools.specul.com/en/"><span>Tools</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://models.specul.com/en/"><span>Models</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://demos.specul.com/en/"><span>Playground</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://oss.specul.com/en/"><span>OSS</span><span aria-hidden="true" class="ar">→</span></a>
+<a class="nav-group-start" href="https://hardware.specul.com/en/"><span>Compute</span><span aria-hidden="true" class="ar">→</span></a>
+<a aria-current="page" href="https://papers.specul.com/en/"><span>AI Papers</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://chain.specul.com/en/"><span>Chain</span><span aria-hidden="true" class="ar">→</span></a>
+<a class="nav-group-start" data-nav-group="external" href="https://nav.specul.com/en/"><span>AI Directory</span><span aria-hidden="true" class="ar">↗</span></a>
+</nav>
+<div class="nav-drawer-foot">
+<p>Content sites cover learn, use, choose and run; AI Directory is a catalogue of off-site AI sites.</p>
+<nav><a href="https://specul.com/en/legal.html">Legal terms</a></nav>
+</div>
+</aside>
+<main id="main">
+<section class="u26-hero"><div class="container">
+<p class="u26-kicker">Papers · 2026 additions · 2026-11-24</p>
+<h1 class="u26-h1">Six papers, six “what it does not claim” notes</h1>
+<p class="u26-lede">Edit-based training supervises only the first failure; high-stakes target formulation checks decision dependency; Byteification converts subword models to bytes with 49.1B tokens; JEPA-PRH tests cross-modal alignment at 109M; recognition–refusal explains “knowing it is unanswerable yet answering” as routing failure; Abstain-R1 does calibrated abstention at 3B.</p>
+<p class="u26-note">Only entries with text-level evidence; each states the problem, evidence location, author-stated limits and what it does not claim. Preprints and peer review are labelled separately.</p>
+</div></section>
+<section class="u26-section"><div class="container">
+<figure class="u26-figure"><svg aria-label="Timeline" class="vz-svg" role="img" viewbox="0 0 760 306" xmlns="http://www.w3.org/2000/svg">
+<text class="vz-t-dim" text-anchor="end" x="104" y="27">2026-11-19</text>
+<line class="vz-axis" x1="120" x2="120" y1="10" y2="54"></line>
+<circle cx="120" cy="22" r="6" style="fill:var(--cat-amber)"></circle>
+<text class="vz-t-strong" x="140" y="27">Edit-based training</text>
+<text class="vz-t-dim" x="140" y="47">arXiv / 训练</text>
+<text class="vz-t-dim" text-anchor="end" x="104" y="75">2026-11-18</text>
+<line class="vz-axis" x1="120" x2="120" y1="58" y2="102"></line>
+<circle cx="120" cy="70" r="6" style="fill:var(--cat-amber)"></circle>
+<text class="vz-t-strong" x="140" y="75">LLM 会把预测目标建对吗？</text>
+<text class="vz-t-dim" x="140" y="95">arXiv / 高风险决策</text>
+<text class="vz-t-dim" text-anchor="end" x="104" y="123">2026-10-29</text>
+<line class="vz-axis" x1="120" x2="120" y1="106" y2="150"></line>
+<circle cx="120" cy="118" r="6" style="fill:var(--cat-amber)"></circle>
+<text class="vz-t-strong" x="140" y="123">JEPA-PRH</text>
+<text class="vz-t-dim" x="140" y="143">arXiv / 表征</text>
+<text class="vz-t-dim" text-anchor="end" x="104" y="171">2026-10-07</text>
+<line class="vz-axis" x1="120" x2="120" y1="154" y2="198"></line>
+<circle cx="120" cy="166" r="6" style="fill:var(--cat-amber)"></circle>
+<text class="vz-t-strong" x="140" y="171">Byteification</text>
+<text class="vz-t-dim" x="140" y="191">Nature / 架构</text>
+<text class="vz-t-dim" text-anchor="end" x="104" y="219">2026</text>
+<line class="vz-axis" x1="120" x2="120" y1="202" y2="246"></line>
+<circle cx="120" cy="214" r="6" style="fill:var(--cat-amber)"></circle>
+<text class="vz-t-strong" x="140" y="219">识别—拒答错位</text>
+<text class="vz-t-dim" x="140" y="239">EMNLP / 推理</text>
+<text class="vz-t-dim" text-anchor="end" x="104" y="267">2026</text>
+<line class="vz-axis" x1="120" x2="120" y1="250" y2="294"></line>
+<circle cx="120" cy="262" r="6" style="fill:var(--cat-amber)"></circle>
+<text class="vz-t-strong" x="140" y="267">Abstain-R1</text>
+<text class="vz-t-dim" x="140" y="287">ACL / 对齐</text></svg><figcaption>By publication date, newest first; four have exact dates, two are dated by 2026 venue, with no invented day.</figcaption></figure>
+<div class="u26-grid"><article class="u26-card" id="edit-based-training">
+<div class="u26-meta"><span class="u26-badge">2026-11-19</span><span class="u26-tag">arXiv / training</span></div>
+<h2>Edit-based training: supervise only the first failure</h2>
+<p class="u26-p">Instead of imitating a full reasoning trajectory or rewarding the whole completion, an editor locates the first point of failure and supervises only a minimal replacement span. The method works offline or online, with supervision moving to the model’s current failure modes. The authors test it on Qwen3-32B with ReasonIF.</p>
+<dl class="u26-dl"><dt>arXiv</dt><dd>2611.26342</dd><dt>model</dt><dd>Qwen3-32B</dd><dt>benchmark</dt><dd>ReasonIF</dd><dt>venue</dt><dd>NeurIPS 2026 workshop</dd><dt>reproduction</dt><dd>未复现</dd></dl>
+<div class="u26-block"><b>Where the evidence sits</b><p>The abstract reports that, versus full-trajectory imitation and trajectory-level RL, edit-based training substantially improves compliance with reasoning instructions while largely preserving untargeted task skills; supervision concentrates on the minimal replacement span after the failure point.</p></div>
+<div class="u26-block u26-boundary"><b>Boundary / what it does not claim</b><p>Only Qwen3-32B and one benchmark, ReasonIF, are tested; this does not generalise to all models or tasks. The “first failure” depends on the editor and criterion, and edit quality caps the gain; the paper gives no production-scale or cross-lingual results. It does not claim to replace RLHF or to work for every reasoning task.</p></div>
+<p class="u26-src">Sources：<a href="https://arxiv.org/abs/2611.26342" rel="noopener" target="_blank">arXiv</a></p>
+</article><article class="u26-card" id="llm-target-formulation">
+<div class="u26-meta"><span class="u26-badge">2026-11-18</span><span class="u26-tag">arXiv / high-stakes decisions</span></div>
+<h2>Do LLMs formulate the right prediction target?</h2>
+<p class="u26-p">The paper asks whether LLMs correctly formulate prediction problems in child welfare, healthcare and employment, focusing on decision dependency: past decisions shape observed outcomes. It tests 11 OpenAI / Anthropic models under seven prompt conditions, checking whether generated code and explanations handle that bias.</p>
+<dl class="u26-dl"><dt>arXiv</dt><dd>2611.23638</dd><dt>models</dt><dd>11 个 OpenAI / Anthropic 模型</dd><dt>prompts</dt><dd>7 种提示</dd><dt>domains</dt><dd>儿童福利 / 医疗 / 就业</dd><dt>reproduction</dt><dd>未复现</dd></dl>
+<div class="u26-block"><b>Where the evidence sits</b><p>Abstract: without guidance, LLMs do not reliably address decision dependency; when the prompt specifies the target, the required assumption and the estimation procedure, target-aligned implementation reaches 99–100%. Among frontier models, a simple description of how decisions affect outcomes appears sufficient.</p></div>
+<div class="u26-block u26-boundary"><b>Boundary / what it does not claim</b><p>The tests cover three high-stakes domains and specific prompts, not all data analysis; 99–100% is the share of target-aligned implementations, not predictive accuracy or deployment outcomes; some answers acknowledge decision dependency in prose while failing to handle it in code. It does not claim LLMs can automate high-stakes modelling, or that prompting replaces methodological review.</p></div>
+<p class="u26-src">Sources：<a href="https://arxiv.org/abs/2611.23638" rel="noopener" target="_blank">arXiv</a></p>
+</article><article class="u26-card" id="jepa-prh">
+<div class="u26-meta"><span class="u26-badge">2026-10-29</span><span class="u26-tag">arXiv / representation</span></div>
+<h2>JEPA-PRH: cross-modal alignment from a 109M text JEPA</h2>
+<p class="u26-p">A 109M-parameter text JEPA aligns with image encoders better than every language model the authors evaluated, up to 72B; “good views” need 42 times fewer training samples than next-token prediction.</p>
+<dl class="u26-dl"><dt>arXiv</dt><dd>2610.39302</dd><dt>authors</dt><dd>Balestriero &amp; LeCun</dd><dt>model</dt><dd>109M text JEPA</dd><dt>reproduction</dt><dd>未复现</dd></dl>
+<div class="u26-block"><b>Where the evidence sits</b><p>The abstract reports alignment with DINOv2 / CLIP and the 42× sample efficiency; the body uses JEPA as a provable/improveable instance.</p></div>
+<div class="u26-block u26-boundary"><b>Boundary / what it does not claim</b><p>A preprint; 109M is far smaller than the compared LLMs; alignment is not generation quality; 42× is specific to views and data, not a universal constant. It does not claim small models beat large models across the board, or that PRH is finally proved.</p></div>
+<p class="u26-src">Sources：<a href="https://arxiv.org/abs/2610.39302" rel="noopener" target="_blank">arXiv</a></p>
+</article><article class="u26-card" id="byteification">
+<div class="u26-meta"><span class="u26-badge">2026-10-07</span><span class="u26-tag">Nature / architecture</span></div>
+<h2>Byteification: retrofitting subword models to bytes</h2>
+<p class="u26-p">Converts an existing subword LLM to byte level with 49.1B tokens, less than 1% of a typical pretraining budget; reports Bolmo 7B/1B, Bwen 8B and Blama 8B beating earlier byte-level approaches on character-level reasoning.</p>
+<dl class="u26-dl"><dt>DOI</dt><dd>10.1038/s41586-026-11111-4</dd><dt>budget</dt><dd>49.1B tokens（&lt;1%）</dd><dt>models</dt><dd>Bolmo 7B/1B、Bwen 8B、Blama 8B</dd><dt>reproduction</dt><dd>未复现</dd></dl>
+<div class="u26-block"><b>Where the evidence sits</b><p>The abstract gives the method and the 49.1B-token conversion cost; the “Tokenizer transfer and retrofitting” section describes the two-stage procedure; the results report character-level tasks and practical inference speed.</p></div>
+<div class="u26-block u26-boundary"><b>Boundary / what it does not claim</b><p>49.1B is under 1% but still large in absolute terms; the method needs an existing subword teacher; byte-level inference needs dedicated kernels; the paper does not cover every task. It does not claim byte-level beats subword everywhere, or that tokenisers are obsolete.</p></div>
+<p class="u26-src">Sources：<a href="https://doi.org/10.1038/s41586-026-11111-4" rel="noopener" target="_blank">Nature / DOI</a></p>
+</article><article class="u26-card" id="recognition-refusal">
+<div class="u26-meta"><span class="u26-badge">2026</span><span class="u26-tag">EMNLP / reasoning</span></div>
+<h2>Recognition–refusal misalignment: knowing it is unanswerable, yet answering</h2>
+<p class="u26-p">The paper finds a linear direction in hidden states separating answerable from structurally impossible math/code prompts; recognition is nearly orthogonal to safety refusal, so the failure is a routing problem, not an encoding problem.</p>
+<dl class="u26-dl"><dt>venue</dt><dd>EMNLP 2026 Main</dd><dt>anthology ID</dt><dd>2026.emnlp-main.1078</dd><dt>tasks</dt><dd>数学 / 代码的结构性不可答</dd><dt>reproduction</dt><dd>未复现</dd></dl>
+<div class="u26-block"><b>Where the evidence sits</b><p>A linear probe separates the two classes; the recognition and refusal directions are nearly orthogonal.</p></div>
+<div class="u26-block u26-boundary"><b>Boundary / what it does not claim</b><p>It covers structurally unanswerable math/code, not every “don’t know”; linear separability does not prove the model uses that direction when generating; no general fix is offered. It does not claim every hallucination is routing, or that a refusal head solves it.</p></div>
+<p class="u26-src">Sources：<a href="https://aclanthology.org/2026.emnlp-main.1078/" rel="noopener" target="_blank">ACL Anthology</a></p>
+</article><article class="u26-card" id="abstain-r1">
+<div class="u26-meta"><span class="u26-badge">2026</span><span class="u26-tag">ACL / alignment</span></div>
+<h2>Abstain-R1: calibrated abstention at 3B</h2>
+<p class="u26-p">Trains a 3B model with a clarification-aware RLVR reward, improving abstention and clarification on unanswerable queries while preserving answerable-query performance.</p>
+<dl class="u26-dl"><dt>arXiv</dt><dd>2604.17073</dd><dt>venue</dt><dd>ACL 2026</dd><dt>scale</dt><dd>3B</dd><dt>reproduction</dt><dd>未复现</dd></dl>
+<div class="u26-block"><b>Where the evidence sits</b><p>The abstract reports gains in abstention/clarification on unanswerable queries and preserved performance on answerable ones; the method is verifiable-reward RL.</p></div>
+<div class="u26-block u26-boundary"><b>Boundary / what it does not claim</b><p>3B scale, not extrapolable to 70B+; tasks centre on unanswerable queries, with limited open-domain multi-turn coverage; rewards depend on verifiable labels that carry noise; no production validation. It does not claim more abstention is always better, or that all hallucinations are solved.</p></div>
+<p class="u26-src">Sources：<a href="https://arxiv.org/abs/2604.17073" rel="noopener" target="_blank">arXiv</a></p>
+</article></div>
+<p class="u26-note"><b>Next：</b><a href="https://papers.specul.com/en/">Back to all paper entries →</a></p>
+</div></section>
+</main>
+<footer class="site-footer foot-single">
+<div class="container foot-line">
+<div class="foot-brand">
+<span class="foot-brand-main">
+<span aria-hidden="true" class="brand-dot"></span>
+<span class="foot-copy">Specul · specul.com</span>
+</span>
+<span class="foot-license"><a href="https://specul.com/LICENSE-CONTENT.txt">Content CC BY 4.0</a><span aria-hidden="true" class="sep">·</span><a href="https://specul.com/LICENSE.txt">Code MIT</a><span aria-hidden="true" class="sep">·</span><a class="foot-source" href="https://github.com/speculcom/ai-handbook" rel="noopener" target="_blank">Source</a></span>
+</div>
+<nav aria-label="Footer site links" class="foot-sites">
+<a class="site-link" href="https://specul.com/en/">Home</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://learn.specul.com/en/">Learn</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://tools.specul.com/en/">Tools</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://models.specul.com/en/">Models</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://demos.specul.com/en/">Demos</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://oss.specul.com/en/">OSS</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://hardware.specul.com/en/">Compute</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://papers.specul.com/en/">Papers</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://chain.specul.com/en/">Chain</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://nav.specul.com/en/">Directory</a>
+</nav>
+<nav aria-label="Legal and corrections" class="foot-legal">
+<a href="https://specul.com/en/legal.html">Legal</a><span aria-hidden="true" class="sep">·</span>
+<a href="https://specul.com/en/legal.html#s8">Privacy</a><span aria-hidden="true" class="sep">·</span>
+<a href="https://specul.com/en/correct.html">Corrections</a>
+</nav>
+</div>
+</footer>
+<nav aria-label="快捷导航" class="nav-tabbar nav-tabbar-1row">
+<a href="https://specul.com/en/"><span aria-hidden="true" class="ti">◎</span>Home</a>
+<a href="https://learn.specul.com/en/"><span aria-hidden="true" class="ti">▤</span>Learn</a>
+<a href="https://tools.specul.com/en/"><span aria-hidden="true" class="ti">◈</span>Tools</a>
+<a href="https://models.specul.com/en/"><span aria-hidden="true" class="ti">▦</span>Models</a>
+<a href="https://demos.specul.com/en/"><span aria-hidden="true" class="ti">▷</span>Demos</a>
+<a href="https://oss.specul.com/en/"><span aria-hidden="true" class="ti">▧</span>OSS</a>
+<a href="https://hardware.specul.com/en/"><span aria-hidden="true" class="ti">▣</span>Chips</a>
+<a aria-current="page" href="https://papers.specul.com/en/"><span aria-hidden="true" class="ti">▥</span>Papers</a>
+<a href="https://chain.specul.com/en/"><span aria-hidden="true" class="ti">◇</span>Chain</a>
+<a data-nav-group="external" href="https://nav.specul.com/en/"><span aria-hidden="true" class="ti">↗</span>Nav</a>
+</nav>
+</body>
+</html>

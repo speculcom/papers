@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html data-lang="en" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Method lineage: from Transformer to selective state spaces…</title>
+<meta content="Ordered by preprint date, showing citation and inheritance only, not rank. Each step links to an entry verified on this site; where the lineage has a gap…" name="description"/>
+<link href="https://papers.specul.com/en/path.html" rel="canonical"/>
+<meta content="website" property="og:type"/>
+<meta content="AI Papers" property="og:site_name"/>
+<meta content="https://papers.specul.com/en/path.html" property="og:url"/>
+<meta content="Method lineage: from Transformer to selective state spaces…" property="og:title"/>
+<meta content="Ordered by preprint date, showing citation and inheritance only, not rank. Each step links to an entry verified on this site; where the lineage has a gap…" property="og:description"/>
+<meta content="en_US" property="og:locale"/>
+<meta content="zh_CN" property="og:locale:alternate"/>
+<meta content="#16121f" name="theme-color"/>
+<link href="/assets/brand/dandelion-favicon-site.png" rel="icon" type="image/png"/>
+<link href="/assets/brand/dandelion-apple-touch-site.png" rel="apple-touch-icon"/>
+<script src="/brand.js"></script>
+<link href="/brand.css" rel="stylesheet"/>
+<link href="/site.css" rel="stylesheet"/>
+<link href="/papers.css" rel="stylesheet"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Method lineage: from Transformer to selective state spaces…","description":"Ordered by preprint date, showing citation and inheritance only, not rank. Each step links to an entry verified on this site; where the lineage has a gap…","url":"https://papers.specul.com/en/path.html","inLanguage":"en","isPartOf":{"@type":"WebSite","name":"Method lineage: from Transformer to selective state spaces…","url":"https://papers.specul.com/en/path.html"}}</script>
+<meta content="Method lineage: from Transformer to selective state spaces…" name="twitter:title"/><meta content="Ordered by preprint date, showing citation and inheritance only, not rank. Each step links to an entry verified on this site; where the lineage has a gap…" name="twitter:description"/><link href="https://papers.specul.com/path.html" hreflang="zh-CN" rel="alternate"/><link href="https://papers.specul.com/en/path.html" hreflang="en" rel="alternate"/><link href="https://papers.specul.com/path.html" hreflang="x-default" rel="alternate"/></head>
+<!-- B6（2026-10-09）：--accent 原先在这里被**内联到 body 上**（style="--accent:X"），
+     同时头部又写了 :root{--accent:X} —— 两处同一份值，冗余。
+     而内联样式会**赢过任何选择器**，于是主题级覆盖（html[data-theme="light"]{--accent:…}）
+     完全无效：vg 的引擎名在亮色主题下一直是 1.62:1 的金色，就是因为这条内联。
+     现在只保留头部那一处 —— 单一真相源，且可被主题覆盖。
+     ⚠ 这段注释里**不能出现反引号**：它在模板字符串内部，反引号会提前结束模板
+     （写这段时踩了第 4 次；pitfalls 里早有记录）。 -->
+<body class="brand-ambient has-tabbar has-tabbar-1row">
+<a class="t-skip" href="#main">Skip to main content</a>
+<header class="site-header">
+<div class="container site-bar">
+<a class="brand" href="https://specul.com/en/" title="投机取巧">
+<span aria-hidden="true" class="brand-dot"></span>
+<span class="brand-text">
+<span class="brand-name" id="markName">Speculative Speculation</span>
+<span class="brand-sub" id="markSub"></span>
+</span>
+</a>
+<nav aria-label="站点导航" class="nav-links">
+<a href="https://specul.com/en/">Home</a>
+<a href="https://learn.specul.com/en/">Learn</a>
+<a href="https://tools.specul.com/en/">Tools</a>
+<a href="https://models.specul.com/en/">Models</a>
+<a href="https://demos.specul.com/en/">Playground</a>
+<a href="https://oss.specul.com/en/">OSS</a>
+<a href="https://hardware.specul.com/en/">Compute</a>
+<a aria-current="page" href="https://papers.specul.com/en/">AI Papers</a>
+<a href="https://chain.specul.com/en/">Chain</a>
+<a href="https://nav.specul.com/en/">AI Directory</a>
+</nav>
+<!-- 2026-10-10：.nav-tools 从 nav 元素**内部**移到外面，与 .nav-links 平级。
+           放里面时窄屏下它会跟着链接一起换行：链接占满整行 → 按钮被挤到第三条
+           （实测顶栏 134px、按钮组孤零零一行）。移出来后它与品牌同行，
+           链接独占第二行居中 —— 这才是下面注释里方案 B 想要的样子。 -->
+<span class="nav-tools">
+<a aria-label="Search" class="icon-btn" href="https://specul.com/en/search.html" title="Search all sites"><span aria-hidden="true">⌕</span></a>
+<button aria-label="切换明暗主题" class="icon-btn" id="themeBtn" title="切换明暗主题" type="button">☾</button>
+<a aria-label="切换到中文" class="icon-btn" href="/path.html" hreflang="zh-CN" id="langBtn" lang="zh-CN" title="切换到中文">中文</a>
+</span>
+<!-- B6（2026-10-09）：窄屏（≤900px）下 .nav-links 会隐藏，这个汉堡是替代入口。
+           行为在共享 brand.js 里（一处实现、十站共用），样式在共享 brand.css。
+           无脚本时 CSS 不会显示它，而是把 .nav-links 在窄屏放出来 —— 不会出现
+           「导航被藏进一个点了没反应的按钮」。 -->
+<button aria-controls="navDrawer" aria-expanded="false" aria-label="打开菜单" class="nav-burger" type="button">
+<i></i><i></i><i></i>
+</button>
+</div>
+</header>
+<div class="nav-scrim"></div>
+<aside aria-hidden="true" aria-label="站点导航" class="nav-drawer" id="navDrawer">
+<div class="nav-drawer-h">
+<span class="brand-name">Speculative Speculation</span>
+<span class="brand-sub"></span>
+<button aria-label="关闭" class="nav-dclose" type="button">×</button>
+</div>
+<nav class="nav-drawer-list">
+<a href="https://specul.com/en/"><span>Home</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://learn.specul.com/en/"><span>Learn</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://tools.specul.com/en/"><span>Tools</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://models.specul.com/en/"><span>Models</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://demos.specul.com/en/"><span>Playground</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://oss.specul.com/en/"><span>OSS</span><span aria-hidden="true" class="ar">→</span></a>
+<a class="nav-group-start" href="https://hardware.specul.com/en/"><span>Compute</span><span aria-hidden="true" class="ar">→</span></a>
+<a aria-current="page" href="https://papers.specul.com/en/"><span>AI Papers</span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://chain.specul.com/en/"><span>Chain</span><span aria-hidden="true" class="ar">→</span></a>
+<a class="nav-group-start" data-nav-group="external" href="https://nav.specul.com/en/"><span>AI Directory</span><span aria-hidden="true" class="ar">↗</span></a>
+</nav>
+<div class="nav-drawer-foot">
+<p>Content sites cover learn, use, choose and run; AI Directory is a catalogue of off-site AI sites.</p>
+<nav><a href="https://specul.com/en/legal.html">Legal terms</a></nav>
+</div>
+</aside>
+<main id="main">
+<div class="container ms-page"><h1>Method lineage: from Transformer to selective state spaces</h1><p>Ordered by preprint date, showing citation and inheritance only, not rank. Each step links to an entry verified on this site; where the lineage has a gap — a node not separately collected here — it means the original text has not been verified yet, and no second-hand summary is substituted.</p><ol class="fx-path">
+<li><b>1.</b> 2017: Transformer decouples sequence modelling from recurrence and becomes the shared base for everything after it. <a href="/en/vaswani-2017-attention.html">entry</a></li>
+<li><b>2.</b> 2020.01: Kaplan et al. report power laws for loss against parameters, data and compute, and state limits on theoretical understanding and extrapolation in the appendix. <a href="/en/kaplan-2020-scaling-laws.html">entry</a></li>
+<li><b>3.</b> 2020.05: GPT-3 evaluates few-shot prompting, while the authors discuss data contamination and capability limits. <a href="/en/brown-2020-gpt3.html">entry</a></li>
+<li><b>4.</b> 2021.01: Prefix-tuning freezes the base and learns a continuous prefix; it still underperforms full fine-tuning on summarisation. <a href="/en/li-2021-prefix-tuning.html">entry</a></li>
+<li><b>5.</b> 2021.04: RoFormer injects position information into attention through rotary embeddings, with conclusions bounded by the paper's own experimental setup. <a href="/en/su-2021-roformer.html">entry</a></li>
+<li><b>6.</b> 2021.06: LoRA freezes the base and trains low-rank adaptation matrices, reducing trainable parameters and storage overhead; this site has not reproduced it. <a href="/en/hu-2021-lora.html">entry</a></li>
+<li><b>7.</b> 2022.01: chain-of-thought prompting writes out intermediate steps, with the authors noting the ability emerges only above roughly 100B parameters. <a href="/en/wei-2022-chain-of-thought.html">entry</a></li>
+<li><b>8.</b> 2022.03: InstructGPT turns following intent into a trainable objective using human preference data, and concedes the models are neither fully aligned nor fully safe. <a href="/en/ouyang-2022-instructgpt.html">entry</a></li>
+<li><b>9.</b> 2022.03: Chinchilla revises the parameter-to-data ratio, finding that both should scale in equal proportion at a fixed budget. <a href="/en/hoffmann-2022-chinchilla.html">entry</a></li>
+<li><b>10.</b> 2022.03: self-consistency samples several chains and votes, at the cost of proportionally more computation. <a href="/en/wang-2022-self-consistency.html">entry</a></li>
+<li><b>11.</b> 2022.05: FlashAttention reframes the attention bottleneck as memory traffic rather than arithmetic; the result stays exact, but each new implementation needs its own kernel. <a href="/en/dao-2022-flashattention.html">entry</a></li>
+<li><b>12.</b> 2022.10: ReAct interleaves reasoning with acting, gaining traceability while giving up some freedom in reasoning. <a href="/en/yao-2022-react.html">entry</a></li>
+<li><b>13.</b> 2022.10: GPTQ pushes post-training quantisation to 3-4 bits, while its authors note the speed-up comes from less memory movement, not fewer computations. <a href="/en/frantar-2022-gptq.html">entry</a></li>
+<li><b>14.</b> 2022.11: Speculative decoding trades draft-model proposals and parallel target-model verification for inference throughput, with gains depending on acceptance rate. <a href="/en/leviathan-2023-speculative-decoding.html">entry</a></li>
+<li><b>15.</b> 2022.12: Constitutional AI uses principles for self-critique and AI feedback, while helpfulness labels still come from human supervision. <a href="/en/bai-2022-constitutional-ai.html">entry</a></li>
+<li><b>16.</b> 2023.05: DPO writes preference optimisation as a classification loss, skipping the explicit reward model and sampling, with validation up to 6B parameters. <a href="/en/rafailov-2023-dpo.html">entry</a></li>
+<li><b>17.</b> 2023.05: QLoRA combines a quantised base with low-rank adapters; the authors did not establish parity with 16-bit full finetuning at 33B/65B. <a href="/en/dettmers-2023-qlora.html">entry</a></li>
+<li><b>18.</b> 2023.05: Tree of Thoughts expands reasoning into a searchable tree, at the cost of more model calls and task-specific evaluation setups. <a href="/en/yao-2023-tree-of-thoughts.html">entry</a></li>
+<li><b>19.</b> 2023.09: vLLM manages the KV cache with paging and raises serving throughput 2-4 times, while stating the optimisation does not apply to every workload. <a href="/en/kwon-2023-vllm-pagedattention.html">entry</a></li>
+<li><b>20.</b> 2023.12: Mamba removes attention with selective state spaces; the authors leave larger-scale behaviour and downstream ecosystem properties open. <a href="/en/gu-2023-mamba.html">entry</a></li>
+</ol><p class="t-sm">This page appears in: <a href="https://specul.com/en/topic-research.html">Research with AI</a></p></div>
+</main>
+<footer class="site-footer foot-single">
+<div class="container foot-line">
+<div class="foot-brand">
+<span class="foot-brand-main">
+<span aria-hidden="true" class="brand-dot"></span>
+<span class="foot-copy">Specul · specul.com</span>
+</span>
+<span class="foot-license"><a href="https://specul.com/LICENSE-CONTENT.txt">Content CC BY 4.0</a><span aria-hidden="true" class="sep">·</span><a href="https://specul.com/LICENSE.txt">Code MIT</a><span aria-hidden="true" class="sep">·</span><a class="foot-source" href="https://github.com/speculcom/ai-handbook" rel="noopener" target="_blank">Source</a></span>
+</div>
+<nav aria-label="Footer site links" class="foot-sites">
+<a class="site-link" href="https://specul.com/en/">Home</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://learn.specul.com/en/">Learn</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://tools.specul.com/en/">Tools</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://models.specul.com/en/">Models</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://demos.specul.com/en/">Demos</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://oss.specul.com/en/">OSS</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://hardware.specul.com/en/">Compute</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://papers.specul.com/en/">Papers</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://chain.specul.com/en/">Chain</a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://nav.specul.com/en/">Directory</a>
+</nav>
+<nav aria-label="Legal and corrections" class="foot-legal">
+<a href="https://specul.com/en/legal.html">Legal</a><span aria-hidden="true" class="sep">·</span>
+<a href="https://specul.com/en/legal.html#s8">Privacy</a><span aria-hidden="true" class="sep">·</span>
+<a href="https://specul.com/en/correct.html">Corrections</a>
+</nav>
+</div>
+</footer>
+<nav aria-label="快捷导航" class="nav-tabbar nav-tabbar-1row">
+<a href="https://specul.com/en/"><span aria-hidden="true" class="ti">◎</span>Home</a>
+<a href="https://learn.specul.com/en/"><span aria-hidden="true" class="ti">▤</span>Learn</a>
+<a href="https://tools.specul.com/en/"><span aria-hidden="true" class="ti">◈</span>Tools</a>
+<a href="https://models.specul.com/en/"><span aria-hidden="true" class="ti">▦</span>Models</a>
+<a href="https://demos.specul.com/en/"><span aria-hidden="true" class="ti">▷</span>Demos</a>
+<a href="https://oss.specul.com/en/"><span aria-hidden="true" class="ti">▧</span>OSS</a>
+<a href="https://hardware.specul.com/en/"><span aria-hidden="true" class="ti">▣</span>Chips</a>
+<a aria-current="page" href="https://papers.specul.com/en/"><span aria-hidden="true" class="ti">▥</span>Papers</a>
+<a href="https://chain.specul.com/en/"><span aria-hidden="true" class="ti">◇</span>Chain</a>
+<a data-nav-group="external" href="https://nav.specul.com/en/"><span aria-hidden="true" class="ti">↗</span>Nav</a>
+</nav>
+</body>
+</html>

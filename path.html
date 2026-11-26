@@ -1,30 +1,27 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>方法谱系：从 Transformer 到选择性状态空间 · AI 论文</title>
-  <meta name="description" content="方法谱系：从 Transformer 到选择性状态空间：按顺序走 20 步，每步对应本站一条条目，写清判断依据、核对方式、适用边界与常见误区，方便逐项比较。" />
-  <link rel="canonical" href="https://papers.specul.com/path.html" />
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="方法谱系：从 Transformer 到选择性状态空间 · AI 论文" />
-  <meta property="og:url" content="https://papers.specul.com/path.html" />
-  <meta property="og:title" content="方法谱系：从 Transformer 到选择性状态空间 · AI 论文" />
-  <meta property="og:description" content="方法谱系：从 Transformer 到选择性状态空间：按顺序走 20 步，每步对应本站一条条目，写清判断依据、核对方式、适用边界与常见误区，方便逐项比较。" />
-  <meta property="og:locale" content="zh_CN" />
-  <meta property="og:locale:alternate" content="en_US" />
-  <link rel="alternate" hreflang="zh-CN" href="https://papers.specul.com/path.html" />
-  <link rel="alternate" hreflang="en" href="https://papers.specul.com/path.html?lang=en" />
-  <link rel="alternate" hreflang="x-default" href="https://papers.specul.com/path.html" />
-  <meta name="theme-color" content="#16121f" />
-  <link rel="icon" type="image/png" href="assets/brand/dandelion-favicon-site.png" />
-  <link rel="apple-touch-icon" href="assets/brand/dandelion-apple-touch-site.png" />
-  <script src="brand.js?v=37d1072be69b"></script>
-  <link rel="stylesheet" href="brand.css?v=37d1072be69b" />
-  <link rel="stylesheet" href="site.css" />
-  <link rel="stylesheet" href="papers.css" />
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"方法谱系：从 Transformer 到选择性状态空间 · AI 论文","description":"方法谱系：从 Transformer 到选择性状态空间：按顺序走 20 步，每步对应本站一条条目，写清判断依据、核对方式、适用边界与常见误区，方便逐项比较。","url":"https://papers.specul.com/path.html","inLanguage":"zh-CN","isPartOf":{"@type":"WebSite","name":"Specul","url":"https://specul.com/"}}</script>
-</head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>方法谱系：从 Transformer 到选择性状态空间 · AI 论文</title>
+<meta content="方法谱系：从 Transformer 到选择性状态空间：按顺序走 20 步，每步对应本站一条条目，写清判断依据、核对方式、适用边界与常见误区，方便逐项比较。" name="description"/>
+<link href="https://papers.specul.com/path.html" rel="canonical"/>
+<meta content="website" property="og:type"/>
+<meta content="方法谱系：从 Transformer 到选择性状态空间 · AI 论文" property="og:site_name"/>
+<meta content="https://papers.specul.com/path.html" property="og:url"/>
+<meta content="方法谱系：从 Transformer 到选择性状态空间 · AI 论文" property="og:title"/>
+<meta content="方法谱系：从 Transformer 到选择性状态空间：按顺序走 20 步，每步对应本站一条条目，写清判断依据、核对方式、适用边界与常见误区，方便逐项比较。" property="og:description"/>
+<meta content="zh_CN" property="og:locale"/>
+<meta content="en_US" property="og:locale:alternate"/>
+<meta content="#16121f" name="theme-color"/>
+<link href="assets/brand/dandelion-favicon-site.png" rel="icon" type="image/png"/>
+<link href="assets/brand/dandelion-apple-touch-site.png" rel="apple-touch-icon"/>
+<script src="brand.js?v=37d1072be69b"></script>
+<link href="brand.css?v=37d1072be69b" rel="stylesheet"/>
+<link href="site.css" rel="stylesheet"/>
+<link href="papers.css" rel="stylesheet"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"方法谱系：从 Transformer 到选择性状态空间 · AI 论文","description":"方法谱系：从 Transformer 到选择性状态空间：按顺序走 20 步，每步对应本站一条条目，写清判断依据、核对方式、适用边界与常见误区，方便逐项比较。","url":"https://papers.specul.com/path.html","inLanguage":"zh-CN","isPartOf":{"@type":"WebSite","name":"Specul","url":"https://specul.com/"}}</script>
+<link href="https://papers.specul.com/path.html" hreflang="zh-CN" rel="alternate"/><link href="https://papers.specul.com/en/path.html" hreflang="en" rel="alternate"/><link href="https://papers.specul.com/path.html" hreflang="x-default" rel="alternate"/></head>
 <!-- B6（2026-10-09）：--accent 原先在这里被**内联到 body 上**（style="--accent:X"），
      同时头部又写了 :root{--accent:X} —— 两处同一份值，冗余。
      而内联样式会**赢过任何选择器**，于是主题级覆盖（html[data-theme="light"]{--accent:…}）
@@ -33,133 +30,133 @@
      ⚠ 这段注释里**不能出现反引号**：它在模板字符串内部，反引号会提前结束模板
      （写这段时踩了第 4 次；pitfalls 里早有记录）。 -->
 <body class="brand-ambient has-tabbar has-tabbar-1row">
-  <a class="t-skip" href="#main"><span data-zh>跳到主要内容</span><span data-en>Skip to main content</span></a>
-  <header class="site-header">
-    <div class="container site-bar">
-      <a class="brand" href="https://specul.com/" title="投机取巧">
-        <span class="brand-dot" aria-hidden="true"></span>
-        <span class="brand-text">
-          <span class="brand-name" id="markName" data-zh-name="投机取巧" data-en-name="Speculative Speculation">投机取巧</span>
-          <span class="brand-sub" id="markSub" data-zh-sub="Speculative Speculation" data-en-sub="">Speculative Speculation</span>
-        </span>
-      </a>
-      <nav class="nav-links" aria-label="站点导航">
-        <a href="https://specul.com/"><span data-zh>首页</span><span data-en>Home</span></a>
-        <a href="https://learn.specul.com/"><span data-zh>学 AI</span><span data-en>Learn</span></a>
-        <a href="https://tools.specul.com/"><span data-zh>工具</span><span data-en>Tools</span></a>
-        <a href="https://models.specul.com/"><span data-zh>模型</span><span data-en>Models</span></a>
-        <a href="https://demos.specul.com/"><span data-zh>作品演示</span><span data-en>Playground</span></a>
-        <a href="https://oss.specul.com/"><span data-zh>开源库</span><span data-en>OSS</span></a>
-        <a href="https://hardware.specul.com/"><span data-zh>硬件算力</span><span data-en>Compute</span></a>
-        <a href="https://papers.specul.com/" aria-current="page"><span data-zh>AI 论文</span><span data-en>AI Papers</span></a>
-        <a href="https://chain.specul.com/"><span data-zh>链</span><span data-en>Chain</span></a>
-        <a href="https://nav.specul.com/"><span data-zh>AI 导航</span><span data-en>AI Directory</span></a>
-      </nav>
-      <!-- 2026-10-10：.nav-tools 从 nav 元素**内部**移到外面，与 .nav-links 平级。
+<a class="t-skip" href="#main"><span data-zh="">跳到主要内容</span><span data-en="">Skip to main content</span></a>
+<header class="site-header">
+<div class="container site-bar">
+<a class="brand" href="https://specul.com/" title="投机取巧">
+<span aria-hidden="true" class="brand-dot"></span>
+<span class="brand-text">
+<span class="brand-name" data-en-name="Speculative Speculation" data-zh-name="投机取巧" id="markName">投机取巧</span>
+<span class="brand-sub" data-en-sub="" data-zh-sub="Speculative Speculation" id="markSub">Speculative Speculation</span>
+</span>
+</a>
+<nav aria-label="站点导航" class="nav-links">
+<a href="https://specul.com/"><span data-zh="">首页</span><span data-en="">Home</span></a>
+<a href="https://learn.specul.com/"><span data-zh="">学 AI</span><span data-en="">Learn</span></a>
+<a href="https://tools.specul.com/"><span data-zh="">工具</span><span data-en="">Tools</span></a>
+<a href="https://models.specul.com/"><span data-zh="">模型</span><span data-en="">Models</span></a>
+<a href="https://demos.specul.com/"><span data-zh="">作品演示</span><span data-en="">Playground</span></a>
+<a href="https://oss.specul.com/"><span data-zh="">开源库</span><span data-en="">OSS</span></a>
+<a href="https://hardware.specul.com/"><span data-zh="">硬件算力</span><span data-en="">Compute</span></a>
+<a aria-current="page" href="https://papers.specul.com/"><span data-zh="">AI 论文</span><span data-en="">AI Papers</span></a>
+<a href="https://chain.specul.com/"><span data-zh="">链</span><span data-en="">Chain</span></a>
+<a href="https://nav.specul.com/"><span data-zh="">AI 导航</span><span data-en="">AI Directory</span></a>
+</nav>
+<!-- 2026-10-10：.nav-tools 从 nav 元素**内部**移到外面，与 .nav-links 平级。
            放里面时窄屏下它会跟着链接一起换行：链接占满整行 → 按钮被挤到第三条
            （实测顶栏 134px、按钮组孤零零一行）。移出来后它与品牌同行，
            链接独占第二行居中 —— 这才是下面注释里方案 B 想要的样子。 -->
-      <span class="nav-tools">
-        <a class="icon-btn" href="https://specul.com/search.html" aria-label="搜索" data-ui-aria-label-zh="搜索" data-ui-aria-label-en="Search" title="搜索全站" data-ui-title-zh="搜索全站" data-ui-title-en="Search all sites"><span aria-hidden="true">⌕</span></a>
-        <button class="icon-btn" id="themeBtn" type="button" aria-label="切换明暗主题" title="切换明暗主题">☾</button>
-        <button class="icon-btn" id="langBtn" type="button" aria-label="Switch language" title="Switch language">EN</button>
-      </span>
-      <!-- B6（2026-10-09）：窄屏（≤900px）下 .nav-links 会隐藏，这个汉堡是替代入口。
+<span class="nav-tools">
+<a aria-label="搜索" class="icon-btn" data-ui-aria-label-en="Search" data-ui-aria-label-zh="搜索" data-ui-title-en="Search all sites" data-ui-title-zh="搜索全站" href="https://specul.com/search.html" title="搜索全站"><span aria-hidden="true">⌕</span></a>
+<button aria-label="切换明暗主题" class="icon-btn" id="themeBtn" title="切换明暗主题" type="button">☾</button>
+<a aria-label="Switch to English" class="icon-btn" href="/en/path.html" hreflang="en" id="langBtn" lang="en" title="Switch to English">EN</a>
+</span>
+<!-- B6（2026-10-09）：窄屏（≤900px）下 .nav-links 会隐藏，这个汉堡是替代入口。
            行为在共享 brand.js 里（一处实现、十站共用），样式在共享 brand.css。
            无脚本时 CSS 不会显示它，而是把 .nav-links 在窄屏放出来 —— 不会出现
            「导航被藏进一个点了没反应的按钮」。 -->
-      <button class="nav-burger" type="button" aria-label="打开菜单" aria-expanded="false" aria-controls="navDrawer">
-        <i></i><i></i><i></i>
-      </button>
-    </div>
-  </header>
-  <div class="nav-scrim"></div>
-  <aside class="nav-drawer" id="navDrawer" aria-hidden="true" aria-label="站点导航">
-    <div class="nav-drawer-h">
-      <span class="brand-name"><span data-zh>投机取巧</span><span data-en>Speculative Speculation</span></span>
-      <span class="brand-sub" data-zh-sub="Speculative Speculation" data-en-sub="">Speculative Speculation</span>
-      <button class="nav-dclose" type="button" aria-label="关闭">×</button>
-    </div>
-    <nav class="nav-drawer-list">
-      <a href="https://specul.com/"><span><span data-zh>首页</span><span data-en>Home</span></span><span class="ar" aria-hidden="true">→</span></a>
-      <a href="https://learn.specul.com/"><span><span data-zh>学 AI</span><span data-en>Learn</span></span><span class="ar" aria-hidden="true">→</span></a>
-      <a href="https://tools.specul.com/"><span><span data-zh>工具</span><span data-en>Tools</span></span><span class="ar" aria-hidden="true">→</span></a>
-      <a href="https://models.specul.com/"><span><span data-zh>模型</span><span data-en>Models</span></span><span class="ar" aria-hidden="true">→</span></a>
-      <a href="https://demos.specul.com/"><span><span data-zh>作品演示</span><span data-en>Playground</span></span><span class="ar" aria-hidden="true">→</span></a>
-      <a href="https://oss.specul.com/"><span><span data-zh>开源库</span><span data-en>OSS</span></span><span class="ar" aria-hidden="true">→</span></a>
-      <a href="https://hardware.specul.com/" class="nav-group-start"><span><span data-zh>硬件算力</span><span data-en>Compute</span></span><span class="ar" aria-hidden="true">→</span></a>
-      <a href="https://papers.specul.com/" aria-current="page"><span><span data-zh>AI 论文</span><span data-en>AI Papers</span></span><span class="ar" aria-hidden="true">→</span></a>
-      <a href="https://chain.specul.com/"><span><span data-zh>链</span><span data-en>Chain</span></span><span class="ar" aria-hidden="true">→</span></a>
-      <a href="https://nav.specul.com/" class="nav-group-start" data-nav-group="external"><span><span data-zh>AI 导航</span><span data-en>AI Directory</span></span><span class="ar" aria-hidden="true">↗</span></a>
-    </nav>
-    <div class="nav-drawer-foot">
-      <p><span data-zh>内容站覆盖学、用、选、跑；AI 导航是站外的 AI 网站目录，点出去看。</span><span data-en>Content sites cover learn, use, choose and run; AI Directory is a catalogue of off-site AI sites.</span></p>
-      <nav><a href="https://specul.com/legal.html"><span data-zh>法律条款</span><span data-en>Legal terms</span></a></nav>
-    </div>
-  </aside>
-  <main id="main">
-<div class="container ms-page"><h1><span data-zh>方法谱系：从 Transformer 到选择性状态空间</span><span data-en>Method lineage: from Transformer to selective state spaces</span></h1><p><span data-zh>按预印本发表时间排，只标引用与承接关系，不排质量高低。每一步只链本站已核过的条目；谱系里出现空白（例如没有单独收录的节点），说明本站尚未核到那篇原文，不补二手转述。</span><span data-en>Ordered by preprint date, showing citation and inheritance only, not rank. Each step links to an entry verified on this site; where the lineage has a gap — a node not separately collected here — it means the original text has not been verified yet, and no second-hand summary is substituted.</span></p><ol class="fx-path">
-    <li><b>1.</b> <span data-zh>2017：Transformer 把序列建模从循环结构里解耦，成为后续所有路线的共同底座。</span><span data-en>2017: Transformer decouples sequence modelling from recurrence and becomes the shared base for everything after it.</span> <a href="vaswani-2017-attention.html"><span data-zh>条目</span><span data-en>entry</span></a></li>
-    <li><b>2.</b> <span data-zh>2020.01：Kaplan 等报告损失随参数、数据与算力变化的幂律，并在附录写明理论理解与外推范围的限制。</span><span data-en>2020.01: Kaplan et al. report power laws for loss against parameters, data and compute, and state limits on theoretical understanding and extrapolation in the appendix.</span> <a href="kaplan-2020-scaling-laws.html"><span data-zh>条目</span><span data-en>entry</span></a></li>
-    <li><b>3.</b> <span data-zh>2020.05：GPT-3 把少样本提示放进评测设定，作者同时讨论数据污染与能力边界。</span><span data-en>2020.05: GPT-3 evaluates few-shot prompting, while the authors discuss data contamination and capability limits.</span> <a href="brown-2020-gpt3.html"><span data-zh>条目</span><span data-en>entry</span></a></li>
-    <li><b>4.</b> <span data-zh>2021.01：Prefix-tuning 冻结基座只学连续前缀；在摘要任务上仍不如全量微调。</span><span data-en>2021.01: Prefix-tuning freezes the base and learns a continuous prefix; it still underperforms full fine-tuning on summarisation.</span> <a href="li-2021-prefix-tuning.html"><span data-zh>条目</span><span data-en>entry</span></a></li>
-    <li><b>5.</b> <span data-zh>2021.04：RoFormer 用旋转位置编码把位置信息注入注意力，结论限定在论文自己的实验设置内。</span><span data-en>2021.04: RoFormer injects position information into attention through rotary embeddings, with conclusions bounded by the paper&#39;s own experimental setup.</span> <a href="su-2021-roformer.html"><span data-zh>条目</span><span data-en>entry</span></a></li>
-    <li><b>6.</b> <span data-zh>2021.06：LoRA 冻结基座并训练低秩适配矩阵，把可训练参数与存储开销降下来；本站未复现。</span><span data-en>2021.06: LoRA freezes the base and trains low-rank adaptation matrices, reducing trainable parameters and storage overhead; this site has not reproduced it.</span> <a href="hu-2021-lora.html"><span data-zh>条目</span><span data-en>entry</span></a></li>
-    <li><b>7.</b> <span data-zh>2022.01：思维链提示把中间推理步骤写出来，但作者自己指出这种能力只在约 100B 参数以上涌现。</span><span data-en>2022.01: chain-of-thought prompting writes out intermediate steps, with the authors noting the ability emerges only above roughly 100B parameters.</span> <a href="wei-2022-chain-of-thought.html"><span data-zh>条目</span><span data-en>entry</span></a></li>
-    <li><b>8.</b> <span data-zh>2022.03：InstructGPT 用人类偏好数据把「跟着意图走」变成可训练目标，并承认模型既不完全对齐也不完全安全。</span><span data-en>2022.03: InstructGPT turns following intent into a trainable objective using human preference data, and concedes the models are neither fully aligned nor fully safe.</span> <a href="ouyang-2022-instructgpt.html"><span data-zh>条目</span><span data-en>entry</span></a></li>
-    <li><b>9.</b> <span data-zh>2022.03：Chinchilla 修正了参数与训练量的配比，指出同预算下参数与 token 应按相同比例增长。</span><span data-en>2022.03: Chinchilla revises the parameter-to-data ratio, finding that both should scale in equal proportion at a fixed budget.</span> <a href="hoffmann-2022-chinchilla.html"><span data-zh>条目</span><span data-en>entry</span></a></li>
-    <li><b>10.</b> <span data-zh>2022.03：自一致性在思维链之上采样多条路径再投票，代价是计算量成倍上升。</span><span data-en>2022.03: self-consistency samples several chains and votes, at the cost of proportionally more computation.</span> <a href="wang-2022-self-consistency.html"><span data-zh>条目</span><span data-en>entry</span></a></li>
-    <li><b>11.</b> <span data-zh>2022.05：FlashAttention 把注意力的瓶颈从算力改判为显存读写，结果仍精确，但每种新实现都要重写 kernel。</span><span data-en>2022.05: FlashAttention reframes the attention bottleneck as memory traffic rather than arithmetic; the result stays exact, but each new implementation needs its own kernel.</span> <a href="dao-2022-flashattention.html"><span data-zh>条目</span><span data-en>entry</span></a></li>
-    <li><b>12.</b> <span data-zh>2022.10：ReAct 让推理与行动交替进行，可追溯性提高的同时推理自由度下降。</span><span data-en>2022.10: ReAct interleaves reasoning with acting, gaining traceability while giving up some freedom in reasoning.</span> <a href="yao-2022-react.html"><span data-zh>条目</span><span data-en>entry</span></a></li>
-    <li><b>13.</b> <span data-zh>2022.10：GPTQ 把训练后量化推进到 3–4 bit；作者同时说明加速来自显存搬运减少，不是计算量减少。</span><span data-en>2022.10: GPTQ pushes post-training quantisation to 3-4 bits, while its authors note the speed-up comes from less memory movement, not fewer computations.</span> <a href="frantar-2022-gptq.html"><span data-zh>条目</span><span data-en>entry</span></a></li>
-    <li><b>14.</b> <span data-zh>2022.11：投机解码用小模型草稿与大模型并行验证来换推理吞吐，收益取决于草稿被接受的比例。</span><span data-en>2022.11: Speculative decoding trades draft-model proposals and parallel target-model verification for inference throughput, with gains depending on acceptance rate.</span> <a href="leviathan-2023-speculative-decoding.html"><span data-zh>条目</span><span data-en>entry</span></a></li>
-    <li><b>15.</b> <span data-zh>2022.12：Constitutional AI 用原则驱动自我批评与 AI 反馈，但有用性标签仍来自人工监督。</span><span data-en>2022.12: Constitutional AI uses principles for self-critique and AI feedback, while helpfulness labels still come from human supervision.</span> <a href="bai-2022-constitutional-ai.html"><span data-zh>条目</span><span data-en>entry</span></a></li>
-    <li><b>16.</b> <span data-zh>2023.05：DPO 把偏好优化写成分类损失，跳过显式奖励模型与采样，验证规模止于 6B。</span><span data-en>2023.05: DPO writes preference optimisation as a classification loss, skipping the explicit reward model and sampling, with validation up to 6B parameters.</span> <a href="rafailov-2023-dpo.html"><span data-zh>条目</span><span data-en>entry</span></a></li>
-    <li><b>17.</b> <span data-zh>2023.05：QLoRA 把量化基座与低秩适配合在一起；作者没有确立 33B/65B 上追平 16-bit 全量微调。</span><span data-en>2023.05: QLoRA combines a quantised base with low-rank adapters; the authors did not establish parity with 16-bit full finetuning at 33B/65B.</span> <a href="dettmers-2023-qlora.html"><span data-zh>条目</span><span data-en>entry</span></a></li>
-    <li><b>18.</b> <span data-zh>2023.05：Tree of Thoughts 把推理展开成可搜索的树，代价是更多模型调用与任务特定的评估设置。</span><span data-en>2023.05: Tree of Thoughts expands reasoning into a searchable tree, at the cost of more model calls and task-specific evaluation setups.</span> <a href="yao-2023-tree-of-thoughts.html"><span data-zh>条目</span><span data-en>entry</span></a></li>
-    <li><b>19.</b> <span data-zh>2023.09：vLLM 用分页思路管理 KV 缓存，把服务吞吐抬到 2–4 倍，并写明这套优化不适用于所有负载。</span><span data-en>2023.09: vLLM manages the KV cache with paging and raises serving throughput 2-4 times, while stating the optimisation does not apply to every workload.</span> <a href="kwon-2023-vllm-pagedattention.html"><span data-zh>条目</span><span data-en>entry</span></a></li>
-    <li><b>20.</b> <span data-zh>2023.12：Mamba 用选择性状态空间去掉注意力；作者把更大规模表现与下游生态性质列为待评估。</span><span data-en>2023.12: Mamba removes attention with selective state spaces; the authors leave larger-scale behaviour and downstream ecosystem properties open.</span> <a href="gu-2023-mamba.html"><span data-zh>条目</span><span data-en>entry</span></a></li>
-</ol><p class="t-sm"><span data-zh>这页出现在主题：</span><span data-en>This page appears in: </span><a href="https://specul.com/topic-research.html"><span data-zh>用 AI 查资料</span><span data-en>Research with AI</span></a></p></div>
-  </main>
-  <footer class="site-footer foot-single">
-    <div class="container foot-line">
-      <div class="foot-brand">
-        <span class="foot-brand-main">
-          <span class="brand-dot" aria-hidden="true"></span>
-          <span class="foot-copy"><span data-zh>投机取巧 · specul.com</span><span data-en>Specul · specul.com</span></span>
-        </span>
-        <span class="foot-license"><a href="https://specul.com/LICENSE-CONTENT.txt"><span data-zh>内容 CC BY 4.0</span><span data-en>Content CC BY 4.0</span></a><span class="sep" aria-hidden="true">·</span><a href="https://specul.com/LICENSE.txt"><span data-zh>代码 MIT</span><span data-en>Code MIT</span></a><span class="sep" aria-hidden="true">·</span><a class="foot-source" href="https://github.com/speculcom/ai-handbook" target="_blank" rel="noopener"><span data-zh>源码</span><span data-en>Source</span></a></span>
-      </div>
-      <nav class="foot-sites" aria-label="Footer site links">
-        <a class="site-link" href="https://specul.com/"><span data-zh>首页</span><span data-en>Home</span></a><span class="sep site-sep" aria-hidden="true">·</span>
-        <a class="site-link" href="https://learn.specul.com/"><span data-zh>学 AI</span><span data-en>Learn</span></a><span class="sep site-sep" aria-hidden="true">·</span>
-        <a class="site-link" href="https://tools.specul.com/"><span data-zh>工具</span><span data-en>Tools</span></a><span class="sep site-sep" aria-hidden="true">·</span>
-        <a class="site-link" href="https://models.specul.com/"><span data-zh>模型</span><span data-en>Models</span></a><span class="sep site-sep" aria-hidden="true">·</span>
-        <a class="site-link" href="https://demos.specul.com/"><span data-zh>演示</span><span data-en>Demos</span></a><span class="sep site-sep" aria-hidden="true">·</span>
-        <a class="site-link" href="https://oss.specul.com/"><span data-zh>开源</span><span data-en>OSS</span></a><span class="sep site-sep" aria-hidden="true">·</span>
-        <a class="site-link" href="https://hardware.specul.com/"><span data-zh>算力</span><span data-en>Compute</span></a><span class="sep site-sep" aria-hidden="true">·</span>
-        <a class="site-link" href="https://papers.specul.com/"><span data-zh>论文</span><span data-en>Papers</span></a><span class="sep site-sep" aria-hidden="true">·</span>
-        <a class="site-link" href="https://chain.specul.com/"><span data-zh>链</span><span data-en>Chain</span></a><span class="sep site-sep" aria-hidden="true">·</span>
-        <a class="site-link" href="https://nav.specul.com/"><span data-zh>导航</span><span data-en>Directory</span></a>
-      </nav>
-      <nav class="foot-legal" aria-label="Legal and corrections">
-        <a href="https://specul.com/legal.html"><span data-zh>法律</span><span data-en>Legal</span></a><span class="sep" aria-hidden="true">·</span>
-        <a href="https://specul.com/legal.html#s8"><span data-zh>隐私</span><span data-en>Privacy</span></a><span class="sep" aria-hidden="true">·</span>
-        <a href="https://specul.com/correct.html"><span data-zh>纠错</span><span data-en>Corrections</span></a>
-      </nav>
-    </div>
-  </footer>
-<nav class="nav-tabbar nav-tabbar-1row" aria-label="快捷导航">
-    <a href="https://specul.com/"><span class="ti" aria-hidden="true">◎</span><span data-zh>首页</span><span data-en>Home</span></a>
-    <a href="https://learn.specul.com/"><span class="ti" aria-hidden="true">▤</span><span data-zh>学AI</span><span data-en>Learn</span></a>
-    <a href="https://tools.specul.com/"><span class="ti" aria-hidden="true">◈</span><span data-zh>工具</span><span data-en>Tools</span></a>
-    <a href="https://models.specul.com/"><span class="ti" aria-hidden="true">▦</span><span data-zh>模型</span><span data-en>Models</span></a>
-    <a href="https://demos.specul.com/"><span class="ti" aria-hidden="true">▷</span><span data-zh>演示</span><span data-en>Demos</span></a>
-    <a href="https://oss.specul.com/"><span class="ti" aria-hidden="true">▧</span><span data-zh>开源</span><span data-en>OSS</span></a>
-    <a href="https://hardware.specul.com/"><span class="ti" aria-hidden="true">▣</span><span data-zh>算力</span><span data-en>Chips</span></a>
-    <a href="https://papers.specul.com/" aria-current="page"><span class="ti" aria-hidden="true">▥</span><span data-zh>论文</span><span data-en>Papers</span></a>
-    <a href="https://chain.specul.com/"><span class="ti" aria-hidden="true">◇</span><span data-zh>链</span><span data-en>Chain</span></a>
-    <a href="https://nav.specul.com/" data-nav-group="external"><span class="ti" aria-hidden="true">↗</span><span data-zh>导航</span><span data-en>Nav</span></a>
+<button aria-controls="navDrawer" aria-expanded="false" aria-label="打开菜单" class="nav-burger" type="button">
+<i></i><i></i><i></i>
+</button>
+</div>
+</header>
+<div class="nav-scrim"></div>
+<aside aria-hidden="true" aria-label="站点导航" class="nav-drawer" id="navDrawer">
+<div class="nav-drawer-h">
+<span class="brand-name"><span data-zh="">投机取巧</span><span data-en="">Speculative Speculation</span></span>
+<span class="brand-sub" data-en-sub="" data-zh-sub="Speculative Speculation">Speculative Speculation</span>
+<button aria-label="关闭" class="nav-dclose" type="button">×</button>
+</div>
+<nav class="nav-drawer-list">
+<a href="https://specul.com/"><span><span data-zh="">首页</span><span data-en="">Home</span></span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://learn.specul.com/"><span><span data-zh="">学 AI</span><span data-en="">Learn</span></span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://tools.specul.com/"><span><span data-zh="">工具</span><span data-en="">Tools</span></span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://models.specul.com/"><span><span data-zh="">模型</span><span data-en="">Models</span></span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://demos.specul.com/"><span><span data-zh="">作品演示</span><span data-en="">Playground</span></span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://oss.specul.com/"><span><span data-zh="">开源库</span><span data-en="">OSS</span></span><span aria-hidden="true" class="ar">→</span></a>
+<a class="nav-group-start" href="https://hardware.specul.com/"><span><span data-zh="">硬件算力</span><span data-en="">Compute</span></span><span aria-hidden="true" class="ar">→</span></a>
+<a aria-current="page" href="https://papers.specul.com/"><span><span data-zh="">AI 论文</span><span data-en="">AI Papers</span></span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://chain.specul.com/"><span><span data-zh="">链</span><span data-en="">Chain</span></span><span aria-hidden="true" class="ar">→</span></a>
+<a class="nav-group-start" data-nav-group="external" href="https://nav.specul.com/"><span><span data-zh="">AI 导航</span><span data-en="">AI Directory</span></span><span aria-hidden="true" class="ar">↗</span></a>
+</nav>
+<div class="nav-drawer-foot">
+<p><span data-zh="">内容站覆盖学、用、选、跑；AI 导航是站外的 AI 网站目录，点出去看。</span><span data-en="">Content sites cover learn, use, choose and run; AI Directory is a catalogue of off-site AI sites.</span></p>
+<nav><a href="https://specul.com/legal.html"><span data-zh="">法律条款</span><span data-en="">Legal terms</span></a></nav>
+</div>
+</aside>
+<main id="main">
+<div class="container ms-page"><h1><span data-zh="">方法谱系：从 Transformer 到选择性状态空间</span><span data-en="">Method lineage: from Transformer to selective state spaces</span></h1><p><span data-zh="">按预印本发表时间排，只标引用与承接关系，不排质量高低。每一步只链本站已核过的条目；谱系里出现空白（例如没有单独收录的节点），说明本站尚未核到那篇原文，不补二手转述。</span><span data-en="">Ordered by preprint date, showing citation and inheritance only, not rank. Each step links to an entry verified on this site; where the lineage has a gap — a node not separately collected here — it means the original text has not been verified yet, and no second-hand summary is substituted.</span></p><ol class="fx-path">
+<li><b>1.</b> <span data-zh="">2017：Transformer 把序列建模从循环结构里解耦，成为后续所有路线的共同底座。</span><span data-en="">2017: Transformer decouples sequence modelling from recurrence and becomes the shared base for everything after it.</span> <a href="vaswani-2017-attention.html"><span data-zh="">条目</span><span data-en="">entry</span></a></li>
+<li><b>2.</b> <span data-zh="">2020.01：Kaplan 等报告损失随参数、数据与算力变化的幂律，并在附录写明理论理解与外推范围的限制。</span><span data-en="">2020.01: Kaplan et al. report power laws for loss against parameters, data and compute, and state limits on theoretical understanding and extrapolation in the appendix.</span> <a href="kaplan-2020-scaling-laws.html"><span data-zh="">条目</span><span data-en="">entry</span></a></li>
+<li><b>3.</b> <span data-zh="">2020.05：GPT-3 把少样本提示放进评测设定，作者同时讨论数据污染与能力边界。</span><span data-en="">2020.05: GPT-3 evaluates few-shot prompting, while the authors discuss data contamination and capability limits.</span> <a href="brown-2020-gpt3.html"><span data-zh="">条目</span><span data-en="">entry</span></a></li>
+<li><b>4.</b> <span data-zh="">2021.01：Prefix-tuning 冻结基座只学连续前缀；在摘要任务上仍不如全量微调。</span><span data-en="">2021.01: Prefix-tuning freezes the base and learns a continuous prefix; it still underperforms full fine-tuning on summarisation.</span> <a href="li-2021-prefix-tuning.html"><span data-zh="">条目</span><span data-en="">entry</span></a></li>
+<li><b>5.</b> <span data-zh="">2021.04：RoFormer 用旋转位置编码把位置信息注入注意力，结论限定在论文自己的实验设置内。</span><span data-en="">2021.04: RoFormer injects position information into attention through rotary embeddings, with conclusions bounded by the paper's own experimental setup.</span> <a href="su-2021-roformer.html"><span data-zh="">条目</span><span data-en="">entry</span></a></li>
+<li><b>6.</b> <span data-zh="">2021.06：LoRA 冻结基座并训练低秩适配矩阵，把可训练参数与存储开销降下来；本站未复现。</span><span data-en="">2021.06: LoRA freezes the base and trains low-rank adaptation matrices, reducing trainable parameters and storage overhead; this site has not reproduced it.</span> <a href="hu-2021-lora.html"><span data-zh="">条目</span><span data-en="">entry</span></a></li>
+<li><b>7.</b> <span data-zh="">2022.01：思维链提示把中间推理步骤写出来，但作者自己指出这种能力只在约 100B 参数以上涌现。</span><span data-en="">2022.01: chain-of-thought prompting writes out intermediate steps, with the authors noting the ability emerges only above roughly 100B parameters.</span> <a href="wei-2022-chain-of-thought.html"><span data-zh="">条目</span><span data-en="">entry</span></a></li>
+<li><b>8.</b> <span data-zh="">2022.03：InstructGPT 用人类偏好数据把「跟着意图走」变成可训练目标，并承认模型既不完全对齐也不完全安全。</span><span data-en="">2022.03: InstructGPT turns following intent into a trainable objective using human preference data, and concedes the models are neither fully aligned nor fully safe.</span> <a href="ouyang-2022-instructgpt.html"><span data-zh="">条目</span><span data-en="">entry</span></a></li>
+<li><b>9.</b> <span data-zh="">2022.03：Chinchilla 修正了参数与训练量的配比，指出同预算下参数与 token 应按相同比例增长。</span><span data-en="">2022.03: Chinchilla revises the parameter-to-data ratio, finding that both should scale in equal proportion at a fixed budget.</span> <a href="hoffmann-2022-chinchilla.html"><span data-zh="">条目</span><span data-en="">entry</span></a></li>
+<li><b>10.</b> <span data-zh="">2022.03：自一致性在思维链之上采样多条路径再投票，代价是计算量成倍上升。</span><span data-en="">2022.03: self-consistency samples several chains and votes, at the cost of proportionally more computation.</span> <a href="wang-2022-self-consistency.html"><span data-zh="">条目</span><span data-en="">entry</span></a></li>
+<li><b>11.</b> <span data-zh="">2022.05：FlashAttention 把注意力的瓶颈从算力改判为显存读写，结果仍精确，但每种新实现都要重写 kernel。</span><span data-en="">2022.05: FlashAttention reframes the attention bottleneck as memory traffic rather than arithmetic; the result stays exact, but each new implementation needs its own kernel.</span> <a href="dao-2022-flashattention.html"><span data-zh="">条目</span><span data-en="">entry</span></a></li>
+<li><b>12.</b> <span data-zh="">2022.10：ReAct 让推理与行动交替进行，可追溯性提高的同时推理自由度下降。</span><span data-en="">2022.10: ReAct interleaves reasoning with acting, gaining traceability while giving up some freedom in reasoning.</span> <a href="yao-2022-react.html"><span data-zh="">条目</span><span data-en="">entry</span></a></li>
+<li><b>13.</b> <span data-zh="">2022.10：GPTQ 把训练后量化推进到 3–4 bit；作者同时说明加速来自显存搬运减少，不是计算量减少。</span><span data-en="">2022.10: GPTQ pushes post-training quantisation to 3-4 bits, while its authors note the speed-up comes from less memory movement, not fewer computations.</span> <a href="frantar-2022-gptq.html"><span data-zh="">条目</span><span data-en="">entry</span></a></li>
+<li><b>14.</b> <span data-zh="">2022.11：投机解码用小模型草稿与大模型并行验证来换推理吞吐，收益取决于草稿被接受的比例。</span><span data-en="">2022.11: Speculative decoding trades draft-model proposals and parallel target-model verification for inference throughput, with gains depending on acceptance rate.</span> <a href="leviathan-2023-speculative-decoding.html"><span data-zh="">条目</span><span data-en="">entry</span></a></li>
+<li><b>15.</b> <span data-zh="">2022.12：Constitutional AI 用原则驱动自我批评与 AI 反馈，但有用性标签仍来自人工监督。</span><span data-en="">2022.12: Constitutional AI uses principles for self-critique and AI feedback, while helpfulness labels still come from human supervision.</span> <a href="bai-2022-constitutional-ai.html"><span data-zh="">条目</span><span data-en="">entry</span></a></li>
+<li><b>16.</b> <span data-zh="">2023.05：DPO 把偏好优化写成分类损失，跳过显式奖励模型与采样，验证规模止于 6B。</span><span data-en="">2023.05: DPO writes preference optimisation as a classification loss, skipping the explicit reward model and sampling, with validation up to 6B parameters.</span> <a href="rafailov-2023-dpo.html"><span data-zh="">条目</span><span data-en="">entry</span></a></li>
+<li><b>17.</b> <span data-zh="">2023.05：QLoRA 把量化基座与低秩适配合在一起；作者没有确立 33B/65B 上追平 16-bit 全量微调。</span><span data-en="">2023.05: QLoRA combines a quantised base with low-rank adapters; the authors did not establish parity with 16-bit full finetuning at 33B/65B.</span> <a href="dettmers-2023-qlora.html"><span data-zh="">条目</span><span data-en="">entry</span></a></li>
+<li><b>18.</b> <span data-zh="">2023.05：Tree of Thoughts 把推理展开成可搜索的树，代价是更多模型调用与任务特定的评估设置。</span><span data-en="">2023.05: Tree of Thoughts expands reasoning into a searchable tree, at the cost of more model calls and task-specific evaluation setups.</span> <a href="yao-2023-tree-of-thoughts.html"><span data-zh="">条目</span><span data-en="">entry</span></a></li>
+<li><b>19.</b> <span data-zh="">2023.09：vLLM 用分页思路管理 KV 缓存，把服务吞吐抬到 2–4 倍，并写明这套优化不适用于所有负载。</span><span data-en="">2023.09: vLLM manages the KV cache with paging and raises serving throughput 2-4 times, while stating the optimisation does not apply to every workload.</span> <a href="kwon-2023-vllm-pagedattention.html"><span data-zh="">条目</span><span data-en="">entry</span></a></li>
+<li><b>20.</b> <span data-zh="">2023.12：Mamba 用选择性状态空间去掉注意力；作者把更大规模表现与下游生态性质列为待评估。</span><span data-en="">2023.12: Mamba removes attention with selective state spaces; the authors leave larger-scale behaviour and downstream ecosystem properties open.</span> <a href="gu-2023-mamba.html"><span data-zh="">条目</span><span data-en="">entry</span></a></li>
+</ol><p class="t-sm"><span data-zh="">这页出现在主题：</span><span data-en="">This page appears in: </span><a href="https://specul.com/topic-research.html"><span data-zh="">用 AI 查资料</span><span data-en="">Research with AI</span></a></p></div>
+</main>
+<footer class="site-footer foot-single">
+<div class="container foot-line">
+<div class="foot-brand">
+<span class="foot-brand-main">
+<span aria-hidden="true" class="brand-dot"></span>
+<span class="foot-copy"><span data-zh="">投机取巧 · specul.com</span><span data-en="">Specul · specul.com</span></span>
+</span>
+<span class="foot-license"><a href="https://specul.com/LICENSE-CONTENT.txt"><span data-zh="">内容 CC BY 4.0</span><span data-en="">Content CC BY 4.0</span></a><span aria-hidden="true" class="sep">·</span><a href="https://specul.com/LICENSE.txt"><span data-zh="">代码 MIT</span><span data-en="">Code MIT</span></a><span aria-hidden="true" class="sep">·</span><a class="foot-source" href="https://github.com/speculcom/ai-handbook" rel="noopener" target="_blank"><span data-zh="">源码</span><span data-en="">Source</span></a></span>
+</div>
+<nav aria-label="Footer site links" class="foot-sites">
+<a class="site-link" href="https://specul.com/"><span data-zh="">首页</span><span data-en="">Home</span></a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://learn.specul.com/"><span data-zh="">学 AI</span><span data-en="">Learn</span></a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://tools.specul.com/"><span data-zh="">工具</span><span data-en="">Tools</span></a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://models.specul.com/"><span data-zh="">模型</span><span data-en="">Models</span></a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://demos.specul.com/"><span data-zh="">演示</span><span data-en="">Demos</span></a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://oss.specul.com/"><span data-zh="">开源</span><span data-en="">OSS</span></a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://hardware.specul.com/"><span data-zh="">算力</span><span data-en="">Compute</span></a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://papers.specul.com/"><span data-zh="">论文</span><span data-en="">Papers</span></a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://chain.specul.com/"><span data-zh="">链</span><span data-en="">Chain</span></a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://nav.specul.com/"><span data-zh="">导航</span><span data-en="">Directory</span></a>
+</nav>
+<nav aria-label="Legal and corrections" class="foot-legal">
+<a href="https://specul.com/legal.html"><span data-zh="">法律</span><span data-en="">Legal</span></a><span aria-hidden="true" class="sep">·</span>
+<a href="https://specul.com/legal.html#s8"><span data-zh="">隐私</span><span data-en="">Privacy</span></a><span aria-hidden="true" class="sep">·</span>
+<a href="https://specul.com/correct.html"><span data-zh="">纠错</span><span data-en="">Corrections</span></a>
+</nav>
+</div>
+</footer>
+<nav aria-label="快捷导航" class="nav-tabbar nav-tabbar-1row">
+<a href="https://specul.com/"><span aria-hidden="true" class="ti">◎</span><span data-zh="">首页</span><span data-en="">Home</span></a>
+<a href="https://learn.specul.com/"><span aria-hidden="true" class="ti">▤</span><span data-zh="">学AI</span><span data-en="">Learn</span></a>
+<a href="https://tools.specul.com/"><span aria-hidden="true" class="ti">◈</span><span data-zh="">工具</span><span data-en="">Tools</span></a>
+<a href="https://models.specul.com/"><span aria-hidden="true" class="ti">▦</span><span data-zh="">模型</span><span data-en="">Models</span></a>
+<a href="https://demos.specul.com/"><span aria-hidden="true" class="ti">▷</span><span data-zh="">演示</span><span data-en="">Demos</span></a>
+<a href="https://oss.specul.com/"><span aria-hidden="true" class="ti">▧</span><span data-zh="">开源</span><span data-en="">OSS</span></a>
+<a href="https://hardware.specul.com/"><span aria-hidden="true" class="ti">▣</span><span data-zh="">算力</span><span data-en="">Chips</span></a>
+<a aria-current="page" href="https://papers.specul.com/"><span aria-hidden="true" class="ti">▥</span><span data-zh="">论文</span><span data-en="">Papers</span></a>
+<a href="https://chain.specul.com/"><span aria-hidden="true" class="ti">◇</span><span data-zh="">链</span><span data-en="">Chain</span></a>
+<a data-nav-group="external" href="https://nav.specul.com/"><span aria-hidden="true" class="ti">↗</span><span data-zh="">导航</span><span data-en="">Nav</span></a>
 </nav>
 </body>
 </html>

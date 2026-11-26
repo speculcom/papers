@@ -1,30 +1,27 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>DroidPrefill：用手机 NPU 跑完全本地的 GUI agent · AI 论文</title>
-  <meta name="description" content="问题：手机 GUI agent 多靠云端模型，延迟、隐私、网络都受限；直接把常规 agent 搬到手机 NPU 又低效——NPU 强在 prefill、弱在逐 token decode，且编译期上下文固定。 证据位置：DroidPrefill 把常见动作选择移到 prefill 边界，只把需要推理的" />
-  <link rel="canonical" href="https://papers.specul.com/droidprefill-2026.html" />
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="DroidPrefill：用手机 NPU 跑完全本地的 GUI agent · AI 论文" />
-  <meta property="og:url" content="https://papers.specul.com/droidprefill-2026.html" />
-  <meta property="og:title" content="DroidPrefill：用手机 NPU 跑完全本地的 GUI agent · AI 论文" />
-  <meta property="og:description" content="问题：手机 GUI agent 多靠云端模型，延迟、隐私、网络都受限；直接把常规 agent 搬到手机 NPU 又低效——NPU 强在 prefill、弱在逐 token decode，且编译期上下文固定。 证据位置：DroidPrefill 把常见动作选择移到 prefill 边界，只把需要推理的" />
-  <meta property="og:locale" content="zh_CN" />
-  <meta property="og:locale:alternate" content="en_US" />
-  <link rel="alternate" hreflang="zh-CN" href="https://papers.specul.com/droidprefill-2026.html" />
-  <link rel="alternate" hreflang="en" href="https://papers.specul.com/droidprefill-2026.html?lang=en" />
-  <link rel="alternate" hreflang="x-default" href="https://papers.specul.com/droidprefill-2026.html" />
-  <meta name="theme-color" content="#16121f" />
-  <link rel="icon" type="image/png" href="assets/brand/dandelion-favicon-site.png" />
-  <link rel="apple-touch-icon" href="assets/brand/dandelion-apple-touch-site.png" />
-  <script src="brand.js?v=37d1072be69b"></script>
-  <link rel="stylesheet" href="brand.css?v=37d1072be69b" />
-  <link rel="stylesheet" href="site.css" />
-  <link rel="stylesheet" href="papers.css" />
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","name":"DroidPrefill：用手机 NPU 跑完全本地的 GUI agent · AI 论文","description":"问题：手机 GUI agent 多靠云端模型，延迟、隐私、网络都受限；直接把常规 agent 搬到手机 NPU 又低效——NPU 强在 prefill、弱在逐 token decode，且编译期上下文固定。 证据位置：DroidPrefill 把常见动作选择移到 prefill 边界，只把需要推理的","url":"https://papers.specul.com/droidprefill-2026.html","inLanguage":"zh-CN","isPartOf":{"@type":"WebSite","name":"Specul","url":"https://specul.com/"}}</script>
-</head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>DroidPrefill：用手机 NPU 跑完全本地的 GUI agent · AI 论文</title>
+<meta content="问题：手机 GUI agent 多靠云端模型，延迟、隐私、网络都受限；直接把常规 agent 搬到手机 NPU 又低效——NPU 强在 prefill、弱在逐 token decode，且编译期上下文固定。 证据位置：DroidPrefill 把常见动作选择移到 prefill 边界，只把需要推理的" name="description"/>
+<link href="https://papers.specul.com/droidprefill-2026.html" rel="canonical"/>
+<meta content="website" property="og:type"/>
+<meta content="DroidPrefill：用手机 NPU 跑完全本地的 GUI agent · AI 论文" property="og:site_name"/>
+<meta content="https://papers.specul.com/droidprefill-2026.html" property="og:url"/>
+<meta content="DroidPrefill：用手机 NPU 跑完全本地的 GUI agent · AI 论文" property="og:title"/>
+<meta content="问题：手机 GUI agent 多靠云端模型，延迟、隐私、网络都受限；直接把常规 agent 搬到手机 NPU 又低效——NPU 强在 prefill、弱在逐 token decode，且编译期上下文固定。 证据位置：DroidPrefill 把常见动作选择移到 prefill 边界，只把需要推理的" property="og:description"/>
+<meta content="zh_CN" property="og:locale"/>
+<meta content="en_US" property="og:locale:alternate"/>
+<meta content="#16121f" name="theme-color"/>
+<link href="assets/brand/dandelion-favicon-site.png" rel="icon" type="image/png"/>
+<link href="assets/brand/dandelion-apple-touch-site.png" rel="apple-touch-icon"/>
+<script src="brand.js?v=37d1072be69b"></script>
+<link href="brand.css?v=37d1072be69b" rel="stylesheet"/>
+<link href="site.css" rel="stylesheet"/>
+<link href="papers.css" rel="stylesheet"/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","name":"DroidPrefill：用手机 NPU 跑完全本地的 GUI agent · AI 论文","description":"问题：手机 GUI agent 多靠云端模型，延迟、隐私、网络都受限；直接把常规 agent 搬到手机 NPU 又低效——NPU 强在 prefill、弱在逐 token decode，且编译期上下文固定。 证据位置：DroidPrefill 把常见动作选择移到 prefill 边界，只把需要推理的","url":"https://papers.specul.com/droidprefill-2026.html","inLanguage":"zh-CN","isPartOf":{"@type":"WebSite","name":"Specul","url":"https://specul.com/"}}</script>
+<link href="https://papers.specul.com/droidprefill-2026.html" hreflang="zh-CN" rel="alternate"/><link href="https://papers.specul.com/en/droidprefill-2026.html" hreflang="en" rel="alternate"/><link href="https://papers.specul.com/droidprefill-2026.html" hreflang="x-default" rel="alternate"/></head>
 <!-- B6（2026-10-09）：--accent 原先在这里被**内联到 body 上**（style="--accent:X"），
      同时头部又写了 :root{--accent:X} —— 两处同一份值，冗余。
      而内联样式会**赢过任何选择器**，于是主题级覆盖（html[data-theme="light"]{--accent:…}）
@@ -33,152 +30,147 @@
      ⚠ 这段注释里**不能出现反引号**：它在模板字符串内部，反引号会提前结束模板
      （写这段时踩了第 4 次；pitfalls 里早有记录）。 -->
 <body class="brand-ambient has-tabbar has-tabbar-1row">
-  <a class="t-skip" href="#main"><span data-zh>跳到主要内容</span><span data-en>Skip to main content</span></a>
-  <header class="site-header">
-    <div class="container site-bar">
-      <a class="brand" href="https://specul.com/" title="投机取巧">
-        <span class="brand-dot" aria-hidden="true"></span>
-        <span class="brand-text">
-          <span class="brand-name" id="markName" data-zh-name="投机取巧" data-en-name="Speculative Speculation">投机取巧</span>
-          <span class="brand-sub" id="markSub" data-zh-sub="Speculative Speculation" data-en-sub="">Speculative Speculation</span>
-        </span>
-      </a>
-      <nav class="nav-links" aria-label="站点导航">
-        <a href="https://specul.com/"><span data-zh>首页</span><span data-en>Home</span></a>
-        <a href="https://learn.specul.com/"><span data-zh>学 AI</span><span data-en>Learn</span></a>
-        <a href="https://tools.specul.com/"><span data-zh>工具</span><span data-en>Tools</span></a>
-        <a href="https://models.specul.com/"><span data-zh>模型</span><span data-en>Models</span></a>
-        <a href="https://demos.specul.com/"><span data-zh>作品演示</span><span data-en>Playground</span></a>
-        <a href="https://oss.specul.com/"><span data-zh>开源库</span><span data-en>OSS</span></a>
-        <a href="https://hardware.specul.com/"><span data-zh>硬件算力</span><span data-en>Compute</span></a>
-        <a href="https://papers.specul.com/" aria-current="page"><span data-zh>AI 论文</span><span data-en>AI Papers</span></a>
-        <a href="https://chain.specul.com/"><span data-zh>链</span><span data-en>Chain</span></a>
-        <a href="https://nav.specul.com/"><span data-zh>AI 导航</span><span data-en>AI Directory</span></a>
-      </nav>
-      <!-- 2026-10-10：.nav-tools 从 nav 元素**内部**移到外面，与 .nav-links 平级。
+<a class="t-skip" href="#main"><span data-zh="">跳到主要内容</span><span data-en="">Skip to main content</span></a>
+<header class="site-header">
+<div class="container site-bar">
+<a class="brand" href="https://specul.com/" title="投机取巧">
+<span aria-hidden="true" class="brand-dot"></span>
+<span class="brand-text">
+<span class="brand-name" data-en-name="Speculative Speculation" data-zh-name="投机取巧" id="markName">投机取巧</span>
+<span class="brand-sub" data-en-sub="" data-zh-sub="Speculative Speculation" id="markSub">Speculative Speculation</span>
+</span>
+</a>
+<nav aria-label="站点导航" class="nav-links">
+<a href="https://specul.com/"><span data-zh="">首页</span><span data-en="">Home</span></a>
+<a href="https://learn.specul.com/"><span data-zh="">学 AI</span><span data-en="">Learn</span></a>
+<a href="https://tools.specul.com/"><span data-zh="">工具</span><span data-en="">Tools</span></a>
+<a href="https://models.specul.com/"><span data-zh="">模型</span><span data-en="">Models</span></a>
+<a href="https://demos.specul.com/"><span data-zh="">作品演示</span><span data-en="">Playground</span></a>
+<a href="https://oss.specul.com/"><span data-zh="">开源库</span><span data-en="">OSS</span></a>
+<a href="https://hardware.specul.com/"><span data-zh="">硬件算力</span><span data-en="">Compute</span></a>
+<a aria-current="page" href="https://papers.specul.com/"><span data-zh="">AI 论文</span><span data-en="">AI Papers</span></a>
+<a href="https://chain.specul.com/"><span data-zh="">链</span><span data-en="">Chain</span></a>
+<a href="https://nav.specul.com/"><span data-zh="">AI 导航</span><span data-en="">AI Directory</span></a>
+</nav>
+<!-- 2026-10-10：.nav-tools 从 nav 元素**内部**移到外面，与 .nav-links 平级。
            放里面时窄屏下它会跟着链接一起换行：链接占满整行 → 按钮被挤到第三条
            （实测顶栏 134px、按钮组孤零零一行）。移出来后它与品牌同行，
            链接独占第二行居中 —— 这才是下面注释里方案 B 想要的样子。 -->
-      <span class="nav-tools">
-        <a class="icon-btn" href="https://specul.com/search.html" aria-label="搜索" data-ui-aria-label-zh="搜索" data-ui-aria-label-en="Search" title="搜索全站" data-ui-title-zh="搜索全站" data-ui-title-en="Search all sites"><span aria-hidden="true">⌕</span></a>
-        <button class="icon-btn" id="themeBtn" type="button" aria-label="切换明暗主题" title="切换明暗主题">☾</button>
-        <button class="icon-btn" id="langBtn" type="button" aria-label="Switch language" title="Switch language">EN</button>
-      </span>
-      <!-- B6（2026-10-09）：窄屏（≤900px）下 .nav-links 会隐藏，这个汉堡是替代入口。
+<span class="nav-tools">
+<a aria-label="搜索" class="icon-btn" data-ui-aria-label-en="Search" data-ui-aria-label-zh="搜索" data-ui-title-en="Search all sites" data-ui-title-zh="搜索全站" href="https://specul.com/search.html" title="搜索全站"><span aria-hidden="true">⌕</span></a>
+<button aria-label="切换明暗主题" class="icon-btn" id="themeBtn" title="切换明暗主题" type="button">☾</button>
+<a aria-label="Switch to English" class="icon-btn" href="/en/droidprefill-2026.html" hreflang="en" id="langBtn" lang="en" title="Switch to English">EN</a>
+</span>
+<!-- B6（2026-10-09）：窄屏（≤900px）下 .nav-links 会隐藏，这个汉堡是替代入口。
            行为在共享 brand.js 里（一处实现、十站共用），样式在共享 brand.css。
            无脚本时 CSS 不会显示它，而是把 .nav-links 在窄屏放出来 —— 不会出现
            「导航被藏进一个点了没反应的按钮」。 -->
-      <button class="nav-burger" type="button" aria-label="打开菜单" aria-expanded="false" aria-controls="navDrawer">
-        <i></i><i></i><i></i>
-      </button>
-    </div>
-  </header>
-  <div class="nav-scrim"></div>
-  <aside class="nav-drawer" id="navDrawer" aria-hidden="true" aria-label="站点导航">
-    <div class="nav-drawer-h">
-      <span class="brand-name"><span data-zh>投机取巧</span><span data-en>Speculative Speculation</span></span>
-      <span class="brand-sub" data-zh-sub="Speculative Speculation" data-en-sub="">Speculative Speculation</span>
-      <button class="nav-dclose" type="button" aria-label="关闭">×</button>
-    </div>
-    <nav class="nav-drawer-list">
-      <a href="https://specul.com/"><span><span data-zh>首页</span><span data-en>Home</span></span><span class="ar" aria-hidden="true">→</span></a>
-      <a href="https://learn.specul.com/"><span><span data-zh>学 AI</span><span data-en>Learn</span></span><span class="ar" aria-hidden="true">→</span></a>
-      <a href="https://tools.specul.com/"><span><span data-zh>工具</span><span data-en>Tools</span></span><span class="ar" aria-hidden="true">→</span></a>
-      <a href="https://models.specul.com/"><span><span data-zh>模型</span><span data-en>Models</span></span><span class="ar" aria-hidden="true">→</span></a>
-      <a href="https://demos.specul.com/"><span><span data-zh>作品演示</span><span data-en>Playground</span></span><span class="ar" aria-hidden="true">→</span></a>
-      <a href="https://oss.specul.com/"><span><span data-zh>开源库</span><span data-en>OSS</span></span><span class="ar" aria-hidden="true">→</span></a>
-      <a href="https://hardware.specul.com/" class="nav-group-start"><span><span data-zh>硬件算力</span><span data-en>Compute</span></span><span class="ar" aria-hidden="true">→</span></a>
-      <a href="https://papers.specul.com/" aria-current="page"><span><span data-zh>AI 论文</span><span data-en>AI Papers</span></span><span class="ar" aria-hidden="true">→</span></a>
-      <a href="https://chain.specul.com/"><span><span data-zh>链</span><span data-en>Chain</span></span><span class="ar" aria-hidden="true">→</span></a>
-      <a href="https://nav.specul.com/" class="nav-group-start" data-nav-group="external"><span><span data-zh>AI 导航</span><span data-en>AI Directory</span></span><span class="ar" aria-hidden="true">↗</span></a>
-    </nav>
-    <div class="nav-drawer-foot">
-      <p><span data-zh>内容站覆盖学、用、选、跑；AI 导航是站外的 AI 网站目录，点出去看。</span><span data-en>Content sites cover learn, use, choose and run; AI Directory is a catalogue of off-site AI sites.</span></p>
-      <nav><a href="https://specul.com/legal.html"><span data-zh>法律条款</span><span data-en>Legal terms</span></a></nav>
-    </div>
-  </aside>
-  <main id="main">
-<div class="container ms-page fx-entry">
-  <p class="fx-crumb"><a href="index.html"><span data-zh>← 返回AI 论文</span><span data-en>← Back to AI Papers</span></a></p>
-  <div class="fx-top"><span class="fx-badge"><span data-zh>Agent 与工具</span><span data-en>Agents &amp; tools</span></span></div>
-  <h1><span data-zh>DroidPrefill：用手机 NPU 跑完全本地的 GUI agent</span><span data-en>Building Fully On-Device GUI Agents with Mobile NPUs</span></h1>
-  
-  <p class="fx-entry-lead"><span data-zh>问题：手机 GUI agent 多靠云端模型，延迟、隐私、网络都受限；直接把常规 agent 搬到手机 NPU 又低效——NPU 强在 prefill、弱在逐 token decode，且编译期上下文固定。<br>证据位置：DroidPrefill 把常见动作选择移到 prefill 边界，只把需要推理的部分留给 decode；用候选约束的 UI 压缩、bounded state ledger 和结构化决策精炼控制上下文。商业手机上对比自回归 T3A+：每步延迟最多 -85.0%，任务成功率最多 +24.6%；A11y-only QAIRT 下输入 4,023→1,830 tokens、输出 318.6→26.7 tokens，延迟 24.2s→4.6s。<br>作者自陈局限：完全本地只能用小的量化模型 + 有界上下文，难任务的长程规划仍受模型能力上限；主要依赖 accessibility 信息，视觉丰富/自绘界面可能缺失；SPAD 阈值手工校准；只测 Qualcomm NPU，真实设备验证是代表性而非 benchmark 规模；加视觉输入不一定更好，512×512 下细粒度 grounding 与延迟有冲突。<br>它没主张的：不是所有手机 GUI 任务都能 +24.6%；不是不需要云；不是视觉一定有用；不是已经跨 NPU 平台验证。</span><span data-en>Problem: mobile GUI agents mostly rely on cloud models, paying latency, privacy and connectivity costs; moving a conventional agent onto a phone NPU is inefficient because NPUs excel at prefill and struggle with token-by-token decode, while compiled context profiles are fixed.<br>Where the evidence sits: DroidPrefill moves common-case action selection to the prefill boundary and reserves decoding for cases that truly need reasoning, using candidate-grounded UI compression, a bounded state ledger and structured decision refinement to control context. On commercial phones against the autoregressive T3A+ baseline, per-step latency falls by up to 85.0% and task success rises by up to 24.6%; under A11y-only QAIRT, input drops from 4,023 to 1,830 tokens, output from 318.6 to 26.7 tokens, and latency from 24.2 s to 4.6 s.<br>What the authors say about limits: fully on-device deployment relies on compact, quantized models with bounded context, so difficult long-horizon tasks remain limited by model capability; it relies mainly on accessibility representations, which may miss visually rich or custom-rendered interfaces; SPAD thresholds are manually calibrated; evaluation covers Qualcomm NPUs only and uses representative rather than benchmark-scale real-device validation; adding vision does not consistently help, and 512×512 downsampling trades grounding against latency.<br>What it does not claim: that every mobile GUI task gains 24.6%; that cloud is unnecessary; that vision always helps; that the results generalize across NPU platforms.</span></p>
-  <section class="fx-entry-sec"><h2><span data-zh>关键参数</span><span data-en>Key specs</span></h2><dl class="fx-specs"><div><dt>发表 / venue</dt><dd>arXiv 2611.20772（2026-11-16）</dd></div><div><dt>硬件 / hardware</dt><dd>商用 Qualcomm 手机 NPU</dd></div><div><dt>模型 / model</dt><dd>Qwen3-4B-Instruct-2507 等小模型（QAIRT W4A16 / llama.cpp Q4_0）</dd></div><div><dt>评测 / benchmark</dt><dd>AndroidWorld；代表性 RealMobile 任务</dd></div><div><dt>延迟 / latency</dt><dd>每步最多 -85.0%；A11y QAIRT 24.2s → 4.6s</dd></div><div><dt>成功率 / success</dt><dd>最多 +24.6%</dd></div><div><dt>证据位置 / evidence</dt><dd>摘要；第 2–5 节；Limitations</dd></div><div><dt>复现状态 / reproduction</dt><dd>未复现（只读论文与 HTML 全文）</dd></div></dl></section>
-  <section class="fx-entry-sec"><h2><span data-zh>官方原文怎么说</span><span data-en>What the source says</span></h2><figure class="fx-evidence">
-        <blockquote>We present DroidPrefill, a prefill-centric inference architecture that reshapes the GUI-agent workload around mobile-NPU execution.</blockquote>
-        <figcaption><span class="fx-ev-n">1</span> <a href="https://arxiv.org/abs/2611.20772" rel="noopener">https://arxiv.org/abs/2611.20772</a></figcaption>
-      </figure>
-<figure class="fx-evidence">
-        <blockquote>Experiments on commercial smartphones show that, in controlled comparisons with the autoregressive T3A+ baseline, DroidPrefill reduces per-step inference latency by up to 85.0%, while improving task success rate by up to 24.6%.</blockquote>
-        <figcaption><span class="fx-ev-n">2</span> <a href="https://arxiv.org/abs/2611.20772" rel="noopener">https://arxiv.org/abs/2611.20772</a></figcaption>
-      </figure>
-<figure class="fx-evidence">
-        <blockquote>DroidPrefill has several limitations. First, fully on-device deployment currently relies on compact and quantized models with bounded context, which limits semantic reasoning and long-horizon planning on difficult GUI tasks.</blockquote>
-        <figcaption><span class="fx-ev-n">3</span> <a href="https://arxiv.org/html/2611.20772" rel="noopener">https://arxiv.org/html/2611.20772</a></figcaption>
-      </figure>
-<figure class="fx-evidence">
-        <blockquote>our evaluation focuses on Qualcomm smartphone NPUs and uses representative rather than benchmark-scale real-device validation.</blockquote>
-        <figcaption><span class="fx-ev-n">4</span> <a href="https://arxiv.org/html/2611.20772" rel="noopener">https://arxiv.org/html/2611.20772</a></figcaption>
-      </figure></section>
-  <section class="fx-entry-sec"><h2><span data-zh>资料与许可</span><span data-en>Source and licence</span></h2>
-    <dl class="fx-specs">
-      <div><dt><span data-zh>资料时间</span><span data-en>Source checked</span></dt><dd>2026-11-20</dd></div>
-      <div><dt><span data-zh>许可 / 类型</span><span data-en>Licence / kind</span></dt><dd>arxiv-preprint</dd></div>
-      <div><dt><span data-zh>许可说明</span><span data-en>Licence evidence</span></dt><dd><a href="https://arxiv.org/abs/2611.20772" rel="noopener">https://arxiv.org/abs/2611.20772</a></dd></div>
-      <div><dt><span data-zh>类目</span><span data-en>Category</span></dt><dd><span data-zh>Agent 与工具</span><span data-en>Agents &amp; tools</span></dd></div>
-      
-      
-      
-    </dl>
-  </section>
-  
-  <section class="fx-entry-sec"><h2><span data-zh>论文里的数字怎么读</span><span data-en>How to read the numbers</span></h2><p><span data-zh>先分清测什么、怎么算、和谁比、有没有数据污染。拿不准就回原文看实验设置。</span><span data-en>Before citing a score, separate what it measures, how it is scored, what it compares against and whether contamination is controlled. If unsure, go back to the experiment setup in the paper.</span> <a href="https://models.specul.com/evals/"><span data-zh>看评测基准</span><span data-en>See benchmark cards</span></a> · <a href="https://models.specul.com/data/"><span data-zh>看数据集卡</span><span data-en>See dataset cards</span></a></p></section>
-  <section class="fx-entry-sec"><h2><span data-zh>同类目还有</span><span data-en>More in this category</span></h2><ul class="fx-list"><li><a href="agentbench-2023.html"><span data-zh>AgentBench: Evaluating LLMs as Agents</span><span data-en>AgentBench: Evaluating LLMs as Agents</span></a></li><li><a href="contextweaver-2026.html"><span data-zh>ContextWeaver: Selective and Dependency-Structured Memory Construction for LLM Agents</span><span data-en>ContextWeaver: Selective and Dependency-Structured Memory Construction for LLM Agents</span></a></li><li><a href="gemini-4-carbon-2026.html"><span data-zh>Gemini 4 Carbon Model Card</span><span data-en>Gemini 4 Carbon Model Card</span></a></li></ul></section>
-  <section class="fx-entry-sec"><h2><span data-zh>下一步</span><span data-en>Next step</span></h2><ul class="fx-list"><li><a href="https://specul.com/topic-research.html"><span data-zh>做研究 / 写报告：从找论文到整理引用</span><span data-en>Research / reports: from finding papers to citations</span></a></li><li><a href="https://models.specul.com/evals/"><span data-zh>看评测基准：论文里的分数怎么复现</span><span data-en>See benchmark cards: how to reproduce a score</span></a></li></ul></section>
-  <p><a class="fx-source" href="https://arxiv.org/abs/2611.20772" rel="noopener"><span data-zh>去官网看原页</span><span data-en>Open the official page</span> &rarr;</a></p>
-  <p class="fx-crumb"><a href="index.html"><span data-zh>← 返回AI 论文</span><span data-en>← Back to AI Papers</span></a></p>
+<button aria-controls="navDrawer" aria-expanded="false" aria-label="打开菜单" class="nav-burger" type="button">
+<i></i><i></i><i></i>
+</button>
 </div>
-  </main>
-  <footer class="site-footer foot-single">
-    <div class="container foot-line">
-      <div class="foot-brand">
-        <span class="foot-brand-main">
-          <span class="brand-dot" aria-hidden="true"></span>
-          <span class="foot-copy"><span data-zh>投机取巧 · specul.com</span><span data-en>Specul · specul.com</span></span>
-        </span>
-        <span class="foot-license"><a href="https://specul.com/LICENSE-CONTENT.txt"><span data-zh>内容 CC BY 4.0</span><span data-en>Content CC BY 4.0</span></a><span class="sep" aria-hidden="true">·</span><a href="https://specul.com/LICENSE.txt"><span data-zh>代码 MIT</span><span data-en>Code MIT</span></a><span class="sep" aria-hidden="true">·</span><a class="foot-source" href="https://github.com/speculcom/ai-handbook" target="_blank" rel="noopener"><span data-zh>源码</span><span data-en>Source</span></a></span>
-      </div>
-      <nav class="foot-sites" aria-label="Footer site links">
-        <a class="site-link" href="https://specul.com/"><span data-zh>首页</span><span data-en>Home</span></a><span class="sep site-sep" aria-hidden="true">·</span>
-        <a class="site-link" href="https://learn.specul.com/"><span data-zh>学 AI</span><span data-en>Learn</span></a><span class="sep site-sep" aria-hidden="true">·</span>
-        <a class="site-link" href="https://tools.specul.com/"><span data-zh>工具</span><span data-en>Tools</span></a><span class="sep site-sep" aria-hidden="true">·</span>
-        <a class="site-link" href="https://models.specul.com/"><span data-zh>模型</span><span data-en>Models</span></a><span class="sep site-sep" aria-hidden="true">·</span>
-        <a class="site-link" href="https://demos.specul.com/"><span data-zh>演示</span><span data-en>Demos</span></a><span class="sep site-sep" aria-hidden="true">·</span>
-        <a class="site-link" href="https://oss.specul.com/"><span data-zh>开源</span><span data-en>OSS</span></a><span class="sep site-sep" aria-hidden="true">·</span>
-        <a class="site-link" href="https://hardware.specul.com/"><span data-zh>算力</span><span data-en>Compute</span></a><span class="sep site-sep" aria-hidden="true">·</span>
-        <a class="site-link" href="https://papers.specul.com/"><span data-zh>论文</span><span data-en>Papers</span></a><span class="sep site-sep" aria-hidden="true">·</span>
-        <a class="site-link" href="https://chain.specul.com/"><span data-zh>链</span><span data-en>Chain</span></a><span class="sep site-sep" aria-hidden="true">·</span>
-        <a class="site-link" href="https://nav.specul.com/"><span data-zh>导航</span><span data-en>Directory</span></a>
-      </nav>
-      <nav class="foot-legal" aria-label="Legal and corrections">
-        <a href="https://specul.com/legal.html"><span data-zh>法律</span><span data-en>Legal</span></a><span class="sep" aria-hidden="true">·</span>
-        <a href="https://specul.com/legal.html#s8"><span data-zh>隐私</span><span data-en>Privacy</span></a><span class="sep" aria-hidden="true">·</span>
-        <a href="https://specul.com/correct.html"><span data-zh>纠错</span><span data-en>Corrections</span></a>
-      </nav>
-    </div>
-  </footer>
-<nav class="nav-tabbar nav-tabbar-1row" aria-label="快捷导航">
-    <a href="https://specul.com/"><span class="ti" aria-hidden="true">◎</span><span data-zh>首页</span><span data-en>Home</span></a>
-    <a href="https://learn.specul.com/"><span class="ti" aria-hidden="true">▤</span><span data-zh>学AI</span><span data-en>Learn</span></a>
-    <a href="https://tools.specul.com/"><span class="ti" aria-hidden="true">◈</span><span data-zh>工具</span><span data-en>Tools</span></a>
-    <a href="https://models.specul.com/"><span class="ti" aria-hidden="true">▦</span><span data-zh>模型</span><span data-en>Models</span></a>
-    <a href="https://demos.specul.com/"><span class="ti" aria-hidden="true">▷</span><span data-zh>演示</span><span data-en>Demos</span></a>
-    <a href="https://oss.specul.com/"><span class="ti" aria-hidden="true">▧</span><span data-zh>开源</span><span data-en>OSS</span></a>
-    <a href="https://hardware.specul.com/"><span class="ti" aria-hidden="true">▣</span><span data-zh>算力</span><span data-en>Chips</span></a>
-    <a href="https://papers.specul.com/" aria-current="page"><span class="ti" aria-hidden="true">▥</span><span data-zh>论文</span><span data-en>Papers</span></a>
-    <a href="https://chain.specul.com/"><span class="ti" aria-hidden="true">◇</span><span data-zh>链</span><span data-en>Chain</span></a>
-    <a href="https://nav.specul.com/" data-nav-group="external"><span class="ti" aria-hidden="true">↗</span><span data-zh>导航</span><span data-en>Nav</span></a>
+</header>
+<div class="nav-scrim"></div>
+<aside aria-hidden="true" aria-label="站点导航" class="nav-drawer" id="navDrawer">
+<div class="nav-drawer-h">
+<span class="brand-name"><span data-zh="">投机取巧</span><span data-en="">Speculative Speculation</span></span>
+<span class="brand-sub" data-en-sub="" data-zh-sub="Speculative Speculation">Speculative Speculation</span>
+<button aria-label="关闭" class="nav-dclose" type="button">×</button>
+</div>
+<nav class="nav-drawer-list">
+<a href="https://specul.com/"><span><span data-zh="">首页</span><span data-en="">Home</span></span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://learn.specul.com/"><span><span data-zh="">学 AI</span><span data-en="">Learn</span></span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://tools.specul.com/"><span><span data-zh="">工具</span><span data-en="">Tools</span></span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://models.specul.com/"><span><span data-zh="">模型</span><span data-en="">Models</span></span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://demos.specul.com/"><span><span data-zh="">作品演示</span><span data-en="">Playground</span></span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://oss.specul.com/"><span><span data-zh="">开源库</span><span data-en="">OSS</span></span><span aria-hidden="true" class="ar">→</span></a>
+<a class="nav-group-start" href="https://hardware.specul.com/"><span><span data-zh="">硬件算力</span><span data-en="">Compute</span></span><span aria-hidden="true" class="ar">→</span></a>
+<a aria-current="page" href="https://papers.specul.com/"><span><span data-zh="">AI 论文</span><span data-en="">AI Papers</span></span><span aria-hidden="true" class="ar">→</span></a>
+<a href="https://chain.specul.com/"><span><span data-zh="">链</span><span data-en="">Chain</span></span><span aria-hidden="true" class="ar">→</span></a>
+<a class="nav-group-start" data-nav-group="external" href="https://nav.specul.com/"><span><span data-zh="">AI 导航</span><span data-en="">AI Directory</span></span><span aria-hidden="true" class="ar">↗</span></a>
+</nav>
+<div class="nav-drawer-foot">
+<p><span data-zh="">内容站覆盖学、用、选、跑；AI 导航是站外的 AI 网站目录，点出去看。</span><span data-en="">Content sites cover learn, use, choose and run; AI Directory is a catalogue of off-site AI sites.</span></p>
+<nav><a href="https://specul.com/legal.html"><span data-zh="">法律条款</span><span data-en="">Legal terms</span></a></nav>
+</div>
+</aside>
+<main id="main">
+<div class="container ms-page fx-entry">
+<p class="fx-crumb"><a href="index.html"><span data-zh="">← 返回AI 论文</span><span data-en="">← Back to AI Papers</span></a></p>
+<div class="fx-top"><span class="fx-badge"><span data-zh="">Agent 与工具</span><span data-en="">Agents &amp; tools</span></span></div>
+<h1><span data-zh="">DroidPrefill：用手机 NPU 跑完全本地的 GUI agent</span><span data-en="">Building Fully On-Device GUI Agents with Mobile NPUs</span></h1>
+<p class="fx-entry-lead"><span data-zh="">问题：手机 GUI agent 多靠云端模型，延迟、隐私、网络都受限；直接把常规 agent 搬到手机 NPU 又低效——NPU 强在 prefill、弱在逐 token decode，且编译期上下文固定。<br/>证据位置：DroidPrefill 把常见动作选择移到 prefill 边界，只把需要推理的部分留给 decode；用候选约束的 UI 压缩、bounded state ledger 和结构化决策精炼控制上下文。商业手机上对比自回归 T3A+：每步延迟最多 -85.0%，任务成功率最多 +24.6%；A11y-only QAIRT 下输入 4,023→1,830 tokens、输出 318.6→26.7 tokens，延迟 24.2s→4.6s。<br/>作者自陈局限：完全本地只能用小的量化模型 + 有界上下文，难任务的长程规划仍受模型能力上限；主要依赖 accessibility 信息，视觉丰富/自绘界面可能缺失；SPAD 阈值手工校准；只测 Qualcomm NPU，真实设备验证是代表性而非 benchmark 规模；加视觉输入不一定更好，512×512 下细粒度 grounding 与延迟有冲突。<br/>它没主张的：不是所有手机 GUI 任务都能 +24.6%；不是不需要云；不是视觉一定有用；不是已经跨 NPU 平台验证。</span><span data-en="">Problem: mobile GUI agents mostly rely on cloud models, paying latency, privacy and connectivity costs; moving a conventional agent onto a phone NPU is inefficient because NPUs excel at prefill and struggle with token-by-token decode, while compiled context profiles are fixed.<br/>Where the evidence sits: DroidPrefill moves common-case action selection to the prefill boundary and reserves decoding for cases that truly need reasoning, using candidate-grounded UI compression, a bounded state ledger and structured decision refinement to control context. On commercial phones against the autoregressive T3A+ baseline, per-step latency falls by up to 85.0% and task success rises by up to 24.6%; under A11y-only QAIRT, input drops from 4,023 to 1,830 tokens, output from 318.6 to 26.7 tokens, and latency from 24.2 s to 4.6 s.<br/>What the authors say about limits: fully on-device deployment relies on compact, quantized models with bounded context, so difficult long-horizon tasks remain limited by model capability; it relies mainly on accessibility representations, which may miss visually rich or custom-rendered interfaces; SPAD thresholds are manually calibrated; evaluation covers Qualcomm NPUs only and uses representative rather than benchmark-scale real-device validation; adding vision does not consistently help, and 512×512 downsampling trades grounding against latency.<br/>What it does not claim: that every mobile GUI task gains 24.6%; that cloud is unnecessary; that vision always helps; that the results generalize across NPU platforms.</span></p>
+<section class="fx-entry-sec"><h2><span data-zh="">关键参数</span><span data-en="">Key specs</span></h2><dl class="fx-specs"><div><dt>发表 / venue</dt><dd>arXiv 2611.20772（2026-11-16）</dd></div><div><dt>硬件 / hardware</dt><dd>商用 Qualcomm 手机 NPU</dd></div><div><dt>模型 / model</dt><dd>Qwen3-4B-Instruct-2507 等小模型（QAIRT W4A16 / llama.cpp Q4_0）</dd></div><div><dt>评测 / benchmark</dt><dd>AndroidWorld；代表性 RealMobile 任务</dd></div><div><dt>延迟 / latency</dt><dd>每步最多 -85.0%；A11y QAIRT 24.2s → 4.6s</dd></div><div><dt>成功率 / success</dt><dd>最多 +24.6%</dd></div><div><dt>证据位置 / evidence</dt><dd>摘要；第 2–5 节；Limitations</dd></div><div><dt>复现状态 / reproduction</dt><dd>未复现（只读论文与 HTML 全文）</dd></div></dl></section>
+<section class="fx-entry-sec"><h2><span data-zh="">官方原文怎么说</span><span data-en="">What the source says</span></h2><figure class="fx-evidence">
+<blockquote>We present DroidPrefill, a prefill-centric inference architecture that reshapes the GUI-agent workload around mobile-NPU execution.</blockquote>
+<figcaption><span class="fx-ev-n">1</span> <a href="https://arxiv.org/abs/2611.20772" rel="noopener">https://arxiv.org/abs/2611.20772</a></figcaption>
+</figure>
+<figure class="fx-evidence">
+<blockquote>Experiments on commercial smartphones show that, in controlled comparisons with the autoregressive T3A+ baseline, DroidPrefill reduces per-step inference latency by up to 85.0%, while improving task success rate by up to 24.6%.</blockquote>
+<figcaption><span class="fx-ev-n">2</span> <a href="https://arxiv.org/abs/2611.20772" rel="noopener">https://arxiv.org/abs/2611.20772</a></figcaption>
+</figure>
+<figure class="fx-evidence">
+<blockquote>DroidPrefill has several limitations. First, fully on-device deployment currently relies on compact and quantized models with bounded context, which limits semantic reasoning and long-horizon planning on difficult GUI tasks.</blockquote>
+<figcaption><span class="fx-ev-n">3</span> <a href="https://arxiv.org/html/2611.20772" rel="noopener">https://arxiv.org/html/2611.20772</a></figcaption>
+</figure>
+<figure class="fx-evidence">
+<blockquote>our evaluation focuses on Qualcomm smartphone NPUs and uses representative rather than benchmark-scale real-device validation.</blockquote>
+<figcaption><span class="fx-ev-n">4</span> <a href="https://arxiv.org/html/2611.20772" rel="noopener">https://arxiv.org/html/2611.20772</a></figcaption>
+</figure></section>
+<section class="fx-entry-sec"><h2><span data-zh="">资料与许可</span><span data-en="">Source and licence</span></h2>
+<dl class="fx-specs">
+<div><dt><span data-zh="">资料时间</span><span data-en="">Source checked</span></dt><dd>2026-11-20</dd></div>
+<div><dt><span data-zh="">许可 / 类型</span><span data-en="">Licence / kind</span></dt><dd>arxiv-preprint</dd></div>
+<div><dt><span data-zh="">许可说明</span><span data-en="">Licence evidence</span></dt><dd><a href="https://arxiv.org/abs/2611.20772" rel="noopener">https://arxiv.org/abs/2611.20772</a></dd></div>
+<div><dt><span data-zh="">类目</span><span data-en="">Category</span></dt><dd><span data-zh="">Agent 与工具</span><span data-en="">Agents &amp; tools</span></dd></div>
+</dl>
+</section>
+<section class="fx-entry-sec"><h2><span data-zh="">论文里的数字怎么读</span><span data-en="">How to read the numbers</span></h2><p><span data-zh="">先分清测什么、怎么算、和谁比、有没有数据污染。拿不准就回原文看实验设置。</span><span data-en="">Before citing a score, separate what it measures, how it is scored, what it compares against and whether contamination is controlled. If unsure, go back to the experiment setup in the paper.</span> <a href="https://models.specul.com/evals/"><span data-zh="">看评测基准</span><span data-en="">See benchmark cards</span></a> · <a href="https://models.specul.com/data/"><span data-zh="">看数据集卡</span><span data-en="">See dataset cards</span></a></p></section>
+<section class="fx-entry-sec"><h2><span data-zh="">同类目还有</span><span data-en="">More in this category</span></h2><ul class="fx-list"><li><a href="agentbench-2023.html"><span data-zh="">AgentBench: Evaluating LLMs as Agents</span><span data-en="">AgentBench: Evaluating LLMs as Agents</span></a></li><li><a href="contextweaver-2026.html"><span data-zh="">ContextWeaver: Selective and Dependency-Structured Memory Construction for LLM Agents</span><span data-en="">ContextWeaver: Selective and Dependency-Structured Memory Construction for LLM Agents</span></a></li><li><a href="gemini-4-carbon-2026.html"><span data-zh="">Gemini 4 Carbon Model Card</span><span data-en="">Gemini 4 Carbon Model Card</span></a></li></ul></section>
+<section class="fx-entry-sec"><h2><span data-zh="">下一步</span><span data-en="">Next step</span></h2><ul class="fx-list"><li><a href="https://specul.com/topic-research.html"><span data-zh="">做研究 / 写报告：从找论文到整理引用</span><span data-en="">Research / reports: from finding papers to citations</span></a></li><li><a href="https://models.specul.com/evals/"><span data-zh="">看评测基准：论文里的分数怎么复现</span><span data-en="">See benchmark cards: how to reproduce a score</span></a></li></ul></section>
+<p><a class="fx-source" href="https://arxiv.org/abs/2611.20772" rel="noopener"><span data-zh="">去官网看原页</span><span data-en="">Open the official page</span> →</a></p>
+<p class="fx-crumb"><a href="index.html"><span data-zh="">← 返回AI 论文</span><span data-en="">← Back to AI Papers</span></a></p>
+</div>
+</main>
+<footer class="site-footer foot-single">
+<div class="container foot-line">
+<div class="foot-brand">
+<span class="foot-brand-main">
+<span aria-hidden="true" class="brand-dot"></span>
+<span class="foot-copy"><span data-zh="">投机取巧 · specul.com</span><span data-en="">Specul · specul.com</span></span>
+</span>
+<span class="foot-license"><a href="https://specul.com/LICENSE-CONTENT.txt"><span data-zh="">内容 CC BY 4.0</span><span data-en="">Content CC BY 4.0</span></a><span aria-hidden="true" class="sep">·</span><a href="https://specul.com/LICENSE.txt"><span data-zh="">代码 MIT</span><span data-en="">Code MIT</span></a><span aria-hidden="true" class="sep">·</span><a class="foot-source" href="https://github.com/speculcom/ai-handbook" rel="noopener" target="_blank"><span data-zh="">源码</span><span data-en="">Source</span></a></span>
+</div>
+<nav aria-label="Footer site links" class="foot-sites">
+<a class="site-link" href="https://specul.com/"><span data-zh="">首页</span><span data-en="">Home</span></a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://learn.specul.com/"><span data-zh="">学 AI</span><span data-en="">Learn</span></a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://tools.specul.com/"><span data-zh="">工具</span><span data-en="">Tools</span></a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://models.specul.com/"><span data-zh="">模型</span><span data-en="">Models</span></a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://demos.specul.com/"><span data-zh="">演示</span><span data-en="">Demos</span></a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://oss.specul.com/"><span data-zh="">开源</span><span data-en="">OSS</span></a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://hardware.specul.com/"><span data-zh="">算力</span><span data-en="">Compute</span></a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://papers.specul.com/"><span data-zh="">论文</span><span data-en="">Papers</span></a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://chain.specul.com/"><span data-zh="">链</span><span data-en="">Chain</span></a><span aria-hidden="true" class="sep site-sep">·</span>
+<a class="site-link" href="https://nav.specul.com/"><span data-zh="">导航</span><span data-en="">Directory</span></a>
+</nav>
+<nav aria-label="Legal and corrections" class="foot-legal">
+<a href="https://specul.com/legal.html"><span data-zh="">法律</span><span data-en="">Legal</span></a><span aria-hidden="true" class="sep">·</span>
+<a href="https://specul.com/legal.html#s8"><span data-zh="">隐私</span><span data-en="">Privacy</span></a><span aria-hidden="true" class="sep">·</span>
+<a href="https://specul.com/correct.html"><span data-zh="">纠错</span><span data-en="">Corrections</span></a>
+</nav>
+</div>
+</footer>
+<nav aria-label="快捷导航" class="nav-tabbar nav-tabbar-1row">
+<a href="https://specul.com/"><span aria-hidden="true" class="ti">◎</span><span data-zh="">首页</span><span data-en="">Home</span></a>
+<a href="https://learn.specul.com/"><span aria-hidden="true" class="ti">▤</span><span data-zh="">学AI</span><span data-en="">Learn</span></a>
+<a href="https://tools.specul.com/"><span aria-hidden="true" class="ti">◈</span><span data-zh="">工具</span><span data-en="">Tools</span></a>
+<a href="https://models.specul.com/"><span aria-hidden="true" class="ti">▦</span><span data-zh="">模型</span><span data-en="">Models</span></a>
+<a href="https://demos.specul.com/"><span aria-hidden="true" class="ti">▷</span><span data-zh="">演示</span><span data-en="">Demos</span></a>
+<a href="https://oss.specul.com/"><span aria-hidden="true" class="ti">▧</span><span data-zh="">开源</span><span data-en="">OSS</span></a>
+<a href="https://hardware.specul.com/"><span aria-hidden="true" class="ti">▣</span><span data-zh="">算力</span><span data-en="">Chips</span></a>
+<a aria-current="page" href="https://papers.specul.com/"><span aria-hidden="true" class="ti">▥</span><span data-zh="">论文</span><span data-en="">Papers</span></a>
+<a href="https://chain.specul.com/"><span aria-hidden="true" class="ti">◇</span><span data-zh="">链</span><span data-en="">Chain</span></a>
+<a data-nav-group="external" href="https://nav.specul.com/"><span aria-hidden="true" class="ti">↗</span><span data-zh="">导航</span><span data-en="">Nav</span></a>
 </nav>
 </body>
 </html>
